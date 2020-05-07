@@ -1,0 +1,423 @@
+﻿<div class="table-responsive">
+	<table id="recent-orders" class="table table-hover table-xl mb-0">
+		<thead>
+			<tr>
+				<th class="border-top-0"></th>                                
+				<th class="border-top-0">Nombre</th>
+				<th class="border-top-0">Apellido</th>
+				<th class="border-top-0">Companía</th>
+				<th class="border-top-0">Reuniones</th>
+				
+				
+				<th class="border-top-0">
+				
+					
+				<div class="d-flex justify-content-end mr-4 ">
+
+
+					<input  class="seleccionador " onchange="seleccionador();" style="width:57px; margin-right: 1px;" type="checkbox" >
+			
+					
+				</div>
+		
+
+					
+	
+				</th>
+				
+
+
+				
+
+
+			
+				<!-- <a class="success p-0" data-original-title="" title="Permisos" onclick="setPermisoUsuarios('D',this);">
+					<i class="fa fa-user font-medium-3 "></i>
+				</a>
+				 -->
+		
+
+
+			</tr>
+			
+		</thead>
+		
+		<tbody>
+			<div class="container-seleccion d-flex justify-content-center  ">
+		
+		
+				<div class="row ">
+
+				
+					<div class="col-1  icono-seleccion" style="margin-top: 3px;">
+						
+					</div>
+					<div class="col-8">
+						<select class="form-control" id="opciones" onchange="iconos();">
+							<option value="disponibilidad">Permiso de acceso a disponibilidad</option>
+							<option value="reuniones">Permiso para solicitar reuniones</option>
+							<option value="mensajes">Permiso para enviar mensajes</option>
+							<option value="quitardisponibilidad">Revocar permiso de Acceso a disponibilidad</option>
+							<option value="quitarreuniones">Revocar permiso para solicitar reuniones</option>
+							<option value="quitarmensajes">Revocar permiso para enviar mensajes</option>
+						  </select>
+					</div>
+			
+					<div class="col-2">
+						<button type="submit" class="btn btn-success boton-seleccion" value="{percodigo}" onclick="actPermisosMasivo(1,'X');">Aplicar</button>
+					</div>
+				
+
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			<!-- BEGIN browser -->
+			<tr class="tabla">
+				<td class="text-truncate tabla-usuarios">
+					<span class="avatar avatar-xs">
+						<img class="box-shadow-2" src="{peravatar}" alt="avatar">
+					</span>
+				</td>
+				<td class="text-truncate"><span>{pernombre}</span></td>
+				<td class=" text-truncate"><span >{perapelli}</span></td>
+				<td class=""><span>{percompan}</span></td>
+				<td class="text-truncate"><span>{reucant}</span></td>
+			
+				<td>
+					<a  class="success p-0" data-original-title="" title="Modificar" onclick="showMaestro({percodigo});">
+						<i class="fa fa-pencil font-medium-3 mr-2"></i>
+					</a>
+				
+					<a class="danger p-0" data-original-title="" title="Eliminar perfil" onclick="eliminarMaestro({percodigo});" style="{btneliminar}">
+						<i class="fa fa-trash-o font-medium-3 mr-2"></i>
+					</a>
+					
+					<a class="danger p-0" data-original-title="" title="Activar perfil" onclick="activarMaestro({percodigo});" style="{btnactivar}">
+						<i class="fa fa-refresh font-medium-3 mr-2"></i>
+					</a>
+					<!-- //ANCHOR PRUEBA -->
+					<a class="red p-0" data-original-title="" title="Permiso de Acceso a Disponibilidad" onclick="actPermisosMasivo({percodigo},'D');" data-permiso="{perusadis}">
+						<i class="fa ft-grid font-medium-3 mr-2" style="color:{permdispcolor}"></i>
+					</a>
+					
+					<a  class="red p-0" data-original-title="" title="Permiso para Solicitar Reuniones" onclick="actPermisosMasivo({percodigo},'R');" data-permiso="{perusareu}">
+						<i id="reuniones"  class="fa ft-target font-medium-3 mr-2" style="color:{permreuncolor}"></i>
+					</a>
+					
+					<a class="red p-0" data-original-title="" title="Permiso para enviar Mensajes" onclick="actPermisosMasivo({percodigo},'M');"  data-permiso="{perusamsg}">
+						<i class="fa ft-phone font-medium-3 mr-2" style="color:{permmsgcolor}" ></i>
+					</a>
+					
+					<a class="warning p-0" data-original-title="" title="Ingresar como Perfil" onclick="ingresoPerfil({percodigo});">
+						<i class="fa ft-users font-medium-3 mr-2" ></i>
+					</a>
+					
+					<a class="primary p-0" data-original-title="" title="Liberar Acceso" onclick="liberarMaestro({percodigo});" style="display:{viewlibbtn};">
+						<i class="fa fa-lock font-medium-3 mr-2"></i>
+					</a>
+					
+					<a class="red p-0" data-original-title="" title="Mail no confirmado" style="display:{viewmailbtn};">
+						<i class="fa fa-envelope-o font-medium-3 mr-2"></i>
+					</a>
+					<a class="success p-0" data-original-title="" title="Modificar">
+
+						<input type="checkbox" name="Seleccionar" id="seleccion" value="{percodigo}">
+					
+					</a>
+				</td>
+			</tr>
+
+			
+			<!-- END browser -->
+			
+		</tbody>
+	</table>
+	
+	<!-- <input  type="submit" value="{percodigo}" onclick="guardarMaestro();"> -->
+</div>
+
+
+<script>
+	var colorPermisoSI = '{colorPermisoSI}';
+	var colorPermisoNO = '{colorPermisoNO}';
+
+	//CARGO ICONO POR DEFECTO
+	$(".icono-seleccion").html('<i class="fa ft-grid font-large-1" style="color:#0BE000"></i>');
+
+
+//SEGUN LA SELCCION DENTRO DEL SELECT VA A MOSTRAR ICONO-----------------------------------------------------------
+	function iconos(){
+
+		var seleccionOpciones = document.getElementById("opciones").value;
+
+		if (seleccionOpciones == 'disponibilidad') {$(".icono-seleccion").html('<i class="fa ft-grid font-large-1  " style="color:#0BE000"></i>');}
+		if (seleccionOpciones == 'mensajes') {$(".icono-seleccion").html('<i class="fa ft-phone font-large-1  " style="color:#0BE000"></i>')}
+		if (seleccionOpciones == 'reuniones'){$(".icono-seleccion").html('<i class="fa ft-target font-large-1 " style="color:#0BE000"></i>')}
+		if (seleccionOpciones == 'quitardisponibilidad'){$(".icono-seleccion").html('<i class="fa ft-grid font-large-1  " style="color:#FF581B"></i>')}
+		if (seleccionOpciones == 'quitarreuniones') {$(".icono-seleccion").html('<i class="fa ft-target font-large-1  " style="color:#FF581B"></i>')}
+		if (seleccionOpciones == 'quitarmensajes') {$(".icono-seleccion").html('<i class="fa ft-phone font-large-1  " style="color:#FF581B"></i>')}
+	
+	}
+//-----------------------------------------------------------------------------------------------------------------
+	function eliminarMaestro(reg){
+		var percodigo = reg;
+		
+		var data = {"percodigo":percodigo};
+		
+		swal({
+			title: "{Idioma_Eliminar}",
+			text: "{Idioma_ConfEliminar}",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: '{Idioma_BotonConf}',
+			cancelButtonText: '{Idioma_BotonCan}',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'del.php',
+			  data: data
+			}).done(function( rsp ) {
+				data = $.parseJSON(rsp);
+				
+				if(data.errcod == 0){			
+					toastr.success(data.errmsg, '{Idioma_Eliminar}');
+					//swal("GUARDAR", data.errmsg, "success").done();
+					showBrowser();
+				}else{
+					toastr.error(data.errmsg, '{Idioma_Eliminar}');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				
+			});
+			
+			
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	}
+	
+	function activarMaestro(reg){
+		var percodigo = reg
+		
+		var data = {"percodigo":percodigo};
+		
+		swal({
+			title: "{Idioma_Activar}",
+			text: "{Idioma_ActivarPerf}",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: '{Idioma_BotonConf}',
+			cancelButtonText: '{Idioma_BotonCan}',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'act.php',
+			  data: data
+			}).done(function( rsp ) {
+				data = $.parseJSON(rsp);
+				
+				if(data.errcod == 0){			
+					toastr.success(data.errmsg, '{Idioma_Activar}');
+					//swal("GUARDAR", data.errmsg, "success").done();
+					showBrowser();
+				}else{
+					toastr.error(data.errmsg, '{Idioma_Activar}');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				
+			});
+			
+			
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	}
+	
+	function liberarMaestro(reg){
+		var percodigo = reg
+		
+		var data = {"percodigo":percodigo};
+		
+		swal({
+			title: "{Idioma_LiberarAccs}",
+			text: "{Idioma_ConfLibPerf}",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: '{Idioma_BotonConf}',
+			cancelButtonText: '{Idioma_BotonCan}',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'lib.php',
+			  data: data
+			}).done(function( rsp ) {
+				data = $.parseJSON(rsp);
+				
+				if(data.errcod == 0){			
+					toastr.success(data.errmsg, '{Idioma_LiberarAccs}');
+					//swal("GUARDAR", data.errmsg, "success").done();
+					showBrowser();
+				}else{
+					toastr.error(data.errmsg, '{Idioma_LiberarAccs}');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				
+			});
+			
+			
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	
+	
+	}
+	
+	function actPermisosMasivo(coduser, permiso) {
+		//CHEQUEO DATO ENTRANTE DEL SELECT
+		var seleccionOpciones = document.getElementById("opciones").value;
+		var opcion = "";
+
+		//Los permisos masivos los trabajamos con el select
+		if (seleccionOpciones == "disponibilidad") {
+			opcion = "D";
+		}
+		if (seleccionOpciones == "mensajes") {
+			opcion = "M";
+		}
+		if (seleccionOpciones == "reuniones") {
+			opcion = "R";
+		}
+		if (seleccionOpciones == "quitardisponibilidad") {
+			opcion = "QD";
+		}
+		if (seleccionOpciones == "quitarreuniones") {
+			opcion = "QR";
+		}
+		if (seleccionOpciones == "quitarmensajes") {
+			opcion = "QM";
+		}
+		//SI EL SET PERMISO ES INDIVIDUAL POR BOTON
+		if (permiso != "X") {
+			var data = {
+			seleccion: 0,
+			percodigo: [],
+			//La opcion entra por parametro
+			opcion: permiso
+			};
+
+			//Pusheamos el codigo de usuario que entra por parametro
+			data.percodigo.push({ id: coduser });
+
+		//Aca ingrega con el boton del select
+		} else if (permiso == "X") {
+			var data = {
+			seleccion: 1,
+			percodigo: [],
+			opcion: opcion
+			};
+
+			//Busco los check seleccionados
+			$('input[id="seleccion"]:checked').each(function() {
+			var id = $(this).val();
+			data.percodigo.push({ id: id });
+			});
+  }
+
+  //ENVIO POR POST AL PHP
+  if (data.percodigo[0]) {
+
+    toastr.warning("Aplicando Permisos", "{Idioma_Permisos}");
+
+    $.ajax({
+      type: "POST",
+      url: "perm.php",
+      data: data
+    }).done(function(rsp) {
+		alert(rsp);
+      data = $.parseJSON(rsp);
+      toastr.remove();
+      if (data.errcod == 0) {
+		toastr.success(data.errmsg, "{Idioma_Permisos}");
+		setTimeout(() => {
+        location.reload();
+      }, 700);
+      } else {
+		toastr.error(data.errmsg, "{Idioma_Permisos}");
+		
+      }
+
+     
+    });
+  } else {
+    swal({
+      title: "Error!",
+      text: "Seleccione perfiles para aplicar permisos"
+    });
+  }
+}
+
+	function seleccionador(){
+		if ($('input[id="seleccion"]').prop('checked')) {$('input[id="seleccion"]').prop('checked', false);
+		}else{$('input[id="seleccion"]').prop('checked', true);}
+
+		}
+
+	function ingresoPerfil(reg){
+		var percodigo = reg
+		
+		var data = {"percodigo":percodigo};
+		
+		swal({
+			title: "{Idioma_IngfPerFil}",
+			text: "{Idioma_ConfIngPerf}",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: '{Idioma_BotonConf}',
+			cancelButtonText: '{Idioma_BotonCan}',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'logperfil.php',
+			  data: data
+			}).done(function( rsp ) {
+				data = $.parseJSON(rsp);
+				toastr.success(data.errmsg, '{Idioma_IngfPerFil}');
+				setTimeout('window.location="../index";',500);
+			});
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	}
+</script>
+                    

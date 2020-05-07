@@ -1,0 +1,193 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Maestro de noticias</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form enctype="multipart/form-data"  class="form form-horizontal" novalidate>
+							<div class="form-body">
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="avititulo">Titulo: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="hidden" id="avireg" name="avireg" value="{avireg}">
+										<input type="text" id="avititulo"  name="avititulo" class="form-control" value="{avititulo}">
+									</div>
+								</div>
+
+								<div class="form-group row">
+										<label class="col-md-3 label-control" for="avidescrip">Descripción: <span class="required">*</span> </label>
+										<div class="col-md-9">
+											<input type="hidden" id="avireg" name="avireg" value="{avireg}">
+											<textarea type="text" id="avidescrip" rows="4" name="avidescrip" class="form-control" value="{avidescrip}" maxlength=230> {avidescrip} </textarea>
+										</div>
+									</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="aviimagen">Imagen: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="hidden" id="avireg" name="avireg" value="{avireg}">
+										
+										<input type="file" id="aviimagen"  name="aviimagen" accept=".png, .jpg, .jpeg" class="form-control" value="{aviimagen}" onchange="readURLaviso(this);" style="display: none;">
+										<br>
+										<a>
+												<img id="imgaviso" alt="" class="media-object d-flex mr-3" src="{aviimagen}" style="width: 350px; height: 150px; " onclick="findaviso();"
+												>
+										</a>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="aviurl">Url: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="hidden" id="avireg" name="avireg" value="{avireg}">
+										<input type="text" id="aviurl"  name="aviurl" class="form-control" value="{aviurl}">
+									</div>
+								</div>
+
+																			
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> Guardar
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> Cancelar
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var avititulo = $('#avititulo').val();
+		var  avidescrip= $('#avidescrip').val();
+		var  aviimagen= $('#aviimagen').val();
+		var  aviurl= $('#aviurl').val();
+
+		if(avititulo==''){
+			errcod=2;
+			errmsg='Falta el titulo';
+		}
+		if(avidescrip==''){
+			errcod=2;
+			errmsg='Falta una descripción';
+		}
+		if(aviimagen==''){
+			errcod=2;
+			errmsg='Falta una imagen';
+		}
+		if(aviurl==''){
+			errcod=2;
+			errmsg='Falta una url';
+		}
+		
+		if(errcod!=0){
+			//swal("GUARDAR", errmsg, "error").done();
+			toastr.error(errmsg, 'GUARDAR');
+		}
+			
+		if(errcod==0){
+			swal({
+				title: "GUARDAR",
+				text: "¿Confirma guardar los cambios?",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	//Tomamos el valor del id
+	var  data= $('#avireg').val();
+	
+	//imagen por defecto si el id es 0
+	if (data==0) {
+		$('#imgaviso').prop('src','{imgnull}');
+	}
+	if (data != 0){
+		$('#imgaviso').prop('src','../avimg/{avireg}/{aviimagen}');
+	}
+	function findaviso(){
+		 //$('#imgaviso').prop('src','{imgnull}');
+		 $('#aviimagen').click();	
+	}
+	
+	function readURLaviso(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			reader.onload = function (e) {
+				$('#imgaviso').attr('src', e.target.result);	
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+				};
+			}
+			reader.readAsDataURL(input.files[0]);
+			
+		}
+	}
+
+	
+	function guardarMaestro(){
+		var formData = new FormData($('#FrmMst')[0]);
+		formData.append("avireg"		, $('#avireg').val() );
+		formData.append("avititulo"		, $('#avititulo').val() );
+		formData.append("avidescrip"		, $('#avidescrip').val() );
+		formData.append("aviurl"		, $('#aviurl').val() );
+		
+
+		if(typeof($('#aviimagen')[0].files[0]) !== "undefined"){
+			//console.log('entro');
+			formData.append('aviimagen', $('#aviimagen')[0].files[0]);
+		}
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'GUARDAR');			
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'GUARDAR');	
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

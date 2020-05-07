@@ -1,0 +1,86 @@
+<div class="modal-content">
+		<div class="modal-header">
+			<h4 class="modal-title" id="">{msgtitulo}</h4>
+			
+		</div>
+		<div class="modal-body">
+			<form action="">
+					<div class="form-group row">
+<<<<<<< .mine
+							<label class="col-md-3 label-control" for="paicodigo">Clase Perfil: </label>
+							<div class="col-md-9">
+								<select id="perclase" name="perclase" class="form-control" >
+									<option value="0" >Seleccione...</option>
+									
+									<option value="1" selected>Todos</option>
+									<!-- BEGIN perclase -->
+									<option value="{perclacod}">{perclades}</option>
+									<!-- END perclase -->
+									<option value="9999">Perfiles sin Reuniones Aceptadas</option>
+								</select>
+							</div>
+||||||| .r781
+							<label class="col-md-3 label-control" for="paicodigo">Clase Perfil: </label>
+							<div class="col-md-9">
+								<select id="perclase" name="perclase" class="form-control" >
+									<option value="0" >Seleccione...</option>
+									
+									<option value="0" selected>Todos</option>
+									<!-- BEGIN perclase -->
+									<option value="{perclacod}">{perclades}</option>
+									<!-- END perclase -->
+									<option value="9999">Perfiles sin Reuniones Aceptadas</option>
+								</select>
+							</div>
+=======
+						<label class="col-md-3 label-control" for="paicodigo">Tipos Perfil: </label>
+						<div class="col-md-9">
+							<select id="pertipo" name="pertipo" class="form-control" >
+								<option value="0" >Seleccione...</option>
+								
+								<option value="0" selected>Todos</option>
+								<!-- BEGIN pertipos -->
+								<option value="{pertipcod}">{pertipdes}</option>
+								<!-- END pertipos -->
+							</select>
+>>>>>>> .r788
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 label-control" for="paicodigo">Clases Perfil: </label>
+						<div class="col-md-9">
+							<select id="perclase" name="perclase" class="form-control" >
+								<option value="0" >Seleccione...</option>
+								
+								<option value="0" selected>Todos</option>
+								<!-- BEGIN perclases -->
+								<option value="{perclacod}">{perclades}</option>
+								<!-- END perclases -->
+								<option value="9999">Perfiles sin Reuniones Aceptadas</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 label-control" for="peridioma">{Idioma_Idioma}: </label>
+						<div class="col-md-9">
+							<select id="peridioma" name="peridioma" class="form-control">
+								<option value="" selected >{Idioma_Seleccione}...</option>
+								
+								<option value="ing" {idioma}>Ingles</option>
+								<option value="esp" {idioma1}>Español</option>
+								
+							</select>
+						</div>
+					</div>
+			</form>
+						
+		</div>
+		<div class="modal-footer">
+				
+			<button type="button" id="btnenviar" class="btn btn-success  " data-dismiss="modal"  onclick="{functionguardar}({msgreg});"> <i class="icon-note"></i>{tipoenvio}</button>
+			
+			<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+		</div>
+	</div>
+
+	

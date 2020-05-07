@@ -1,0 +1,42 @@
+﻿<!-- BEGIN browser -->
+<div class="col-md-3 col-12 mb-3 d-flex justify-content-center">
+	<div class="card-contact">
+
+		<div class="mt-2 mb-2">
+
+			<img class="avatar-contact" src="{peravatar}" alt="">
+		</div>
+
+		<div>
+
+			<h3 class="font-small-2 card-title text-bold-500">{perapelli} {pernombre}</h3>
+			<div class="company text-truncate ">
+
+				<a class="p-2" href="">{percompan}</a>
+			</div>
+			<p>{reuestdes}</p>
+		</div>
+
+		<div class="btn-group btn-group-justified">
+			<a class="btn btn-success" onclick="solicitarReunionMaestro({percodigo},{reureg});"
+				style="{btnconfirmarstyle}">Accept</a>
+			<a class="btn btn-danger" onclick="cancelarReunion({reureg});" style="{btncancelarstyle}">Cancel</a>
+			<a class="btn btn-warning" onclick="showView({percodigo});" style="{btnverperfil}">View Profile</a>
+			<!-- <div class="g-hangout" data-render="createhangout"></div> -->
+			<a class="btn btn-info" onclick="showViewPreg({reureg});" style="{btnverencuesta}">Encuesta</a>
+			<a class="btn btn-teal" onclick="showViewContacto('{perreuurl}');" style="{btnvercontact}">Contacto</a>
+			<!--
+			<g:hangout render="createhangout"
+				invites="[{ id : '{percordst}', invite_type : 'EMAIL' },{ id : '{percorsol}', invite_type : 'EMAIL' }]">
+			-->
+		</div>
+
+
+
+	</div>
+
+</div>
+<!-- END browser -->
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>

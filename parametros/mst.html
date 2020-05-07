@@ -1,0 +1,335 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">{Idioma_Speakers}</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form enctype="multipart/form-data"  class="form form-horizontal" novalidate>
+							<div class="form-body">
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="parreg">Reg.Int.: </label>
+									<div class="col-md-9">
+										<input type="text" id="parreg"  name="parreg" class="form-control" value="{parreg}" readonly>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="parcodigo">Codigo: <span class="required">*</span></label>
+									<div class="col-md-9">
+
+										<!-- //NOTE SELECT CODIGO DE PARAMETRO -->
+										<select id="parcodigo" name="parcodigo" class="form-control" >
+											<option value="NameImagePlano" {parcodigoNameImagePlano}  >NameImagePlano</option>
+											<option value="NameImageDemo" {parcodigoNameImageDemo} >NameImageDemo</option>
+											<option value="SpeakerOrden" {parcodigoSpeakerOrden} >SpeakerOrden</option>
+											<option value="SponsorOrden" {parcodigoSponsorOrden} >SponsorOrden</option>
+											<option value="PitcherVotar" {parcodigoPitcherVotar} >Pitcher Votacion</option>
+										</select>
+									</div>
+								</div>
+																
+
+								<!-- Selector de valor si es Speaker Orden -->
+								<div id="speakerOrden" class="form-group row">
+									<label class="col-md-3 label-control" for="parorden">{Idioma_Orden}: </label>
+
+									<div class="col-md-9">
+										<select  class="form-control" onchange="$('#parorden').val($(this).val());">
+											<option value="1" {orden1} >Manual</option>
+											<option value="2" {orden2} >Alfabetico</option>
+											
+										</select>
+									</div>
+								</div>
+								
+								<!-- Selector de valor si es Sponsor Orden -->
+								<div id="sponsorOrden" class="form-group row">
+									<label class="col-md-3 label-control" for="parorden">{Idioma_Orden}: </label>
+
+									<div class="col-md-9">
+										<select  class="form-control"  onchange="$('#parorden').val($(this).val());">
+											<option value="1" {orden1} >Manual</option>
+											<option value="2" {orden2} >Alfabetico</option>
+											
+										</select>
+									</div>
+								</div>
+								
+								<!-- Selector de valor si es Pitcher Votacion -->
+								<div id="pitcherVotar" class="form-group row">
+									<label class="col-md-3 label-control" for="parorden">{Idioma_Orden}: </label>
+
+									<div class="col-md-9">
+										<select  class="form-control"  onchange="$('#parorden').val($(this).val());">
+											<option value="1" {orden1} >Habilitado</option>
+											<option value="2" {orden2} >Inhabilitado</option>
+											
+										</select>
+									</div>
+								</div>
+									
+								
+								<div id="orden" class="form-group row">
+									<label class="col-md-3 label-control" for="parorden">{Idioma_Orden}: </label>
+									<div class="col-md-9 ">
+										<input type="text" id="parorden"  name="parorden" class="form-control" value="{parorden}">
+									</div>								
+								</div>
+						
+								<!-- //NOTE SELECT CODIGO DE PARAMETRO SI EL CODIGO DE PARAMETRO ES SpeakerOrden -->
+								<p style="color:rgb(255, 0, 0); text-align: center; " id="msg"></p>
+								
+								<div id="imagen" class="form-group row">
+									<label class="col-md-3 label-control" for="parimg">{Idioma_Imagen}: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<a><img id="parimg" alt="" class="media-object d-flex mr-3" src="{parimg}" style="width:300px; height:auto;" onclick="getImagen();"></a>
+										<input type="file" id="parvalor"  name="parvalor" accept=".png, .jpg, .jpeg" class="form-control" value="{parvalor}" onchange="readURLaviso(this);" style="display: none;">
+									</div>
+								</div>
+							
+								<div id="tipoContainer">
+									<div class="form-group row">
+										
+										<label class="col-md-3 label-control" for="parcodigo">Tipo: <span class="required">*</span></label>
+										<div class="col-md-9">
+											<select id="partipo" name="partipo" class="form-control">
+												
+												<option value="PlanoEvento" {partipoPlanoEvento} >Plano - Plano Evento</option>
+												<option value="TipoDemoDataPerfil" {partipoTipoDemoDataPerfil}  >Demo - DataPerfil</option>
+												<option value="TipoDemoAsistentes" {partipoTipoDemoAsistentes} >Demo - Asistentes</option>
+												<option value="TipoDemoActividades" {partipoTipoDemoActividades} >Demo - Actividades</option>
+												<option value="TipoDemoQRCodigo" {partipoTipoDemoQRCodigo} >Demo - QR Codigo</option>
+												<option value="TipoDemoQRRanking" {partipoTipoDemoQRRanking} >Demo - QR Ranking</option>
+												<option value="TipoDemoDesafiosMenu" {partipoTipoDemoDesafiosMenu} >Demo - Desafios Menu</option>
+												<option value="TipoDemoDesafiosOpenPerfil" {partipoTipoDemoDesafiosOpenPerfil} >Demo - Desafios Perfil OIA</option>											
+												<option value="TipoDemoProductos" {partipoTipoDemoProductos} >Demo - Perfil Productos</option>
+												<option value="TipoDemoDirectorio" {partipoTipoDemoDirectorio} >Demo - Directorio - Rondas</option>
+												<option value="TipoDemoNosAcompanian" {partipoTipoDemoNosAcompanian} >Demo - Nos Acompañan</option>
+												<option value="TipoDemoExpositores" {partipoTipoDemoExpositores} >Demo - Expositores</option>
+												<option value="TipoDemoCupones" {partipoTipoDemoCupones} >Demo - Cupones - Agroshock</option>
+												<option value="TipoDemoComunidad" {partipoTipoDemoComunidad} >Demo - Comunidad</option>
+												<option value="TipoDemoReuSolicitar" {partipoTipoDemoReuSolicitar} >Demo - Solicitar Reuniones</option>
+												<option value="SpeakersOrden" {partipoSpeakersOrden} >Speaker - Orden</option>
+												<option value="SponsorOrden" {partipoSponsorOrden} >Sponsor - Orden</option>
+												<option value="Pitcher" {partipoPitcher} >Pitcher</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label class="col-md-3 label-control" for="paicodigo">Tipo Perfil: </label>
+										<div class="col-md-9">
+											<select id="pertipo" name="pertipo" class="form-control" {cmbpertipo}  >
+												<option value="0" >Todos...</option>
+												<!-- BEGIN pertipos -->
+												<option value="{pertipcod}" {pertipsel}>{pertipdes}</option>
+												<!-- END pertipos -->
+											</select>
+										</div>
+									</div>
+																				
+								</div>
+							</div>
+							
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> Guardar
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> Cancelar
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<script>
+	
+	//NOTE OCULTAMOS POR DEFECTO EL SELECT DE ORDENAMIENTO SPEAKERS
+	$(".spkOrden").hide();
+	$("#votacion").hide();
+
+	//NOTE EN EL ONCHANGE DEL CODIGO DE PARAMETRO  MANIPULAMOS LA UI
+	$("#parcodigo").change(() => {
+		$("#orden").show();
+		$('#imagen').show();
+		$("#speakerOrden").hide();
+		$("#sponsorOrden").hide();
+		$("#pitcherVotar").hide();
+		
+		if ($("#parcodigo").val() == "SpeakerOrden"){
+			$("#orden").hide();
+			$('#imagen').hide();
+			$("#speakerOrden").show();
+		}
+		
+		if ($("#parcodigo").val() == "SponsorOrden"){
+			$("#orden").hide();
+			$('#imagen').hide();
+			$("#sponsorOrden").show();
+		}
+
+		if ($("#parcodigo").val() == "PitcherVotar") {
+			$("#orden").hide();
+			$('#imagen').hide();
+			$("#pitcherVotar").show();
+		}
+	});
+
+	$(document).ready(() => {
+		$("#orden").show();
+		$('#imagen').show();
+		$("#speakerOrden").hide();
+		$("#sponsorOrden").hide();
+		$("#pitcherVotar").hide();
+	
+		if ($("#parcodigo").val() == "SpeakerOrden"){
+			$("#orden").hide();
+			$('#imagen').hide();
+			$("#speakerOrden").show();
+		}
+		
+		if ($("#parcodigo").val() == "SponsorOrden"){
+			$("#orden").hide();
+			$('#imagen').hide();
+			$("#sponsorOrden").show();
+		}
+
+		if ($("#parcodigo").val() == "PitcherVotar") {
+			$("#orden").hide();
+			$('#imagen').hide();
+			$("#pitcherVotar").show();
+		}
+		
+	});
+
+
+	$("#parorden").autoNumeric({
+		aSep: ".",
+		aDec: ",",
+		mDec: "0",
+		vMin: "0",
+		vMax: "999"
+	});
+	//--------------------------------------------------------------------
+
+		
+
+	function guardarMaestroMsg(){	
+		var errcod = 0;
+		var errmsg = '';
+		var	partipo		=  $('#partipo').val()
+		var parreg 		= $('#parreg').val();
+		var parcodigo	= $('#parcodigo').val();
+		var parvalor	= $('#parvalor').val();
+		var parorden	= $('#parorden').val();
+		
+		
+		if(partipo=='PlanoEvento' && parcodigo!='NameImagePlano'){
+			errcod=2;
+			toastr.error('El tipo no puede ser Plano Evento', 'GUARDAR');
+		}
+		if(partipo!='PlanoEvento' && parcodigo=='NameImagePlano'){
+			errcod=2;
+			toastr.error('El tipo debe ser Plano Evento', 'GUARDAR');
+		}		
+		
+		if(errcod==0){
+			swal({
+				title: "GUARDAR",
+				text: "¿Confirma guardar los cambios?",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+
+				}
+			}).done();
+		}
+	}
+	
+	function getImagen(){
+		 $('#parvalor').click();
+	}
+	
+	function readURLaviso(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			reader.onload = function (e) {
+				$('#parimg').attr('src', e.target.result);	
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+
+				};
+			}
+			reader.readAsDataURL(input.files[0]);
+			
+		}
+	}
+
+	
+	function guardarMaestro(){
+		var partipo = $('#partipo').val();
+		var parorden = $('#parorden').val();
+		   
+		var formData = new FormData($('#FrmMst')[0]);
+		formData.append("parreg"		, $('#parreg').val() 	);
+		formData.append("parcodigo"		, $('#parcodigo').val() );
+		formData.append("parorden"		, parorden 	);
+		
+		formData.append("partipo"		, partipo 	);
+		formData.append("pertipo"		, $('#pertipo').val() 	);
+
+		if(typeof($('#parvalor')[0].files[0]) !== "undefined"){
+			formData.append('parvalor', $('#parvalor')[0].files[0]);
+		}else{
+			
+		}
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'GUARDAR');			
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'GUARDAR');	
+			}			
+		});
+	}
+</script>
+	 
+	  
+	  

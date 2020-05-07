@@ -1,0 +1,107 @@
+﻿<!-- Contact Card ~ #01 -->
+
+<!-- BEGIN browser -->
+<div class="col-md-3 col-12 mb-3 d-flex justify-content-center">
+	<div class="card-contact">
+
+		<div class="fav actions float-right mt-2 mr-2" onclick="setFavorito(this,{percodigo})" data-favo="{esfavorito}">
+			<i class="fa fa-fw  fa-heart-o danger" style="font-size:20px;"></i>
+		</div>
+		<div class="mt-2 mb-2">
+
+			<img class="avatar-contact" src="{peravatar}" alt="">
+		</div>
+
+		<div>
+
+			<h3 class="font-small-2 card-title text-bold-500">{perapelli} {pernombre}</h3>
+			<div class="company text-truncate ">
+
+				<a class="p-2" href="">{percompan}</a>
+			</div>
+		</div>
+
+		<div class="btn-group btn-group-justified mt-3">
+			<a class="btn btn-primary" onclick="solicitarReunionMaestro({percodigo},{pertipo});"
+				style="{btnviewreunion}">Meet</a>
+			<!--<a class="btn btn-success">Contactarnos</a>-->
+			<a class="btn btn-warning" onclick="showView({percodigo});">View Profile</a>
+		</div>
+		<ul class="action">
+			<a class="redes" {pertwi} target="_blank"><i class="fa fa-twitter" style="font-size:16px"></i></a>
+			<a class="redes" {perins} target="_blank"><i class="fa fa-instagram" style="font-size:16px"></i></a>
+			<a class="redes" {perfac} target="_blank"><i class="fa fa-facebook" style="font-size:16px"></i></a>
+		</ul>
+
+
+
+	</div>
+
+</div>
+<!-- END browser -->
+<!--
+<div class="col-md-4 col-12">
+
+	<div class="card border-left my-4 border-primary border-3">
+		<div class="card-block pt-3">
+			<div class="clearfix">
+				<h5 class="text-bold-500 primary float-left">{percompan}</h5>
+				<div class="actions float-right" style="cursor:pointer;" onclick="setFavorito(this,{percodigo})"
+					data-favo="{esfavorito}">
+					<i class="fa fa-fw {colorfavo} danger" style="font-size:20px;"></i>
+				</div>
+			</div>
+			<img src="{peravatar}" class="rounded-circle width-50 mr-2 float-right" alt="user image">
+			<div class="media">
+				<div class="media-body">
+					<h5 class="media-heading">{perapelli},{pernombre}</h5>
+					<p>{perempdes}</p>
+				</div>
+			</div>
+
+			<div class="btn-group btn-group-justified">
+				<a class="btn btn-primary" onclick="solicitarReunionMaestro({percodigo},{pertipo});"
+					style="{btnviewreunion}">Meet</a>
+				<a class="btn btn-success">Contactarnos</a>
+				<a class="btn btn-warning" onclick="showView({percodigo});">View Profile</a>
+			</div>
+
+		</div>
+	</div>
+
+
+</div>
+-->
+
+
+
+
+<script>
+
+
+	function setFavorito(obj, reg) {
+		var percodigo = reg;
+		var esfavo = $(obj).data('favo');
+
+		if (esfavo == 1) {
+			$(obj).find('i').removeClass('fa-heart');
+			$(obj).find('i').addClass('fa-heart-o');
+			$(obj).data('favo', 0);
+		} else {
+			$(obj).find('i').addClass('fa-heart');
+			$(obj).find('i').removeClass('fa-heart-o');
+			$(obj).data('favo', 1);
+		}
+
+		var data = { "percodfav": percodigo };
+		console.log(data);
+		$.ajax({
+			type: "POST",
+			url: 'fav.php',
+			data: data
+		}).done(function (rsp) {
+			data = $.parseJSON(rsp);
+		});
+	}
+
+</script>

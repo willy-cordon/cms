@@ -1,0 +1,130 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">{Idioma_MaestroSec}</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Nombre: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="perclase" name="perclase" value="{perclase}">
+										<input type="text" id="perclades"  name="perclades" class="form-control" value="{perclades}">
+									</div>
+								</div>
+							
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control text-center" for="parcodigo">Tipo: <span class="required">*</span></label>
+											
+									
+									
+									<div class="col-md-9">
+												<select  class="form-control"  id="tipo">
+												
+													<!-- BEGIN tipo -->
+													<option value="{pertipo}" class="pepe"  {tiposelected} >{pertipdesesp}</option>
+													<!-- END tipo -->
+											
+												</select>
+									</div>
+												
+				
+									
+									
+								</div>										
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> {Idioma_BotonCan}
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+
+	// $('#tipo').change(() =>{alert($('#tipo').val())})
+
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var perclase = $('#perclase').val();
+		var perclades = $('#perclades').val();
+		var pertipo = $('#tipo').val();
+
+			
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	
+	function guardarMaestro(){
+		var perclase 	= $('#perclase').val();
+		var perclades 	= $('#perclades').val();
+		var pertipo 	= $('#tipo').val();
+		
+		var data = {"perclase":perclase,
+					"perclades":perclades,
+					"pertipo":pertipo};
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

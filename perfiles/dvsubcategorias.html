@@ -1,0 +1,23 @@
+<!-- BEGIN subcategorias -->
+<div id="subcategoria_{catsubcods}" class="card border-left my-1 border-success border-3"  onmouseover="viewPatern(this,4,{catcod});">
+	<div class="card-block pt-1 pb-1">
+		<div class="clearfix">
+			<h5 class="text-bold-400 success float-left" style="font-size:18px;">{catsubdes} <br><label style="font-size:12px;"> {catsubdesing}</label></h5>
+			
+		</div>
+		<div class="actions float-right" style="position:absolute; top:35%; right:5px;">
+			<input type="checkbox" id="catsubselect_{catsubcod}" name="catsubselect" class="switchery" data-color="white" data-jack-color="success" data-codigo="{catsubcod}" {catsubchecked}/>
+		</div>
+	</div>
+</div>
+<!-- END subcategorias -->
+	
+				
+<script>
+	createSwitch('catsubselect');
+</script>
+
+	
+	 
+	  
+	  

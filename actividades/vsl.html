@@ -1,0 +1,44 @@
+
+<div class="modal-content">
+	<div class="modal-header">
+		<h4 class="modal-title" id="">{agetitulo}</h4>
+		
+	</div>
+	<div class="modal-body">
+		<p><b>Fecha: 		</b>{agefch}</p>
+		<p><b>Horario: 		</b>{agehorini} - {agehorfin} </p>
+		<p><b>Lugar: 		</b>{agelugar}</p>
+		<p><b>Descripción: 	</b>{agedescri}</p>
+					
+	</div>
+	<div class="modal-footer">
+			
+		<button type="button" id="btnagendar" class="btn btn-success  " data-dismiss="modal"  onclick="agendarEvento({agereg});"> <i class="icon-note"></i> Agendar</button>
+		
+		<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+	</div>
+</div>
+
+<script>
+		
+	function agendarEvento(reg){
+		var data = {"agereg":reg};
+	
+		$.ajax({
+		  type: "POST",
+		  url: 'agendar.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'AGENAR EVENTO');	
+			}else{
+				toastr.error(data.errmsg, 'AGENAR EVENTO');	
+			}
+			showBrowser();
+		});
+	}
+	
+	
+</script>	  

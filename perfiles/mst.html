@@ -1,0 +1,682 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">{Idioma_MSTPerfiles}</h2>
+			
+			<div class="media" style="position:absolute; right:0px; top:-5px;">
+				<a>
+					<img id="imgavatar" alt="" class="media-object d-flex mr-3" src="{peravatar}" style="width: 80px; height: 80px;"
+						onclick="findAvatar();" style="display: none">
+				</a>
+				<form id="frmfileavatar" enctype="multipart/form-data">
+					<input id="fileavatar" name="fileavatar" type="file" value="{peravatar}" accept=".png, .jpg, .jpeg" style="display:none;"
+						onchange="readURLAvatar(this);"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								<h4 class="form-section"><i class="icon-user"></i>{Idioma_MSTDatosPersonales}</h4>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">{Idioma_Nombre} <i>({percodigo})</i>: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="percodigo" name="percodigo" value="{percodigo}">
+										<input type="text" id="pernombre"  name="pernombre" class="form-control" value="{pernombre}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perapelli">{Idioma_Apellido}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perapelli" name="perapelli" class="form-control" value="{perapelli}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perapelli">CPF: </label>
+									<div class="col-md-9">
+										<input type="text" id="percpf" name="percpf" class="form-control" value="{percpf}">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percompan">{Idioma_Compania}: </label>
+									<div class="col-md-9">
+										<input type="text" id="percompan" name="percompan" class="form-control" value="{percompan}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percompan">{Idioma_Cargo}: </label>
+									<div class="col-md-9">
+										<input type="text" id="percargo" name="percargo" class="form-control" value="{percargo}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="peridioma">{Idioma_Idioma}: </label>
+									<div class="col-md-9">
+										<select id="peridioma" name="peridioma" class="form-control">
+											<option value="" selected >{Idioma_Seleccione}...</option>
+											<!-- BEGIN idiomas -->
+											<option value="{idicodigo}" {idiselected}>{ididescri}</option>
+											<!-- END idiomas -->
+										</select>
+									</div>
+								</div>
+								 <div class="form-group row">
+									<label class="col-md-3 label-control" for="paicodigo">{Idioma_Rubros}: </label>
+									<div class="col-md-9">
+										<select id="perrubcod" name="perrubcod" class="form-control" disabled>
+											<option value="0" selected>{Idioma_Seleccione}...</option>
+											<!-- BEGIN rubros -->
+											<option value="{rubcod}" {rubsel}>{perrubdes}</option>
+											<!-- END rubros -->
+											
+										</select>
+									</div>
+								</div> 
+
+								 <div class="form-group row">
+									<label class="col-md-3 label-control" for="perarecod">Area: </label>
+									<div class="col-md-9">
+										<select id="perarecod" name="perarecod" class="form-control" >
+											<option value=""  selected>{Idioma_Seleccione}...</option>
+											<!-- BEGIN area -->
+											<option value="{perareacod}" {areasel}>{peraredes}</option>
+											<!-- END area -->
+											
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+										<label class="col-md-3 label-control" for="perindcod">Industria: </label>
+										<div class="col-md-9">
+											<select id="perindcod" name="perindcod" class="form-control" >
+												<option value=""  selected>{Idioma_Seleccione}...</option>
+												<!-- BEGIN industria -->
+												<option value="{perinducod}" {indusel}>{perinddes}</option>
+												<!-- END industria -->
+												
+											</select>
+										</div>
+									</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="paicodigo">Tipo Perfil: </label>
+									<div class="col-md-9">
+										<select id="pertipo" name="pertipo" class="form-control" {cmbpertipo} onchange="loadClases(this);" >
+											<option value="0" >Seleccione...</option>
+											<!-- BEGIN pertipos -->
+											<option value="{pertipcod}" {pertipsel}>{pertipdes}</option>
+											<!-- END pertipos -->
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="paicodigo">Clase Perfil: </label>
+									<div class="col-md-9">
+										<select id="perclase" name="perclase" class="form-control" {cmbperclase}>
+											<option value="" selected>Seleccione...</option>
+											<!-- BEGIN perclases -->
+											<option value="{perclacod}" {perclasel}>{perclades}</option>
+											<!-- END perclases -->
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="paicodigo">{Idioma_ZonaHoraria}: </label>
+									<div class="col-md-9">
+										<select id="timreg" name="timreg" class="form-control">
+											<option value="" selected>Seleccione...</option>
+											<!-- BEGIN zonahoraria -->
+											<option value="{timregcod}" {timsel}>{timdescri}</option>
+											<!-- END zonahoraria -->
+										</select>
+									</div>
+								</div>
+								
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="mescodigo">{Idioma_Mesas}</label>
+									<div class="col-md-9">
+										<select id="mescodigo" name="mescodigo" class="form-control" {cmbmesa}>
+											<option value="" selected>{Idioma_Seleccione}...</option>
+											<!-- BEGIN mesclases -->
+											<option value="{mesclacod}" {mesclasel}>{mesnumero}</option>
+											<!-- END mesclases -->
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perreuurl">{Idioma_ReuUrl}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perreuurl" name="perreuurl" class="form-control" value="{perreuurl}" maxlength="2000">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percompan">{Idioma_DescripcionEmpresa}: </label>
+									<div class="col-md-9">
+										<textarea class="form-control" id="perempdes" name="perempdes" rows="3"maxlength="5000">{perempdes}</textarea>
+									</div>
+								</div>
+								
+								<div class="form-group row" style="{viewpercoment}">
+									<label class="col-md-3 label-control" for="percompan">Comentario Registracion: </label>
+									<div class="col-md-9">
+										<textarea class="form-control" id="percoment" name="percoment" rows="3"maxlength="5000" readonly>{percoment}</textarea>
+									</div>
+								</div>
+
+								<h4 class="form-section"><i class="icon-book-open"></i>{Idioma_Contacto}</h4>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percorreo">{Idioma_Correo}: </label>
+									<div class="col-md-9">
+										<input type="text" id="percorreo" name="percorreo" class="form-control" value="{percorreo}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percorreo">{Idioma_Telefono}: </label>
+									<div class="col-md-9">
+										<input type="text" id="pertelefo" name="pertelefo" class="form-control" value="{pertelefo}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percorreo">{Idioma_SitioWeb}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perurlweb" name="perurlweb" class="form-control" value="{perurlweb}">
+									</div>
+								</div>
+
+
+								<!-- ANCHOR REDES SOCIALES -->
+								<!-- SECTION  FACEBOOK -->
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percorreo">Facebook: </label>
+									<div class="col-md-9">
+										<input type="text" id="perfac" name="perfac" class="form-control" value="{perfac}">
+									</div>
+								</div>
+
+								<!-- SECTION TWITTER -->
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percorreo">Twitter: </label>
+									<div class="col-md-9">
+										<input type="text" id="pertwi" name="pertwi" class="form-control" value="{pertwi}">
+									</div>
+								</div>
+								<!-- SECTION  INSTAGRAM -->
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="percorreo">Instagram: </label>
+									<div class="col-md-9">
+										<input type="text" id="perins" name="perins" class="form-control" value="{perins}">
+									</div>
+								</div>
+								
+								
+								
+								<!--END  ANCHOR  REDES SOCIALES -->
+
+								<h4 class="form-section"><i class="icon-book-open"></i>{Idioma_Domicilio}</h4>
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perdirecc">{Idioma_Direccion}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perdirecc" name="perdirecc" class="form-control" value="{perdirecc}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perciudad">{Idioma_Ciudad}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perciudad" name="perciudad" class="form-control" value="{perciudad}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perestado">{Idioma_Estado}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perestado" name="perestado" class="form-control" value="{perestado}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perestado">{Idioma_CodPostal}: </label>
+									<div class="col-md-9">
+										<input type="text" id="percodpos" name="percodpos" class="form-control" value="{percodpos}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="paicodigo">{Idioma_Pais}: </label>
+									<div class="col-md-9">
+										<select id="paicodigo" name="paicodigo" class="form-control">
+											<option value="">Sin Pais...</option>
+											<!-- BEGIN paises -->
+											<option value="{paicodigo}" {paiselected}>{paidescri}</option>
+											<!-- END paises -->
+										</select>
+									</div>
+								</div>
+
+								<h4 class="form-section"><i class="icon-book-open"></i>{Idioma_DatosDeAc}</h4>
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perdirecc">{Idioma_Usuario}: </label>
+									<div class="col-md-9">
+										<input type="text" id="perusuacc" name="perusuacc" class="form-control" value="{perusuacc}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perdirecc">{Idioma_Contrasena}: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="perpasaccant" name="perpasaccant" value="{perpasacc}">
+										<input type="password" id="perpasacc" name="perpasacc" class="form-control" value="{perpasacc}">
+									</div>
+								</div>
+								
+								<div class="form-group row"style="{peradminstyle}">
+									<label class="col-md-3 label-control" for="peradmin">Tipo de Usuario: </label>
+									<div class="col-md-9">
+										<select id="peradmin" name="peradmin" class="form-control">
+											<option value="0" {peradminsel_0}>Basico</option>
+											<option value="1" {peradminsel_1}>Administrador</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perdirecc">Codigo Eventia: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="perpasaccant" name="perpasaccant" value="{perpasacc}">
+										<input type="text" id="percodeve" name="perpasacc" class="form-control" value="{percodeve}">
+									</div>
+								</div>
+								<h4 id="proddestitle" class="form-section" style="{viewproddestacados}"><i class="icon-book-open"></i>Productos destacados</h4>
+								
+								<div id="proddesdetalle" style="{viewproddestacados}">
+									<!-- BEGIN productos -->
+									<div class="media">
+										<a>
+											<img id="imgproducto{perproitm}" alt="" class="media-object d-flex mr-3" src="{perprofil}" style="width: 80px; height: 80px;"
+												onclick="findProductoImagen({perproitm});">
+										</a>
+										<div class="media-body">
+											<h4 class="media-heading">Producto {perproitm}:</h4>
+											<p><input type="text" id="perpronom{perproitm}" name="perpronom" class="form-control" value="{perpronom}" {perpronomreadonly} maxlength=200></p>
+											<form id="frmfile{perproitm}" enctype="multipart/form-data">
+												<input id="fileprod{perproitm}" name="fileprod{perproitm}" type="file" value="{perprofil}" accept=".png, .jpg, .jpeg" style="display:none;"
+													onchange="readURL(this,{perproitm});"/>
+											</form>
+										</div>
+									</div>
+									<!-- END productos -->
+								</div>
+								
+								<!--
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="perobserv">Observación: </label>
+									<div class="col-md-9">
+										<textarea id="perobserv" name="perobserv" rows="5" class="form-control"></textarea>
+									</div>
+								</div>
+								-->
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="cerrarMaestro();">
+									<i class="icon-trash"></i> {Idioma_Cancelar}
+								</button>
+								&nbsp;&nbsp;
+								<button id="btndisponib" type="button" class="btn btn-info mr-1" onclick="viewDisponibilidad();" style="{btnviewdisp}">
+									<i class="fa fa-flickr"></i> {Idioma_Disponibilidad}
+								</button>
+								&nbsp;&nbsp;
+								<button id="btnclasif" type="button" class="btn btn-info mr-1" onclick="viewClasificar();">
+									<i class="fa fa-flickr"></i> {Idioma_Clasificar}
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+	dataDisponibilidad 	= [{dataDisp}];
+	dataClasificar		= {	"sectores":[{dataSectores}],
+							"subsectores":[{dataSubsectores}],
+							"categorias":[{dataCategorias}],
+							"subcategorias":[{dataSubcategorias}] };
+	
+	loadMaestro();
+	
+	//Acceso directo a clasificar
+	if('{fltviewproductos}'=='1'){
+		viewClasificar();
+	}
+	
+	$('#pertipo').change(function(){
+		if(this.value!=1){
+			$('#proddestitle').css('display','none');
+			$('#proddesdetalle').css('display','none');
+		}else{
+			$('#proddestitle').css('display','');
+			$('#proddesdetalle').css('display','');
+		}
+	});
+	
+	function readURL(input,itm) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			
+			reader.onload = function (e) {
+				$('#imgproducto'+itm).attr('src', e.target.result);	
+				$('#perpronom'+itm).val(''); 
+				$('#perpronom'+itm).attr('readonly',false);
+				
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+					//var height = 100;
+					//var w = $('#imgview')[0].naturalWidth;
+					//var h = $('#imgview')[0].naturalHeight;				
+					//var newWidth = height * w / h;
+					//$('#imgview').css('width',newWidth);
+					//$('#imgview').css('height',height);
+				};
+			}
+			
+			reader.readAsDataURL(input.files[0]);
+			//$('#uploadfile').hide();
+			//$('#mnuimgurl').val(input.files[0].name);
+		}
+	}
+	
+	function findAvatar(){
+		 $('#imgavatar').attr('src','{imgAvatarNull}');
+		 $('#fileavatar').click();
+	}
+	
+	function readURLAvatar(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			
+			reader.onload = function (e) {
+				$('#imgavatar').attr('src', e.target.result);	
+				
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+					//var height = 100;
+					//var w = $('#imgview')[0].naturalWidth;
+					//var h = $('#imgview')[0].naturalHeight;				
+					//var newWidth = height * w / h;
+					//$('#imgview').css('width',newWidth);
+					//$('#imgview').css('height',height);
+				};
+			}
+			
+			reader.readAsDataURL(input.files[0]);
+			//$('#uploadfile').hide();
+			//$('#mnuimgurl').val(input.files[0].name);
+		}
+	}
+	
+	function findProductoImagen(itm){
+		 $('#perpronom'+itm).val(''); 
+		 $('#perpronom'+itm).attr('readonly',true); 
+		 $('#imgproducto'+itm).attr('src','{imgProductoNull}');
+		 $('#fileprod'+itm).val(); 
+		 $('#fileprod'+itm).click();
+	}
+	
+	function loadMaestro(){
+		var percodigo 	= $('#percodigo').val();
+		var data = {"percodigo":percodigo,
+					"dataDisponibilidad":dataDisponibilidad};
+		$('#DataDisp').load('disponibilidad.php',data);
+	}
+	
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var percodigo = $('#percodigo').val();
+		var pernombre = $('#pernombre').val();
+		var perapelli = $('#perapelli').val();
+		var percompan = $('#percompan').val();
+		var mescodigo = $('#mescodigo').val();
+		var peridioma = $('#peridioma').val();
+		var perarecod = $('#perarecod').val();
+		
+		var perindcod = $('#perindcod').val();
+		
+		
+		//Busco la disponibilidad
+		dataDisponibilidad = [];
+		$.each($('input[name="distime"]:checked'),function(){
+			var fecha 	= $(this).data('fecha');
+			var hora 	= $(this).data('hora');
+			var data 	= {"fecha":fecha,"hora":hora};
+			
+			dataDisponibilidad.push(data);
+		});
+		if(peridioma == ''){
+			errcod=2;
+			errmsg='{Idioma_SelecIdiom}';
+		}
+		if(pernombre==''){
+			errcod=2;
+			errmsg='{Idioma_Fltnom}';
+		}
+		if(perapelli==''){
+			errcod=2;
+			errmsg='{Idioma_FltApe}';
+		}
+		if(percompan==''){
+			errcod=2;
+			errmsg='{Idioma_FltComp}';
+		}
+		if(dataDisponibilidad.length==0){
+			errcod=2;
+			errmsg='{Idioma_FltSelecComp}';
+		}
+		
+		if(errcod!=0){
+			//swal("GUARDAR", errmsg, "error").done();
+			toastr.error(errmsg, '{Idioma_GuardarSwal}');
+		}
+		
+	
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	
+	function guardarMaestro(){
+		var formData = new FormData($('#FrmMst')[0]);
+		formData.append("percodigo"		, $('#percodigo').val() );
+		formData.append("pernombre"		, $('#pernombre').val() );
+		formData.append("perapelli"		, $('#perapelli').val() );
+		formData.append("percompan"		, $('#percompan').val() );
+		formData.append("perrubcod"		, $('#perrubcod').val() );
+		formData.append("percorreo"		, $('#percorreo').val() );
+		formData.append("perciudad"		, $('#perciudad').val() );
+		formData.append("perestado"		, $('#perestado').val() );
+		formData.append("percodpos"		, $('#percodpos').val() );
+		formData.append("pertelefo"		, $('#pertelefo').val() );
+		formData.append("perurlweb"		, $('#perurlweb').val() );
+		formData.append("perusuacc"		, $('#perusuacc').val() );
+		formData.append("perpasacc"		, $('#perpasacc').val() );
+		formData.append("perpasaccant"	, $('#perpasaccant').val() );
+		formData.append("perdirecc"		, $('#perdirecc').val() );
+		formData.append("percargo"		, $('#percargo').val() );
+		formData.append("paicodigo"		, $('#paicodigo').val() );
+		formData.append("pertipo"		, $('#pertipo').val() );
+		formData.append("perclase"		, $('#perclase').val() );
+		formData.append("perempdes"		, $('#perempdes').val() );
+		formData.append("peradmin"		, $('#peradmin').val() );
+		formData.append("mescodigo"		, $('#mescodigo').val() );
+		formData.append("peridioma"		, $('#peridioma').val() );
+		formData.append("timreg"		, $('#timreg').val() );
+		formData.append("perreuurl"		, $('#perreuurl').val() );
+		formData.append("perindcod"     , $('#perindcod').val());
+		formData.append("perarecod"      ,$('#perarecod').val());
+		formData.append("percpf"	     ,$('#percpf').val());
+		formData.append("perfac"		 ,$('#perfac').val());
+		formData.append("pertwi"		 ,$('#pertwi').val());
+		formData.append("perins"		 ,$('#perins').val());
+		formData.append("percodeve"		 ,$('#percodeve').val());
+		formData.append("dataDisponibilidad", JSON.stringify(dataDisponibilidad) );
+		formData.append("dataClasificar"	, JSON.stringify(dataClasificar) 	 );
+
+		
+		if(typeof($('#fileavatar')[0].files[0]) !== "undefined"){
+			formData.append('fileavatar', $('#fileavatar')[0].files[0]);
+		}
+		
+		var itm =0;
+		$.each($('input[id^="fileprod"][type="file"]'),function(){
+			itm++;
+			console.log(itm);
+			if(typeof($(this)[0].files[0]) !== "undefined"){
+				formData.append('file'+itm, $(this)[0].files[0]);
+			}
+		});
+		
+		var itm =0;
+		$.each($('input[id^="perpronom"]'),function(){
+			itm++;
+			if($('#perpronom'+itm).val().trim()!=''){
+				formData.append("perpronom"+itm	, $('#perpronom'+itm).val() );
+			}
+		});
+		
+		
+		$.ajax({
+			type: "POST",
+			url: "grb.php",
+			dataType: "html",
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false
+		}).done(function( rsp ) {
+			console.log(rsp);
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'GUARDAR');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				//Elimino de la url el parametro de Produtos si existe
+				window.location = window.location.href.replace('?P','');
+				//showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'GUARDAR');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+	
+	function viewDisponibilidad(){
+		//Busco la disponibilidad
+		dataDisponibilidad = [];
+		$.each($('input[name="distime"]:checked'),function(){
+			var fecha 	= $(this).data('fecha');
+			var hora 	= $(this).data('hora');
+			var data 	= {"fecha":fecha,"hora":hora};
+			
+			dataDisponibilidad.push(data);
+		});
+	
+		var percodigo 	= $('#percodigo').val();
+		var data = {"percodigo":percodigo,
+					"dataDisponibilidad":dataDisponibilidad};
+		
+		$('#DataDisp').load('disponibilidad.php',data);
+		$('#DataMaestroDisp').modal('show');
+	}
+	
+	function viewClasificar(){
+		var percodigo 	= $('#percodigo').val();
+		var data = {"percodigo":percodigo,
+					"dataClasificar":dataClasificar};
+		
+		$('#DataClasif').load('clasificar.php',data);
+		$('#DataMaestroClasif').modal('show');
+	}
+	
+	function loadClases(obj){//Se cargan las clases en relacion con el Tipo de Perfil
+		var pertipo = $(obj).val();
+		
+		$.ajax({
+			type: "POST",
+			url: "getclases.php",
+			data: {"pertipo": pertipo}
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			var clases = $('#perclase');
+			clases.empty();
+			$("<option/>", {
+					val: '',
+					text: 'Seleccione...'
+				}).appendTo(clases);
+			
+			$.each(data,function(){
+				console.log(this.perclase);
+				console.log(this.perclades);
+				$("<option/>", {
+					val: this.perclase,
+					text: this.perclades
+				}).appendTo(clases);
+			});
+		});
+	
+	}
+</script>
+	 
+	  
+	  

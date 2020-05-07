@@ -1,0 +1,153 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Maestro de Traducciones</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								
+								<input id="iditraitm" type="hidden" name="iditraitm" value="{iditraitm}">
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control text-center" for="parcodigo">Idioma*</span></label>
+											
+									
+									
+									<div class="col-md-9">
+												<select  class="form-control"  id="idioma">
+													<option value="" {selected} class="pepe"  {tiposelected} >Seleccione...</option>
+													<!-- BEGIN idioma -->
+													<option value="{idicodigo}" {selected} class="pepe"  {tiposelected} >{ididescri}</option>
+													<!-- END idioma -->
+											
+												</select>
+									</div>
+												
+				
+									
+									
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Español </label>
+									<div class="col-md-9">
+										
+										<input type="text" id="iditraesp"  name="iditraesp" class="form-control" value="{iditraesp}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Traduccion</label>
+									<div class="col-md-9">
+										<input type="text" id="iditraval"  name="iditraval" class="form-control" value="{iditraval}">
+									</div>
+								</div>
+								
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> {Idioma_BotonCan}
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var iditraesp = $('#iditraesp').val();
+		var iditraval = $('#iditraval').val();
+		var iditraitm = $('#iditraitm').val();
+		var idioma 	 =$('#idioma').val();
+
+			
+		
+		if(iditraesp == ''){
+			toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+			errcod =1;
+			}
+			if(iditraval == ''){
+			toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+			errcod =1;
+			}
+
+	if(idioma == ''){
+			toastr.error('Seleccione Idioma', '{Idioma_GuardarSwal}');	
+			errcod =1;
+			}
+			
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	
+	function guardarMaestro(){
+		var iditraesp = $('#iditraesp').val();
+		var iditraval = $('#iditraval').val();
+		var iditraitm = $('#iditraitm').val();
+		var idioma = $('#idioma').val();
+		
+		var data = {"iditraesp":iditraesp,
+					"iditraval":iditraval,
+					"iditraitm":iditraitm,
+					"idioma":idioma};
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

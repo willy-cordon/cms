@@ -1,0 +1,29 @@
+.center-content{
+    margin: auto;
+    
+}
+
+
+
+.card-noti img{
+    transition: 0.3s;
+}
+.card-noti img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+
+  }
+
+
+ .card-title-noti{
+     height: 60px;
+     
+   
+ }
+
+ .container-noti{
+     background-color: rgba(97, 97, 97, 0);
+ }
+
+
+

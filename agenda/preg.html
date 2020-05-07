@@ -1,0 +1,227 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Visualizar Preguntas</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table id="recent-orders" class="table table-hover table-xl mb-0">
+							<thead>
+								<tr>
+									<th class="border-top-0"></th>                                
+									<th class="border-top-0">Nombre</th>
+									<th class="border-top-0">Pregunta</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- BEGIN browser -->
+								<tr>
+									<td class="text-truncate">
+									</td>
+									<td class="text-truncate"><span>{pernombre} {perapelli} - {percompan}</span></td>				
+									
+									<td><span>{agepregun}</span></td>				
+								</tr>
+								<!-- END browser -->
+								
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+				<br>
+				<div class="form-actions">
+					<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+						<i class="icon-trash"></i> Cerrar
+					</button>
+					&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<script>
+
+	$('#spkpos').autoNumeric({aSep: '.', aDec: ',', mDec: '0',  vMin: '0', vMax: '999' });
+	console.info('logerror(basic.info.errmsh');
+	
+	//   new AutoNumeric('#spkpos', {
+	//   	digitGroupSeparator: '.',
+	//   	decimalCharacter: ',',
+	//   	decimalPlacesOverride: '0', 
+	//   	defaultValueOverride: '0',
+	//   	minimumValue: '0', 
+	//   	maximumValue: '999',
+	//   	emptyInputBehavior: '0',
+	//   	leadingZero: 'deny'
+		
+	//   });
+//--------------------------------------------------------------------
+
+	$('#spkpos').change(function(){
+
+		let spkpos =  $('#spkpos').val();
+		if (spkpos == '') {
+			spkpos.html('');
+		}
+		//console.log(spkpos);
+		let datos = {
+			"spkpos":spkpos
+		};
+		// let.datosCargados({
+			
+		// });
+
+			$.ajax({
+				url:'validate.php',
+				method:'POST',
+				data:datos,
+				success:function(rsp){
+					data = $.parseJSON(rsp);
+					console.log(data);
+				
+					if(data.errcod == 0){
+								
+						// $('#test1').addClass('fa fa-check');
+						
+						$('#msg').hide(data.errmsg);
+						
+						
+					}else{
+						
+						$('#msg').html(data.errmsg);
+							
+
+				}
+				}
+
+			});
+
+
+		});
+//------------------------------------------------
+	function guardarMaestroMsg(){	
+		var errcod = 0;
+		var errmsg = '';
+		var spktitulo = $('#spktitulo').val();
+		var  spkdescri= $('#spkdescri').val();
+		var  spkimg= $('#spkimg').val();
+		var  spkpos= $('#spkpos').val();
+		//  console.log(spkpos);
+
+		if(spktitulo==''){
+			errcod=2;
+			errmsg='Falta el titulo';
+		}
+		if(spkdescri==''){
+			errcod=2;
+			errmsg='Falta una descripción';
+		}
+		
+		
+		if(errcod!=0){
+			//swal("GUARDAR", errmsg, "error").done();
+			toastr.error(errmsg, 'GUARDAR');
+		}
+			
+		if(errcod==0){
+			swal({
+				title: "GUARDAR",
+				text: "¿Confirma guardar los cambios?",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+
+				}
+			}).done();
+		}
+	}
+	//Tomamos el valor del id
+	var  data= $('#spkreg').val();
+	
+	//imagen por defecto si el id es 0
+	if (data==0) {
+		$('#imgaviso').prop('src','{imgnull}');
+	}
+	if (data != 0){
+		$('#imgaviso').prop('src','../spkimg/{spkreg}/{spkimg}');
+	}
+	function findaviso(){
+		 //$('#imgaviso').prop('src','{imgnull}');
+		 $('#spkimg').click();	
+		 
+	}
+	
+	function readURLaviso(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			reader.onload = function (e) {
+				$('#imgaviso').attr('src', e.target.result);	
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+
+				};
+			}
+			reader.readAsDataURL(input.files[0]);
+			
+		}
+	}
+
+	
+	function guardarMaestro(){
+		var formData = new FormData($('#FrmMst')[0]);
+		formData.append("spkreg"		, $('#spkreg').val() );
+		formData.append("spktitulo"		, $('#spktitulo').val() );
+		formData.append("spkdescri"		, $('#spkdescri').val() );
+		formData.append("spkpos"		, $('#spkpos').val() );
+		formData.append("spkempres"		, $('#spkempres').val() );
+		formData.append("spkcargo"		, $('#spkcargo').val() );
+
+		if(typeof($('#spkimg')[0].files[0]) !== "undefined"){
+			//console.log('entro');
+			formData.append('spkimg', $('#spkimg')[0].files[0]);
+		}
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'GUARDAR');			
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'GUARDAR');	
+			}			
+		});
+	}
+</script>
+	 
+	  
+	  

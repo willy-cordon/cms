@@ -1,0 +1,91 @@
+
+<div class="modal-content">
+	<div class="modal-header">
+		<h4 class="modal-title" id="">{percompan}</h4>
+		<img src="{peravatar}" class="rounded-circle width-50 mr-2 float-right" alt="user image">
+	</div>
+	<div class="modal-body">
+		<p><b>{Idioma_Contacto}: 	</b>{pernombre} {perapelli}</p>
+		<p><b>{Idioma_SitioWeb}: 	</b>{perurlweb}</p>
+		<p><b>{Idioma_Compania}: 		</b>{perempdes}</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Productos en común</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- BEGIN sectores -->
+				<tr>
+					<td>
+						<label style="color:{colorsector};">{secdescri}</label>
+						<table style="margin-left:30px;">
+							<tbody>
+								<!-- BEGIN subsectores -->
+								<tr>
+									<td>
+										<label style="color:{colorsubsector};">{secsubdes}</label>
+										<table style="margin-left:50px;">
+											<tbody>
+												<!-- BEGIN categorias -->
+												<tr>
+													<td>
+														<label style="color:{colorcategoria};">{catdescri}</label>
+														<table style="margin-left:80px;">
+															<tbody>
+																<!-- BEGIN subcategorias -->
+																<tr>
+																	<td><label style="color:{colorsubcategoria};">{catsubdes}</label></td>
+																</tr>
+																<!-- END subcategorias -->
+															</tbody>
+														</table>
+													</td>
+												</tr>
+												<!-- END categorias -->
+											</tbody>
+										</table>
+									
+									</td>
+								</tr>
+								<!-- END subsectores -->
+							</tbody>
+						</table>
+					
+					</td>
+				</tr>
+				<!-- END sectores -->
+			</tbody>
+		</table>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Productos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- BEGIN productos -->
+				<tr>
+					<td>
+						<div class="media">
+							<a>
+								<img alt="" class="media-object d-flex mr-3" src="{perprofil}" style="width: 80px; height: 80px;">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">{perpronom}</h4>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<!-- END productos -->
+			</tbody>
+		</table>
+		
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{Idioma_Cerrar}</button>
+	</div>
+</div>
+	  
+	  

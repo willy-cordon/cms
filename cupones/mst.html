@@ -1,0 +1,215 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Maestro De Cupones</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form enctype="multipart/form-data"  class="form form-horizontal" novalidate>
+							<div class="form-body">
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="cuptitulo">Titulo: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="hidden" id="cupcod" name="cupcod" value="{cupcod}">
+										<input type="text" id="cuptitulo"  name="cuptitulo" class="form-control" value="{cuptitulo}" maxlength=200>
+									</div>
+								</div>
+
+								<div class="form-group row">
+										<label class="col-md-3 label-control" for="cupdescri">Descripción: <span class="required">*</span> </label>
+										<div class="col-md-9">
+											
+											<textarea type="text" id="cupdescri" rows="4" name="cupdescri" class="form-control" value="{cupdescri}" maxlength=5000> {cupdescri} </textarea>
+										</div>
+									</div>
+
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="parcodigo">Tipo: <spanclass="required">*</span></label>
+									<div class="col-md-9">
+
+										<!-- //NOTE SELECT CODIGO DE PARAMETRO -->
+										<select id="cuptipo" name="cuptipo" class="form-control" >
+											<option value="">Seleccione</option>
+											<!-- BEGIN tipo -->
+											<option value="{cuptipo}" {cuptiposelect} >{cuptipdes}</option>
+											<!-- END tipo -->
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="parcodigo">Clase: <spanclass="required">*</span></label>
+									<div class="col-md-9">
+
+									
+										<select id="cupclase" name="cuptipo" class="form-control" >
+											<option value="">Seleccione</option>
+											<!-- BEGIN clase -->
+											<option value="{cupclase}"{cupclaseselected} >{cupclades}</option>
+											<!-- END clase -->
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="cupimg">Imagen: <span class="required">*</span></label>
+									<div class="col-md-9">
+										
+										
+										<input type="file" id="cupimg"  name="cupimg" accept=".png, .jpg, .jpeg" class="form-control" value="{cupimg}" onchange="readURLaviso(this);" style="display: none;">
+										<br>
+										<a>
+												<img   id="imgaviso" alt="" class="media-object d-flex mr-3" src="{cupimg}" style="width: 200px; height: 200px; " onclick="findaviso()
+												
+												;"
+												>
+										</a>
+									</div>
+								</div>
+							
+																			
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> Guardar
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> Cancelar
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+
+	//$(document).ready(()=>{alert($('#imgaviso').attr('src'))})
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var cuptitulo = $('#cuptitulo').val();
+		var  cupdescri = $('#cupdescri').val();
+		var  cupimg= $('#imgaviso').attr('src');
+		
+
+		if(cuptitulo==''){
+			errcod=2;
+			errmsg='Falta el titulo';
+		}
+		if(cupdescri=''){
+			errcod=2;
+			errmsg='Falta una descripción';
+		}
+		if(cupimg=='' || cupimg == '../app-assets/img/pages/sativa.png'){
+			errcod=2;
+			errmsg='Falta una imagen';
+		}
+		
+		
+		if(errcod!=0){
+			//swal("GUARDAR", errmsg, "error").done();
+			toastr.error(errmsg, 'GUARDAR');
+		}
+			
+		if(errcod==0){
+			swal({
+				title: "GUARDAR",
+				text: "¿Confirma guardar los cambios?",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	//Tomamos el valor del id
+	var  data= $('#cupcod').val();
+	
+	//imagen por defecto si el id es 0
+	if (data==0) {
+		$('#imgaviso').prop('src','{imgnull}');
+	}
+	if (data != 0){
+		$('#imgaviso').prop('src','../cupimg/{cupcod}/{cupimg}');
+	}
+	function findaviso(){
+		 //$('#imgaviso').prop('src','{imgnull}');
+		 $('#cupimg').click();	
+	}
+	
+	function readURLaviso(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			reader.onload = function (e) {
+				$('#imgaviso').attr('src', e.target.result);	
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+				};
+			}
+			reader.readAsDataURL(input.files[0]);
+			
+		}
+	}
+
+	
+	function guardarMaestro(){
+		var formData = new FormData($('#FrmMst')[0]);
+		formData.append("cupcod"		, $('#cupcod').val() );
+		formData.append("cuptitulo"		, $('#cuptitulo').val() );
+		formData.append("cupdescri"		, $('#cupdescri').val() );
+		formData.append("cuptipo"		, $('#cuptipo').val() );
+		formData.append("cupclase"		, $('#cupclase').val() );
+
+		if(typeof($('#cupimg')[0].files[0]) !== "undefined"){
+			//console.log('entro');
+			formData.append('cupimg', $('#cupimg')[0].files[0]);
+		}
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'GUARDAR');			
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'GUARDAR');	
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

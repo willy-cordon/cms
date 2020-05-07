@@ -1,0 +1,286 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">{Idioma_Speakers}</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form enctype="multipart/form-data"  class="form form-horizontal" novalidate>
+							<div class="form-body">
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="spktitulo">{Idioma_Nombre}: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="hidden" id="spkreg" name="spkreg" value="{spkreg}">
+										<input type="text" id="spktitulo"  name="spktitulo" class="form-control" value="{spktitulo}">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="spkdescri">{Idioma_Descripcion}: <span class="required">*</span> </label>
+									<div class="col-md-9">
+										<textarea type="text" id="spkdescri" rows="4" name="spkdescri" class="form-control" value="{spkdescri}" maxlength=2000> {spkdescri} </textarea>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="spktitulo">{Idioma_Empresa}: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="text" id="spkempres"  name="spkempres" class="form-control" value="{spkempres}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="spktitulo">{Idioma_Cargo}: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="text" id="spkcargo"  name="spkcargo" class="form-control" value="{spkcargo}">
+									</div>
+								</div>
+								<!-- SECTION  ORDER -->
+							
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="spktitulo">Url LinkedIn:</label>
+									<div class="col-md-9">
+										<input type="text" id="spklinked"  name="spklinked" class="form-control" value="{spklinked}">
+									</div>
+								</div>
+
+								<div class="form-group row orden">
+									<label class="col-md-3 label-control" for="spktitulo">{Idioma_Orden}: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="text" id="spkpos"  name="spkpos" class="form-control" value="{spkpos}">
+									</div>
+								</div>
+								<!--END SECTION  ORDER -->
+							
+								
+								<p style="color:rgb(255, 0, 0); text-align: center; " id="msg"></p>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="spkimg">{Idioma_Imagen}: <span class="required">*</span></label>
+									<div class="col-md-9">
+										<input type="file" id="spkimg"  name="spkimg" accept=".png, .jpg, .jpeg" class="form-control" value="{spkimg}" onchange="readURLaviso(this);" style="display: none;">
+										<br>
+										<a>
+												<img id="imgaviso" alt="" class="media-object d-flex mr-3" src="{spkimg}" onclick="findaviso();"
+												>
+										</a>
+									</div>
+								</div>
+								
+																			
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> Guardar
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> Cancelar
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<script>
+	//ANCHOR INPUT POSISION EN ORDEN
+
+	
+	var spkoption;
+
+
+	
+
+	/////// ********************************///////////////////////
+	$('#spkpos').autoNumeric({aSep: '.', aDec: ',', mDec: '0',  vMin: '0', vMax: '999' });
+	console.info('logerror(basic.info.errmsh');
+	
+	//   new AutoNumeric('#spkpos', {
+	//   	digitGroupSeparator: '.',
+	//   	decimalCharacter: ',',
+	//   	decimalPlacesOverride: '0', 
+	//   	defaultValueOverride: '0',
+	//   	minimumValue: '0', 
+	//   	maximumValue: '999',
+	//   	emptyInputBehavior: '0',
+	//   	leadingZero: 'deny'
+		
+	//   });
+//--------------------------------------------------------------------
+
+
+
+
+	$('#spkpos').change(function(){
+
+		let spkpos =  $('#spkpos').val();
+		if (spkpos == '') {
+			spkpos.html('');
+		}
+		//console.log(spkpos);
+		let datos = {
+			"spkpos":spkpos
+		};
+		// let.datosCargados({
+			
+		// });
+
+			$.ajax({
+				url:'validate.php',
+				method:'POST',
+				data:datos,
+				success:function(rsp){
+					data = $.parseJSON(rsp);
+					console.log(data);
+				
+					if(data.errcod == 0){
+								
+						// $('#test1').addClass('fa fa-check');
+						
+						$('#msg').hide(data.errmsg);
+						
+						
+					}else{
+						
+						$('#msg').html(data.errmsg);
+							
+
+				}
+				}
+
+			});
+
+
+		});
+//------------------------------------------------
+	function guardarMaestroMsg(){	
+		var errcod = 0;
+		var errmsg = '';
+		var spktitulo = $('#spktitulo').val();
+		var  spkdescri= $('#spkdescri').val();
+		var  spkimg= $('#spkimg').val();
+		var  spkpos= $('#spkpos').val();
+
+		//  console.log(spkpos);
+
+		if(spktitulo==''){
+			errcod=2;
+			errmsg='Falta el titulo';
+		}
+		if(spkdescri==''){
+			errcod=2;
+			errmsg='Falta una descripción';
+		}
+		
+		
+		if(errcod!=0){
+			//swal("GUARDAR", errmsg, "error").done();
+			toastr.error(errmsg, 'GUARDAR');
+		}
+			
+		if(errcod==0){
+			swal({
+				title: "GUARDAR",
+				text: "¿Confirma guardar los cambios?",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+
+				}
+			}).done();
+		}
+	}
+	//Tomamos el valor del id
+	var  data= $('#spkreg').val();
+	
+	//imagen por defecto si el id es 0
+	if (data==0) {
+		$('#imgaviso').prop('src','{imgnull}');
+	}
+	if (data != 0){
+		$('#imgaviso').prop('src','../spkimg/{spkreg}/{spkimg}');
+	}
+	function findaviso(){
+		 //$('#imgaviso').prop('src','{imgnull}');
+		 $('#spkimg').click();	
+		 
+	}
+	
+	function readURLaviso(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			reader.onload = function (e) {
+				$('#imgaviso').attr('src', e.target.result);	
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+
+				};
+			}
+			reader.readAsDataURL(input.files[0]);
+			
+		}
+	}
+
+	
+	function guardarMaestro(){
+		var formData = new FormData($('#FrmMst')[0]);
+		formData.append("spkreg"		, $('#spkreg').val() );
+		formData.append("spktitulo"		, $('#spktitulo').val() );
+		formData.append("spkdescri"		, $('#spkdescri').val() );
+		formData.append("spkpos"		, $('#spkpos').val() );
+		formData.append("spkempres"		, $('#spkempres').val() );
+		formData.append("spkcargo"		, $('#spkcargo').val() );
+		formData.append("spklinked"		, $('#spklinked').val() );
+		formData.append("spkoption"		, spkoption);
+		if(typeof($('#spkimg')[0].files[0]) !== "undefined"){
+			//console.log('entro');
+			formData.append('spkimg', $('#spkimg')[0].files[0]);
+		}
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'GUARDAR');			
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'GUARDAR');	
+			}			
+		});
+	}
+</script>
+	 
+	  
+	  

@@ -1,0 +1,287 @@
+
+<div class="modal-content">
+	<div class="px-3">
+		<section id="taskboard">
+			<div class="row taskboard">
+				<div class="col-md-3 col-12" style="{btnsectores}">
+					<h4 class="ml-2 mt-2 content-header"><i class="icon-layers mr-1"></i> {Idioma_Sectores}</h4>
+					<div class='dragdrop-container' id='dvsectores'>
+						
+						<!-- BEGIN sectores -->
+						<div id="sector_{seccodigo}" class="card border-left my-1 border-primary border-3">
+							<div class="card-block pt-1 pb-1">
+								<div class="clearfix">
+									<h5 class="text-bold-400 primary float-left"  style="font-size:18px;">{secdescri} <br><label style="font-size:10px;">{secdesing}</label> </h5>
+									
+								</div>
+								<div class="actions" style="position:absolute; top:35%; right:5px;">
+									<input type="checkbox" id="secselect_{seccodigo}" name="secselect" class="switchery" data-color="white" data-jack-color="primary" data-codigo="{seccodigo}" {secchecked}
+										onchange="loadSubSectores();"/>
+								</div>
+							</div>
+						</div>
+						<!-- END sectores -->
+						
+					</div>
+				</div>
+				
+				<div class="col-md-3 col-12" style="{btnsubsectores}">
+					<h4 class="ml-2 mt-2 content-header"><i class="icon-layers mr-1""></i>{Idioma_Subsectores}</h4>
+					<div class='dragdrop-container' id='dvsubsectores'>
+						<!-- BEGIN subsectores -->
+						<div id="subsector_{secsubcod}" class="card border-left my-1 border-info border-3" onmouseover="viewPatern(this,2,{seccod});">
+							<div class="card-block pt-1 pb-1">
+								<div class="clearfix">
+									<h5 class="text-bold-400 info float-left" style="font-size:18px;">{secsubdes} <br><label style="font-size:10px;"> {secsubdesing}</label> </h5>
+									
+								</div>
+								<div class="actions float-right" style="position:absolute; top:35%; right:5px;">
+									<input type="checkbox" id="secsubselect_{secsubcod}" name="secsubselect" class="switchery" data-color="white" data-jack-color="info" data-codigo="{secsubcod}" {secsubchecked}
+										onchange="loadCategorias();"/>
+								</div>
+							</div>
+						</div>
+						<!-- END subsectores -->
+					
+					</div>
+				</div>
+
+				<div class="col-md-3 col-12" style="{btncategorias}">
+					<h4 class="ml-2 mt-2 content-header"><i class="icon-layers mr-1""></i>{Idioma_Categorias}</h4>
+					<div class='dragdrop-container' id='dvcategorias'>
+						<!-- BEGIN categorias -->
+						<div id="categoria_{catcodigo}" class="card border-left my-1 border-warning border-3" onmouseover="viewPatern(this,3,{secscod});">
+							<div class="card-block pt-1 pb-1">
+								<div class="clearfix">
+									<h5 class="text-bold-400 warning float-left" style="font-size:18px;">{catdescri} <br><label style="font-size:10px;"> {catdesing}</label> </h5>
+									
+								</div>
+								<div class="actions float-right" style="position:absolute; top:35%; right:5px;">
+									<input type="checkbox" id="catselect_{catcodigo}" name="catselect" class="switchery" data-color="white" data-jack-color="warning" data-codigo="{catcodigo}" {catchecked}
+										onchange="loadSubCategorias();"/>
+								</div>
+							</div>
+						</div>
+						<!-- END categorias -->
+					</div>
+				</div>
+
+				<div class="col-md-3 col-12"  style="{btnsubcategorias}">
+					<h4 class="ml-2 mt-2 content-header"><i class="icon-layers mr-1""></i>{Idioma_SubC}</h4>
+					<div class='dragdrop-container' id='dvsubcategorias'>
+						<!-- BEGIN subcategorias -->
+						<div id="subcategoria_{catsubcods}" class="card border-left my-1 border-success border-3"  onmouseover="viewPatern(this,4,{catcod});">
+							<div class="card-block pt-1 pb-1">
+								<div class="clearfix">
+									<h5 class="text-bold-400 success float-left" style="font-size:18px;">{catsubdes} <br><label style="font-size:10px;"> {catsubdesing}</label> </h5>
+									
+								</div>
+								<div class="actions float-right" style="position:absolute; top:35%; right:5px;">
+									<input type="checkbox" id="catsubselect_{catsubcod}" name="catsubselect" class="switchery" data-color="white" data-jack-color="success" data-codigo="{catsubcod}" {catsubchecked}/>
+								</div>
+							</div>
+						</div>
+						<!-- END subcategorias -->
+					</div>
+				</div>
+			</div>
+				
+		</section>
+		<br>
+		<div class="modal-footer">
+			<button type="button" class="btn grey btn-outline-secondary" onclick="cerrarClasificar();">Cerrar</button>
+		</div>
+	</div>
+</div>
+	  
+<script src="../app-assets/js/switch.min.js"></script>
+
+<script>
+	function loadSubSectores(){
+		var data = {"sectores":[],"subsectores":[]};
+		
+		//Sectores seleccionados
+		$.each($('input[name="secselect"]:checked'),function(){
+			var seccodigo = $(this).data('codigo');
+			var item = {"seccodigo":seccodigo};
+			data.sectores.push(item);
+		});
+		//Subsectores seleccionados
+		$.each($('input[name="secsubselect"]:checked'),function(){
+			var secsubcod = $(this).data('codigo');
+			var item = {"secsubcod":secsubcod};
+			data.subsectores.push(item);
+		});
+		
+		$('#dvsubsectores').load('dvsubsectores.php',data);
+		
+	}
+	
+	function loadCategorias(){
+		var data = {"subsectores":[],"categorias":[]};
+		
+		//Subsectores seleccionados
+		$.each($('input[name="secsubselect"]:checked'),function(){
+			var subseccod = $(this).data('codigo');
+			var item = {"secsubcod":subseccod};
+			data.subsectores.push(item);
+		});
+		//Categorias seleccionados
+		$.each($('input[name="catselect"]:checked'),function(){
+			var catcodigo = $(this).data('codigo');
+			var item = {"catcodigo":catcodigo};
+			data.categorias.push(item);
+		});
+		
+		$('#dvcategorias').load('dvcategorias.php',data);
+		
+	}
+	
+	function loadSubCategorias(){
+		var data = {"categorias":[],"subcategorias":[]};
+		
+		//Categorias seleccionados
+		$.each($('input[name="catselect"]:checked'),function(){
+			var catcodigo = $(this).data('codigo');
+			var item = {"catcodigo":catcodigo};
+			data.categorias.push(item);
+		});
+		//SubCategorias seleccionados
+		$.each($('input[name="catsubselect"]:checked'),function(){
+			var catsubcod = $(this).data('codigo');
+			var item = {"catsubcod":catsubcod};
+			data.subcategorias.push(item);
+		});
+		
+		$('#dvsubcategorias').load('dvsubcategorias.php',data);
+		
+	}
+	
+	function cerrarClasificar(){
+		var data = {"sectores":[],
+					"subsectores":[],
+					"categorias":[],
+					"subcategorias":[] };
+	
+		//Sectores seleccionados
+		$.each($('input[name="secselect"]:checked'),function(){
+			var seccodigo = $(this).data('codigo');
+			var item = {"seccodigo":seccodigo};
+			data.sectores.push(item);
+		});
+		//Subsectores seleccionados
+		$.each($('input[name="secsubselect"]:checked'),function(){
+			var secsubcod = $(this).data('codigo');
+			var item = {"secsubcod":secsubcod};
+			data.subsectores.push(item);
+		});
+		//Categorias seleccionados
+		$.each($('input[name="catselect"]:checked'),function(){
+			var catcodigo = $(this).data('codigo');
+			var item = {"catcodigo":catcodigo};
+			data.categorias.push(item);
+		});
+		//SubCategorias seleccionados
+		$.each($('input[name="catsubselect"]:checked'),function(){
+			var catsubcod = $(this).data('codigo');
+			var item = {"catsubcod":catsubcod};
+			data.subcategorias.push(item);
+		});
+	
+		dataClasificar = data;
+		console.log(dataClasificar);
+		$('#DataMaestroClasif').modal('hide');
+	}
+	
+	function createSwitch(name){
+		var elems = $('input[id^="'+name+'_"]');
+        $.each( elems, function( key, value ) {
+            var $size="", $color="",$sec_color="",$jack_color="",$jack_sec_color="",$sizeClass="", $colorCode="",$colorCodeSec="",$jackColorCode="",$jackColorCodeSec="";
+            $size = $(this).data('size');
+            var $sizes ={
+                'lg' : "large",
+                'sm' : "small",
+                'xs' : "xsmall"
+            };
+            if($(this).data('size')!== undefined){
+                $sizeClass = "switchery switchery-"+$sizes[$size];
+            }
+            else{
+                $sizeClass = "switchery";
+            }
+
+            $color = $(this).data('color');
+            $sec_color = $(this).data('color-secondary');
+            $jack_color = $(this).data('jack-color');
+            $jack_sec_color = $(this).data('jack-color-secondary');
+            var $colors ={
+                'primary' : "#666EE8",
+                'success' : "#28D094",
+                'danger' : "#FF4961",
+                'warning' : "#FF9149",
+                'info' : "#1E9FF2",
+                'white' : "#FFFFFF"
+            };
+            if($color !== undefined){
+                $colorCode = $colors[$color];
+            }
+            else{
+                $colorCode = "#28D094";
+            }
+
+            if($sec_color !== undefined){
+                $colorCodeSec = $colors[$sec_color];
+            }
+            else{
+                $colorCodeSec = "#FFFFFF";
+            }
+
+            if($jack_color !== undefined){
+                $jackColorCode = $colors[$jack_color];
+            }
+            else{
+                $jackColorCode = "#FFFFFF";
+            }
+
+            if($jack_sec_color !== undefined){
+                $jackColorCodeSec = $colors[$jack_sec_color];
+            }
+            else{
+                $jackColorCodeSec = "#FFFFFF";
+            }
+
+            var switchery = new Switchery($(this)[0], { className: $sizeClass, color: $colorCode, secondaryColor: $colorCodeSec, jackColor: $jackColorCode, jackSecondaryColor: $jackColorCodeSec });
+        });
+	}
+	
+	function viewPatern(obj, nivel, codigo){
+		var color = '#F0FF8F';
+		
+		switch(nivel){
+			case 1: break; //Sector
+			case 2: //SubSector 
+				$('div[id^="sector_"]').css('background',''); //Limpio todos
+				$('div[id^="subsector_"]').css('background',''); //Limpio todos
+				$('#sector_'+codigo).css('background',color); //Pinto el correcto padre
+				$('div[id^="categoria_"]').css('background',''); //Limpio todos
+				$(obj).css('background',color); //Pinto el seleccionado
+				break; 
+			case 3:
+				$('div[id^="sector_"]').css('background',''); //Limpio todos
+				$('div[id^="subsector_"]').css('background',''); //Limpio todos
+				$('div[id^="categoria_"]').css('background',''); //Limpio todos
+				$('#subsector_'+codigo).css('background',color); //Pinto el correcto padre
+				$('#subsector_'+codigo).mouseover();
+				$(obj).css('background',color); //Pinto el seleccionado
+				break;
+			case 4: 
+			
+			
+				break;
+		}
+		
+	}
+</script>
+	 
+	  
+	  

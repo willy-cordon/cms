@@ -1,0 +1,95 @@
+<div class="modal-content">
+	<div class="px-3">
+		<form class="form form-horizontal">
+			<div class="form-body">
+				<!-- BEGIN dias -->
+				<h4 class="form-section"><i class="ft-calendar"></i><b>{fechatexto}</b> ({fecha})</h4>
+
+				<div class="form-group row">
+
+
+					<!-- BEGIN horas -->
+					<div class=" mr-1">
+						<div class="container-disponibilidad d-block">
+
+							<input type="checkbox" id="coordtime{horaid}" name="coordtime" class="switchery"
+								data-color="{datacolor}" data-jack-color="{datajackcolor}" data-fecha="{fechabd}"
+								data-hora="{horabd}" {horadisabled} />
+							
+							<p class="font-small-2 text-bold-600 text-center">{hora}</p>
+						</div>
+					</div>
+					<!-- END horas -->
+
+				</div>
+				<!-- END dias -->
+
+
+			</div>
+		</form>
+		<div class="card">
+			<label class="text-danger">Horario propio no disponible</label>
+			<label class="text-warning">Horario ocupado con reuniones</label>
+			<label class="text-success">Horario sugerido para reunion</label>
+		</div>
+		<div class="modal-footer">
+			<img id="imgloading" src="../app-assets/img/loader.gif" style="width:35px; height:auto; display:none;">
+			<button id="btnsolicitar" type="button" class="btn grey btn-outline-secondary"
+				onclick="solicitarReunion({percoddst});">Solicitar</button>
+			<button id="btncancelar" type="button" class="btn grey btn-outline-secondary"
+				data-dismiss="modal">Cancelar</button>
+		</div>
+	</div>
+</div>
+
+<script src="../app-assets/js/switch.min.js"></script>
+
+<script>
+	function solicitarReunion(reg) {
+
+		var cantHoras = 0;
+		var dataCoordinar = [];
+		$.each($('input[name="coordtime"]:checked').not(':disabled'), function () {
+			var fecha = $(this).data('fecha');
+			var hora = $(this).data('hora');
+			var data = { "fecha": fecha, "hora": hora };
+
+			dataCoordinar.push(data);
+			cantHoras++;
+		});
+
+		if (cantHoras == 0) {
+			toastr.error('Se necesita establecer un posible horario de reunion', 'COORDINAR REUNION');
+		} else if (cantHoras > 3) {
+			toastr.error('No se puede superar 3 horarios', 'COORDINAR REUNION');
+		} else {
+			$('#btnsolicitar').hide();
+			$('#imgloading').show();
+
+			var data = {
+				"percoddst": reg,
+				"dataCoordinar": dataCoordinar
+			};
+
+			$.ajax({
+				type: "POST",
+				url: 'coordinargrb.php',
+				data: data
+			}).done(function (rsp) {
+				data = $.parseJSON(rsp);
+
+				if (data.errcod == 0) {
+					toastr.success(data.errmsg, 'COORDINAR REUNION');
+					$('#DataMaestroView').modal('hide');
+					showBrowser();
+				} else {
+					toastr.error(data.errmsg, 'COORDINAR REUNION');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				$('#btnsolicitar').show();
+				$('#imgloading').hide();
+			});
+		}
+	}
+
+</script>

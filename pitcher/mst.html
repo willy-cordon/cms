@@ -1,0 +1,198 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Maestro de Pitcher</h2>
+		</div>
+	</div>
+
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Nombre: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="pitcodigo" name="seccodigo" value="{pitcodigo}">
+										<input type="text" id="pitnombre"  name="secdescri" class="form-control" value="{pitnombre}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Descripcion: </label>
+									<div class="col-md-9">
+										<input type="text" id="pitdes"  name="secdesing" class="form-control" value="{pitdes}">
+									</div>
+								</div>
+									
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="paicodigo">Perfil Relacionado: </label>
+									<div class="col-md-9">
+										<select id="percodigo" name="percodigo" class="form-control">
+											<option value="0" selected>{Idioma_Seleccione}...</option>
+											<!-- BEGIN perfiles -->
+											<option value="{percodigo}" {persel}>{percompan} - {pernombre} {perapelli} </option>
+											<!-- END perfiles -->
+											
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row pitcon">
+									<label class="col-md-3 label-control" class="pitcon" for="pernombre">Votos: </label>
+									<div class="col-md-9">
+										<input disabled type="text" id="pitcon"  name="secdesing" class="form-control pitcon" value="{pitcon}">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pitimg">Imagen: <span class="required">*</span></label>
+									<div class="col-md-9">
+										
+										
+										<input type="file" id="pitimg"  name="pitimg" accept=".png, .jpg, .jpeg" class="form-control" value="{pitimg}" onchange="readURLaviso(this);" style="display: none;">
+										<br>
+										<a>
+												<img   id="imgaviso" alt="" class="media-object d-flex mr-3" src="{pitimg}" style="width: 200px; height: 200px; " onclick="findaviso()
+												
+												;"
+												>
+										</a>
+									</div>
+								</div>
+																			
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> {Idioma_BotonCan}
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+
+
+function findaviso(){
+		 //$('#imgaviso').prop('src','{imgnull}');
+		 $('#pitimg').click();	
+	}
+	
+	function readURLaviso(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			var fname = null;
+			reader.onload = function (e) {
+				$('#imgaviso').attr('src', e.target.result);	
+				var image = new Image();
+				image.src = e.target.result;
+				image.onload = function() {
+				};
+			}
+			reader.readAsDataURL(input.files[0]);
+			
+		}
+	}
+
+
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var pitcodigo = $('#pitcodigo').val();
+		var pitnombre = $('#pitnombre').val();
+		var pitdes = $('#pitdes').val();
+		var percodigo = $('#percodigo').val();
+
+
+			
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	
+	function guardarMaestro(){
+		alert();
+		// var pitcodigo = $('#pitcodigo').val();
+		// var pitnombre = $('#pitnombre').val();
+		// var percodigo = $('#percodigo').val();
+		// var pitdes = $('#pitdes').val();
+		// var pitimg = $('#pitimg')[0].files[0];
+	
+	
+		// var data = {"pitcodigo":pitcodigo,
+		// 			"pitnombre":pitnombre,
+		// 			"percodigo": percodigo,
+		// 			"pitdes":pitdes,
+		// 			"pitimg": pitimg};
+			
+		var formData = new FormData();
+		formData.append("pitcodigo"		, $('#pitcodigo').val() );
+		formData.append("pitnombre"		, $('#pitnombre').val() );
+		formData.append("percodigo"		, $('#percodigo').val() );
+		formData.append("pitdes"		, $('#pitdes').val() );
+		
+		if(typeof($('#pitimg')[0].files[0]) !== "undefined"){
+			//console.log('entro');
+			formData.append('pitimg', $('#pitimg')[0].files[0]);
+		}
+
+		console.log(formData);
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

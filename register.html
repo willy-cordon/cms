@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Convex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>CMS</title>
+    <link rel="apple-touch-icon" sizes="60x60" href="app-assets/img/ico/apple-icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="app-assets/img/ico/apple-icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="app-assets/img/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="app-assets/img/ico/apple-icon-152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="app-assets/img/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="app-assets/img/ico/favicon-32.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="app-assets/fonts/feather/style.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/fonts/simple-line-icons/style.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/prism.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/pickadate/pickadate.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+		<link rel="stylesheet" type="text/css" href="app-assets/vendors/css/wizard.css">
+		<link rel="stylesheet" type="text/css" href="app-assets/vendors/css/toastr.css">
+  </head>
+  <body data-col="1-column" class=" 1-column  blank-page blank-page">
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+   
+        <div class="main-content">
+          <div class="content-wrapper">
+            <div class="container-fluid"><!-- Wizard Starts -->
+			
+	<section id="icon-tabs">
+		  <div class="row">
+			<div class="col-12">
+			  <div class="card">
+				<div class="card-header">
+					<h4 class="card-title text-center">Registración CMS Negocios</h4>
+					<h6 class="card-subtitle text-center">CMS Business Registration</h6> <br>
+					<p id="lbcamposesp" class="text-center">Los campos marcados en (*) son obligatorios</p>
+					<p id="lbcamposing" class="text-center">The fields marked with (*) are mandatory</p>
+				</div>
+				<div class="card-body">
+				  <div class="card-block">
+					<form class="icons-tab-steps wizard-circle error" id="formulario" novalidate>
+					  <!-- Step 1 -->
+					  <h6>Datos Personales / Personal Information</h6>
+					  <fieldset>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="pernombre">Nombre / First Name<span class="required">*</span></label>
+							  <input type="text" class="form-control required" id="pernombre" name="pernombre" value="{pernombre}"  required data-validation-required-message="This field is required">
+							</div>
+							
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perapelli">Apellido / Surname<span class="required">*</span></label>
+							  <input type="text" class="form-control" id="perapelli" name="perapelli" value="{perapelli}">
+							</div>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="percompan">Compañia / Company<span class="required">*</span></label>
+							  <input type="text" class="form-control" id="percompan" name="percompan" value="{percompan}">
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="percargo">Cargo / Position<span class="required">*</span></label>
+							  <input type="text" class="form-control" id="percargo" name="percargo" value="{percargo} ">
+							</div>
+						  </div>
+						</div>
+						
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="pertipo">Busca/ Searching for:<span class="required">*</span></label>
+							  <select class="custom-select form-control"id="pertipo" name="pertipo" >
+								<option value="0">Seleccione/Select...</option>
+								<option value="2">Proveedor/Provider</option>
+								<option value="3">Partner</option>
+								<option value="4">Invertir/Invest opportunities</option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="col-md-6" >
+							<div class="form-group">
+							  <label for="perclase">Clase Perfil / Profile Type<span class="required">*</span></label>
+							  <select class="custom-select form-control" id="perclase" name="perclase" disabled>
+								<option value="0">Seleccione...</option>
+								<option value="1">Vendedor</option>
+								<option value="2">Comprador</option>
+								<option value="3">Vendedor/Comprador</option>
+							  </select>
+							</div>
+						  </div>
+						  
+						</div>
+						<div class="row">
+							
+							<div class="col-md-12">
+									<div class="form-group">
+											<label for="perclase">Rubro o Industria / Industry or sector<span class="required">*</span></label>
+											<select class="custom-select form-control" id="perrubcod" name="perrubcod" required>
+											<option value="0">Seleccione / Select ...</option>
+											<option value="1">Agroindustria / Agroindustry</option>
+											<option value="2">Alimentos y bebidas / Food and beverages</option>
+											<option value="3">Audiovisual (TV, cine, contenidos, etc.) / Audiovisual (TV, movies, contents, etc.)</option>
+											<option value="4">Banca y Finanzas / Bank and Credit companies</option>
+											<option value="5">Biotecnología / Biotecnologie</option>
+											<option value="6">Comercio / Comerce and trade</option>
+											<option value="7">Concesionarios De Automotores y Maquinaria / Concesionarios De Automotores y Maquinaria</option>
+											<option value="8">Construcción – Ingeniería / Construction and engeneering</option>
+											<option value="9">Distribución / Distribution</option>
+											<option value="10">Educación / Education</option>
+											<option value="11">Energía / Energy</option>
+											<option value="12">Gobierno / Government</option>
+											<option value="13">Hotelería y Gastronomía / Hotelers and Gastronomy</option>
+											<option value="14">Industria Liviana / Light and industry</option>
+											<option value="15">Industria Pesada y Automotriz / Heavy industry and automotive</option>
+											<option value="16">Industrias Culturales Y Creativas / Cultural and creative industries</option>
+											<option value="17">Infraestructura y Transportes / Infrastructure and transport</option>
+											<option value="18">Logística / Logistics</option>
+											<option value="19">Medios De Comunicación / Communications</option>
+											<option value="20">Minería / Mining</option>
+											<option value="21">Mutuales / Mutuales</option>
+											<option value="22">Petróleo y Gas / Oil and Gas</option>
+											<option value="23">Puertos / Ports and maritime</option>
+											<option value="24">Retail / Retail</option>
+											<option value="25">Salud y Farmacia / Health and farmaceutical</option>
+											<option value="26">Seguros / Insurance</option>
+											<option value="27">Servicios Financieros / Financial services</option>
+											<option value="28">Servicios Públicos / Public services</option>
+											<option value="29">TI y Telecomunicaciones / TI and Telecommunications</option>
+											<option value="30">Turismo / Turism</option>
+											
+											</select>
+										</div>
+							</div>
+						</div>
+						
+					  </fieldset>
+					  
+					  <!-- Step 2 -->
+					  <h6>Contacto / Contact Information</h6>
+					  <fieldset>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="percorreo">Correo / Email<span class="required">*</span></label>
+							  <input type="email" class="form-control" id="percorreo" name="percorreo" value="{percorreo}">
+							</div>
+						  </div>
+						  
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="pertelefo">Telefono / Telephone<span class="required">*</span></label>
+							  <input type="tel" class="form-control" id="pertelefo" name="pertelefo" value="{pertelefo}">
+							</div>
+						  </div>
+						</div>
+						
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perurlweb">Sitio Web / Web Site<span class="required">*</span></label>
+							  <input type="text" class="form-control" id="perurlweb" name="perurlweb" value="{perurlweb}">
+							</div>
+						  </div>
+						</div>
+					  </fieldset>
+					  
+					  <!-- Step 3 -->
+					  <h6>Domicilio / Company Information</h6>
+					  <fieldset>
+						<div class="row">
+						
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perdirecc">Dirección / Address</label>
+							  <input type="text" class="form-control required" id="perdirecc" name="perdirecc" value="{perdirecc}">
+							</div>
+						  </div>
+						  
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perciudad">Ciudad / City<span class="required">*</span></label>
+							  <input type="text" class="form-control" id="perciudad" name="perciudad" value="{perciudad}">
+							</div>
+						  </div>
+						</div>
+						
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perestado">Estado / State</label>
+							  <input type="text" class="form-control" id="perestado" name="perestado" value="{perestado}">
+							</div>
+						  </div>
+						  
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="percodpos">Cod.Postal / Zip Code</label>
+							  <input type="text" class="form-control" id="percodpos" name="percodpos" value="{percodpos}">
+							</div>
+						  </div>
+						</div>
+						
+						<div class="row">
+						
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="paicodigo">Pais / Country<span class="required">*</span></label>
+							  <select class="custom-select form-control" id="paicodigo" name="paicodigo">
+								<option value="0">Seleccione Pais...</option>
+								<!-- BEGIN paises -->
+								<option value="{paicodigo}" {paiselected}>{paidescri}</option>
+								<!-- END paises -->
+							  </select>
+							</div>
+						  </div>
+						</div>
+					  </fieldset>
+					  
+				
+						
+						<!-- step 5-->
+						<h6>Acceso Web / Web Access</h6>
+					  <fieldset>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perusuacc">Usuario / User</label>
+							  <input type="text" class="form-control" id="perusuacc" name="perusuacc" value="{perusuacc}">
+							</div>
+						  </div>
+						  
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="perpasacc">Contraseña / Password</label>
+							  <input type="password" class="form-control" id="perpasacc" name="perpasacc" value="{perpasacc}">
+							</div>
+						  </div>
+						</div>
+						
+						<div class="row">
+						  <div class="col-md-12">
+							<div class="form-group">
+							  <label for="perusuacc">¿Por qué queres ser parte de CMS como Visitante de Negocios? Cúal es la actividad principal de tu empresa, años en el mercado, principales clientes, principales proveedores. / Why do you want to be part of CMS as a business attendant? Describe your company's main activity, trajectory in the market, main clients and main suppliers.</label>
+							  <textarea class="form-control" id="percoment" name="percoment" rows="3"maxlength="5000">{percoment}</textarea>
+							</div>
+						  </div>
+						 </div>
+						
+					  </fieldset>
+					</form>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</section>
+	
+	</div>
+	</div>
+	</div>
+	<!--
+<section id="regestration">
+    <div class="container-fluid">
+        <div class="row full-height-vh">
+            <div class="col-12 d-flex align-items-center justify-content-center gradient-aqua-marine">
+                <div class="card px-4 py-2 box-shadow-2">
+                    <div class="card-header text-center">
+                        <img src="app-assets/img/logo-light.png" alt="company-logo" class="mb-3" width="80">
+                        <h4 class="text-uppercase text-bold-400 grey darken-1">Registrar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block mx-auto">
+                            <form class="form" action="register" method="POST">
+                                <div class="form-group" style="display:{viewdataregister};">
+                                    <div class="col-md-12">
+										<input type="hidden" name="newpass" id="newpass" value="{newpass}">
+                                        <input type="text" class="form-control form-control-lg" name="pernombre" id="pernombre" placeholder="Nombre" value="{pernombre}">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display:{viewdataregister};">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-lg" name="perapelli" id="perapelli" placeholder="Apellido" value="{perapelli}">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display:{viewdataregister};">
+                                    <div class="col-md-12">
+                                        <input type="email" class="form-control form-control-lg" name="percorreo" id="percorreo" placeholder="Correo electrónico" value="{percorreo}">
+                                    </div>
+                                </div>
+								<div class="form-group" style="display:{viewnewclave};">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-lg" name="perusuacc" id="perusuacc" placeholder="Usuario de Acceso" value="{perusuacc}">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display:{viewnewclave};">
+                                    <div class="col-md-12">
+                                        <input type="password" class="form-control form-control-lg" name="perpasacc" id="perpasacc" placeholder="Contraseña de Acceso" value="{perpasacc}">
+                                    </div>
+                                </div>
+                                
+								<div class="form-group col-sm-offset-1">
+                                    <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="pl-2" style="color:red;">{msgerror}</label>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center" style="display:{viewdataregister};">
+                                    <button id="btnconfirmar" name="btnconfirmar" type="submit" class="btn btn-danger px-4 py-2 text-uppercase white font-small-4 box-shadow-2 border-0">CONFIRMAR</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+
+<!--Registration Page Ends-->
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+		
+    <!-- BEGIN VENDOR JS-->
+		<script src="app-assets/vendors/js/core/jquery-3.3.1.min.js"></script>
+    <script src="app-assets/vendors/js/core/popper.min.js"></script>
+    <script src="app-assets/vendors/js/core/bootstrap.min.js"></script>
+    <script src="app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="app-assets/vendors/js/prism.min.js"></script>
+    <script src="app-assets/vendors/js/jquery.matchHeight-min.js"></script>
+    <script src="app-assets/vendors/js/screenfull.min.js"></script>
+    <script src="app-assets/vendors/js/pace/pace.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CONVEX JS-->
+    <script src="app-assets/js/app-sidebar.js"></script>
+    <script src="app-assets/js/notification-sidebar.js"></script>
+	<script src="app-assets/vendors/js/jquery.steps.min.js"></script>
+    <script src="app-assets/vendors/js/pickadate/picker.js"></script>
+    <script src="app-assets/vendors/js/pickadate/picker.date.js"></script>
+    <script src="app-assets/vendors/js/pickadate/picker.time.js"></script>
+    <script src="app-assets/vendors/js/pickadate/legacy.js"></script>
+		<script src="app-assets/vendors/js/jquery.validate.min.js"></script>
+		<script src="app-assets/vendors/js/toastr.min.js"></script>
+    <!-- END CONVEX JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <!-- END PAGE LEVEL JS-->
+	<script src="app-assets/js/wizard-steps.js"></script>
+
+
+    <script src="app-assets/vendors/js/jqBootstrapValidation.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CONVEX JS-->
+    <!-- END CONVEX JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+		<script src="app-assets/js/form-validation.js"></script>
+
+	<!--Validation for imput-->
+	
+			
+			
+
+		
+	
+  </body>
+</html>

@@ -1,0 +1,25 @@
+	
+<!-- BEGIN categorias -->
+<div id="categoria_{catcodigo}" class="card border-left my-1 border-warning border-3" onmouseover="viewPatern(this,3,{secscod});">
+	<div class="card-block pt-1 pb-1">
+		<div class="clearfix">
+			<h5 class="text-bold-400 warning float-left" style="font-size:18px;">{catdescri} <br><label style="font-size:12px;"> {catdesing}</label></h5>
+			
+		</div>
+		<div class="actions float-right" style="position:absolute; top:35%; right:5px;">
+			<input type="checkbox" id="catselect_{catcodigo}" name="catselect" class="switchery" data-color="white" data-jack-color="warning" data-codigo="{catcodigo}" {catchecked}
+				onchange="loadSubCategorias();"/>
+		</div>
+	</div>
+</div>
+<!-- END categorias -->
+				
+<script>
+	createSwitch('catselect');
+	loadSubCategorias();
+</script>
+
+	
+	 
+	  
+	  

@@ -1,0 +1,64 @@
+<div class="modal-content">
+	<div class="modal-body">
+		<div class="row justify-content-md-center">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title-wrap bar-primary">
+							<h4 class="card-title text-center" id="basic-layout-card-center">Dirección URL de Reunión</h4>
+							<hr>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="px-3">
+							<form class="form">
+								<input type="hidden" id="reureg" name="reureg" value="{reureg}">
+								
+								<div class="form-body">
+									<div class="form-group">
+										<textarea class="form-control" rows="2" id="reulink"  name="reulink" class="form-control" maxlength="2000">{reulink}</textarea>
+									</div>
+								</div>
+								
+								<div class="form-actions center">
+									<button type="button" class="btn btn-success" onclick="guardarLinkMsg();">
+										<i class="icon-note"></i> {Idioma_Guardar}
+									</button>
+									<button type="button" class="btn btn-danger mr-1"  data-dismiss="modal">
+										<i class="icon-trash"></i> {Idioma_BotonCan}
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function guardarLinkMsg(){
+		var errmsg = '';
+		var reureg = $('#reureg').val()
+		var reulink = $('#reulink').val()
+		
+		var datasend = {"reureg":reureg,
+						"reulink":reulink};
+	
+		$.ajax({
+			type: "POST",
+			url: "grblink.php",
+			data: datasend
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');	
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+			}
+			
+		});
+	}
+</script>

@@ -1,0 +1,184 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Agregar Menu a {pertipdesesp}</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+
+								<input id="pertipo" type="hidden" value="{pertipo}">
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="parcodigo">Seleccione Menu: <span class="required">*</span></label>
+									<div class="col-md-9">
+
+										<!-- //NOTE TODOS LOS MENU  -->
+										<select id="menu" name="menu" class="form-control" >
+											<option value="none">Seleccione...</option>
+											<!-- BEGIN browser -->
+											<option value="{mencodigo}">{mendescri}</option>
+											<!-- END browser -->
+										</select>
+									</div>
+								</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowserMenu({pertipo});">
+									<i  class="icon-trash"></i> {Idioma_BotonCan}
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span ></span>
+</section>
+		
+<script>
+
+	$("#menu").change(function () { 
+		console.log($("#menu").val());
+
+
+		
+	});
+	$("#app").change(function () { 
+		console.log($("#app").val());
+
+
+		
+	});
+
+	
+
+
+$(document).ready(function() {
+		
+			
+			$('#addpertipo').multiselect({
+				columns: 1,
+				placeholder: 'Seleccione tipos',
+				search: true,
+				selectAll: true
+			});
+
+			
+			
+		});
+	//  $('#addpertipo').change(()=>{
+
+	// 	obj = $('#addpertipo').val();
+	// 	var myJSON = (obj);
+	// 	//var pepe = JSON.parse(myJSON);
+	//   //$('#addpertipo').each(()=>{console.log($(".pepe").data('clase'))})
+	// 	console.log(obj);
+	//  })
+
+
+    function  validarDatos() {  
+
+		var errcod =0;
+
+		var menu = $('#menu').val();
+
+		if(menu == 'none'){
+			errcod = 1;
+		}
+		
+
+
+		return errcod;
+	}
+	
+
+	function guardarMaestroMsg(){
+		var errcod = validarDatos();
+		var errmsg = '';
+	
+			
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}else{
+			toastr.error('Completar Campos', '{Idioma_GuardarSwal}');
+		}
+	}
+	
+	function guardarMaestro(){
+
+
+		//ANCHOR RECORRO TODOS LOS PERFILES QUE TIENE PERMITIDO VER
+		// var idTiposPost= [];
+		// var selected =  $('#addpertipo').val()	
+
+		// $.each(selected,function(i,val){ 
+		// 	idTiposPost.push({ idTipos: val });
+		// 	console.log(idTiposPost[i].idTipos);
+		// });
+
+		//TODO ENVIAR POR POST AL PHP Y GUARDAR EN LA TABLA PER_TIPO_PERM
+
+		var menu 		= $('#menu').val();
+		var pertipo 	= $('#pertipo').val();
+
+
+	
+		// var visibilidad 	=$('#visibilidad').val();
+
+		var data = {"pertipo":pertipo,
+					"menu":menu}
+		
+
+		$.ajax({
+		  type: "POST",
+		  url: 'grbmenu.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowserMenu(pertipo);
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

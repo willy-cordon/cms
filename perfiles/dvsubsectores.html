@@ -1,0 +1,25 @@
+						
+<!-- BEGIN subsectores -->
+<div id="subsector_{secsubcod}" class="card border-left my-1 border-info border-3" onmouseover="viewPatern(this,2,{seccod});">
+	<div class="card-block pt-1 pb-1">
+		<div class="clearfix">
+			<h5 class="text-bold-400 info float-left" style="font-size:18px;">{secsubdes} <br><label style="font-size:12px;"> {secsubdesing}</label> </h5>
+			
+		</div>
+		<div class="actions float-right" style="position:absolute; top:35%; right:5px;">
+			<input type="checkbox" id="secsubselect_{secsubcod}" name="secsubselect" class="switchery" data-color="white" data-jack-color="info" data-codigo="{secsubcod}" {secsubchecked}
+				onchange="loadCategorias();"/>
+		</div>
+	</div>
+</div>
+<!-- END subsectores -->
+
+<script>
+	createSwitch('secsubselect');
+	loadCategorias();
+</script>
+
+	
+	 
+	  
+	  

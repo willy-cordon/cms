@@ -1,0 +1,204 @@
+﻿<div class="table-responsive">
+	<table id="recent-orders" class="table table-hover table-xl mb-0">
+		<thead>
+			<tr>
+				<th class="border-top-0"></th>                                
+				<th class="border-top-0">Nombre</th>
+				<th class="border-top-0"></th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<!-- BEGIN browser -->
+			<tr>
+				<td class="text-truncate">
+				</td>
+				<td class="text-truncate"><span>{msgtitulo}</span></td>				
+				
+				<td>
+					<a class="success p-0" data-original-title="" title="Modificar" onclick="showMaestro({msgreg});">
+						<i class="fa fa-pencil font-medium-3 mr-2"></i>
+					</a>
+				
+					<a class="danger p-0" data-original-title="" title="Eliminar"onclick="eliminarMaestro({msgreg});">
+						<i class="fa fa-trash-o font-medium-3 mr-2"></i>
+					</a>
+					<a class="danger p-0" data-original-title="" title="Enviar Correo" onclick="showview({msgreg},1);">
+						
+						<i class="fa fa-at font-medium-3 mr-2"></i>
+					</a>
+					<a class="danger p-0" data-original-title="" title="Enviar Notificacion" onclick="showview({msgreg},2);">
+						
+						<i class="fa fa-bullhorn font-medium-3 mr-2"></i>
+					</a>
+					
+
+				</td>
+			</tr>
+			<!-- END browser -->
+			
+		</tbody>
+	</table>
+</div>
+
+
+<script>
+
+	function guardarMaestroCorreo(reg){
+		var msgreg = reg
+		var pertipo = $('#pertipo').val();
+		var perclase = $('#perclase').val();
+		var peridioma = $('#peridioma').val();
+		
+		//json
+		var data = {
+			"msgreg":msgreg,
+<<<<<<< .mine
+			"pertipcod":perclacod,
+||||||| .r781
+			"perclacod":perclacod,
+=======
+			"pertipo":pertipo,
+			"perclase":perclase,
+>>>>>>> .r788
+			"peridioma":peridioma
+			};
+		
+		swal({
+			title: "Enviar Correo",
+			text: "¿Confirma enviar?",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: 'Confirmar',
+			cancelButtonText: 'Cancelar',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'enviargrb.php',
+			  data: data
+			}).done(function( rsp ) {
+				alert(rsp)
+				data = $.parseJSON(rsp);
+				
+				if(data.errcod == 0){			
+					toastr.success(data.errmsg, 'CORREO');
+					//swal("GUARDAR", data.errmsg, "success").done();
+					showBrowser();
+				}else{
+					toastr.error(data.errmsg, 'CORREO');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				
+			});
+			
+			
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	}
+	
+	function guardarMaestroNotif(reg){
+		var msgreg = reg
+		var pertipo = $('#pertipo').val();
+		var perclase = $('#perclase').val();
+		
+		//json
+		var data = {
+			"msgreg":msgreg,
+			"pertipo":pertipo,
+			"perclase":perclase
+			};
+		//console.log(data);
+		swal({
+			title: "Enviar Notificacion",
+			text: "¿Confirma enviar?",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: 'Confirmar',
+			cancelButtonText: 'Cancelar',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'enviarnot.php',
+			  data: data
+			}).done(function( rsp ) {
+				data = $.parseJSON(rsp);
+				
+				if(data.errcod == 0){			
+					toastr.success(data.errmsg, 'NOTIFICACION');
+					//swal("GUARDAR", data.errmsg, "success").done();
+					showBrowser();
+				}else{
+					toastr.error(data.errmsg, 'NOTIFICACION');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				
+			});
+			
+			
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	}
+
+		
+	function eliminarMaestro(reg){
+		var msgreg = reg
+		
+		var data = {"msgreg":msgreg};
+		
+		swal({
+			title: "ELIMINAR",
+			text: "¿Confirma eliminar el perfil?",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#0CC27E',
+			cancelButtonColor: '#FF586B',
+			confirmButtonText: 'Confirmar',
+			cancelButtonText: 'Cancelar',
+			confirmButtonClass: 'btn btn-success btn-raised mr-5',
+			cancelButtonClass: 'btn btn-danger btn-raised',
+			buttonsStyling: false
+		}).then(function () {
+			$.ajax({
+			  type: "POST",
+			  url: 'del.php',
+			  data: data
+			}).done(function( rsp ) {
+				console.log(rsp);
+				data = $.parseJSON(rsp);
+				
+				if(data.errcod == 0){			
+					toastr.success(data.errmsg, 'ELIMINAR');
+					//swal("GUARDAR", data.errmsg, "success").done();
+					showBrowser();
+				}else{
+					toastr.error(data.errmsg, 'ELIMINAR');
+					//swal("GUARDAR", data.errmsg, "error").done();
+				}
+				
+			});
+			
+			
+		}, function (dismiss) {
+			// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+			if (dismiss === 'cancel') {
+			}
+		}).done();
+	}
+</script>
+                    

@@ -1,0 +1,634 @@
+﻿<section id="minimal-statistics">
+
+	<input accept=".xlsx" onchange="fileSend();" type="file" name="files" id="inputImport" style="display: none;">
+
+	<div class="row">
+	
+	
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-success">
+					<h4 class="card-title">Perfiles</h4>
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Perfiles');" >Importar</a>
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info"  onclick="document.location='../impexcel/Perfiles.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-primary">
+					<h4 class="card-title">Sectores</h4>
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Sectores');" >Importar</a>
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info"onclick="document.location='../impexcel/Sectores.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-primary">
+					<h4 class="card-title">Subsectores</h4>
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Subsectores');" >Importar</a>
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info " onclick="document.location='../impexcel/Subsectores.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-info">
+					<h4 class="card-title">Categorias</h4>
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Categorias');" >Importar</a>
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info" onclick="document.location='../impexcel/Categorias.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-info">
+					<h4 class="card-title">Subcategorias</h4>
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Subcategorias');" >Importar</a>
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info" onclick="document.location='../impexcel/Subcategorias.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-danger">
+					<h4 class="card-title">Industrias</h4>
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Industrias');" >Importar</a>
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a href="" id="anchor"></a>
+					<a class="btn mr-1 btn-info" onclick="document.location='../impexcel/Industrias.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-warning">
+					<h4 class="card-title">Areas</h4>
+					
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Areas');" >Importar</a>
+					
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info" onclick="document.location='../impexcel/Areas.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="col-xl-4 col-lg-6 col-12">
+		<div class="card">
+		  <div class="card-body">
+			<div class="card-header">
+				<div class="card-title-wrap bar-warning">
+					<h4 class="card-title">Conjunto</h4>
+					
+				</div>
+			</div>
+			<div class="px-3 py-3">
+			  <div class="media">
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-success" onclick="inputClick('Conjunto');" >Importar</a>
+					
+				</div>
+				<div class="media-body text-left align-self-center">
+					<a class="btn mr-1 btn-info" onclick="document.location='../impexcel/Areas.xlsx'">Archivo</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	
+
+	  
+	 
+	  </div>
+	  <a href="" id="anchor"></a>
+	</div>
+	
+  </section>
+
+  <div class="table-responsive">
+	
+	 
+	
+  </div>
+
+  <script>
+
+//ANCHOR IMPORT DATA
+var type = "";
+
+function logErrorIndustria(data) {
+  
+  let tabla = `<table class="table table-hover table-xl mb-0">
+                            <thead>
+                            <tr>
+    
+                                <th scope="col">Fila</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Detalle</th>
+                                <th scope="col">Importacion</th>
+                                
+                              
+                            </tr>
+                            </thead>
+                            <tbody>`;
+
+  for (var i in data.industrias) {
+    var str = data[i];
+    var rsp = data.industrias[i];
+
+    if (data.industrias[i].check == 1) {
+      var iconInfo =
+        '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>';
+    } else {
+      var iconInfo =
+        '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>';
+    }
+
+    tabla +=
+      `<tr>
+            <td>` +data.industrias[i].fila +`</td>
+            <td>` +data.industrias[i].nombre.replace(/['"]+/g, "") +`</td>
+            <td>` + data.industrias[i].log.replace(/['"]+/g, "") +`</td>
+            <td>` +iconInfo +`</td>
+               
+        </tr>`;
+  }
+  $(".table-responsive").fadeOut();
+
+  $(".table-responsive").html(tabla);
+
+  document.querySelector("#anchor").scrollIntoView();
+
+  $(".table-responsive").fadeIn(1000);
+}
+function logErrorSubCategoria(data) {
+  
+    let tabla = `<table class="table table-hover table-xl mb-0">
+                              <thead>
+                              <tr>
+      
+                                  <th scope="col">Fila</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Detalle</th>
+                                  <th scope="col">Importacion</th>
+                                  
+                                
+                              </tr>
+                              </thead>
+                              <tbody>`;
+  
+    for (var i in data.subcategorias) {
+      var str = data[i];
+      var rsp = data.subcategorias[i];
+  
+      if (data.subcategorias[i].check == 1) {
+        var iconInfo =
+          '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>';
+      } else {
+        var iconInfo =
+          '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>';
+      }
+  
+      tabla +=
+        `<tr>
+              <td>` +data.subcategorias[i].fila +`</td>
+              <td>` +data.subcategorias[i].nombre.replace(/['"]+/g, "") +`</td>
+              <td>` + data.subcategorias[i].log.replace(/['"]+/g, "") +`</td>
+              <td>` +iconInfo +`</td>
+                 
+          </tr>`;
+    }
+    $(".table-responsive").fadeOut();
+  
+    $(".table-responsive").html(tabla);
+  
+    document.querySelector("#anchor").scrollIntoView();
+  
+    $(".table-responsive").fadeIn(1000);
+  }
+
+function logErrorCategoria(data) {
+    alert(data)
+      let tabla = `<table class="table table-hover table-xl mb-0">
+                                <thead>
+                                <tr>
+        
+                                    <th scope="col">Fila</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Detalle</th>
+                                    <th scope="col">Importacion</th>
+                                    
+                                  
+                                </tr>
+                                </thead>
+                                <tbody>`;
+    
+      for (var i in data.categorias) {
+        var str = data[i];
+        var rsp = data.categorias[i];
+    
+        if (data.categorias[i].check == 1) {
+          var iconInfo =
+            '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>';
+        } else {
+          var iconInfo =
+            '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>';
+        }
+    
+        tabla +=
+          `<tr>
+                <td>` +data.categorias[i].fila +`</td>
+                <td>` +data.categorias[i].nombre.replace(/['"]+/g, "") +`</td>
+                <td>` + data.categorias[i].log.replace(/['"]+/g, "") +`</td>
+                <td>` +iconInfo +`</td>
+                   
+            </tr>`;
+      }
+      $(".table-responsive").fadeOut();
+    
+      $(".table-responsive").html(tabla);
+    
+      document.querySelector("#anchor").scrollIntoView();
+    
+      $(".table-responsive").fadeIn(1000);
+    }
+
+function logErrorSubSector(data) {
+alert(data)
+  let tabla = `<table class="table table-hover table-xl mb-0">
+                            <thead>
+                            <tr>
+    
+								<th scope="col">Fila</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Detalle</th>
+                                <th scope="col">Importacion</th>
+                                
+                              
+                            </tr>
+                            </thead>
+                            <tbody>`;
+
+  for (var i in data.subsectores) {
+    var str = data[i];
+    var rsp = data.subsectores[i];
+
+    if (data.subsectores[i].check == 1) {
+      var iconInfo =
+        '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>';
+    } else {
+      var iconInfo =
+        '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>';
+    }
+
+    tabla +=
+	  `<tr>
+			<td>` +data.subsectores[i].fila +`</td>
+        	<td>` +data.subsectores[i].nombre.replace(/['"]+/g, "") +`</td>
+            <td>` + data.subsectores[i].log.replace(/['"]+/g, "") +`</td>
+            <td>` +iconInfo +`</td>
+               
+        </tr>`;
+  }
+  $(".table-responsive").fadeOut();
+
+  $(".table-responsive").html(tabla);
+
+  document.querySelector("#anchor").scrollIntoView();
+
+  $(".table-responsive").fadeIn(1000);
+}
+
+
+function logErrorSector(data) {
+alert(data)
+  let tabla = `<table class="table table-hover table-xl mb-0">
+                            <thead>
+                            <tr>
+    
+								<th scope="col">Fila</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Detalle</th>
+                                <th scope="col">Importacion</th>
+                                
+                              
+                            </tr>
+                            </thead>
+                            <tbody>`;
+
+  for (var i in data.sectores) {
+    var str = data[i];
+    var rsp = data.sectores[i];
+
+    if (data.sectores[i].check == 1) {
+      var iconInfo =
+        '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>';
+    } else {
+      var iconInfo =
+        '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>';
+    }
+
+    tabla +=
+	  `<tr>
+			<td>` +data.sectores[i].fila +`</td>
+        	<td>` +data.sectores[i].nombre.replace(/['"]+/g, "") +`</td>
+            <td>` + data.sectores[i].log.replace(/['"]+/g, "") +`</td>
+            <td>` +iconInfo +`</td>
+               
+        </tr>`;
+  }
+  $(".table-responsive").fadeOut();
+
+  $(".table-responsive").html(tabla);
+
+  document.querySelector("#anchor").scrollIntoView();
+
+  $(".table-responsive").fadeIn(1000);
+}
+
+
+function logErrorArea(data) {
+  let tabla = `<table class="table table-hover table-xl mb-0">
+                            <thead>
+                            <tr>
+    
+								<th scope="col">Fila</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Detalle</th>
+                                <th scope="col">Importacion</th>
+                                
+                              
+                            </tr>
+                            </thead>
+                            <tbody>`;
+
+  for (var i in data.areas) {
+    var str = data[i];
+    var rsp = data.areas[i];
+
+    if (data.areas[i].check == 1) {
+      var iconInfo =
+        '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>';
+    } else {
+      var iconInfo =
+        '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>';
+    }
+
+    tabla +=
+	  `<tr>
+			<td>` +data.areas[i].fila +`</td>
+        	<td>` +data.areas[i].nombre.replace(/['"]+/g, "") +`</td>
+            <td>` + data.areas[i].log.replace(/['"]+/g, "") +`</td>
+            <td>` +iconInfo +`</td>
+               
+        </tr>`;
+  }
+  $(".table-responsive").fadeOut();
+
+  $(".table-responsive").html(tabla);
+
+  document.querySelector("#anchor").scrollIntoView();
+
+  $(".table-responsive").fadeIn(1000);
+}
+
+
+function logErrorUser(data) {
+
+	
+	let tabla = `<table class="table table-hover table-xl mb-0">
+                            <thead>
+							<tr>
+
+							
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+								<th scope="col">Apellido</th>
+								<th scope="col">Email</th>
+								<th scope="col">Error</th>
+								<th scope="col">Importacion</th>
+								
+                              
+                            </tr>
+                            </thead>
+                            <tbody>`;
+  
+	for (var i in data.users) {
+
+	var str = data[i];
+	var rsp = data.users[i];
+	
+	if(data.users[i].check == 1){
+		var iconInfo = '<i class="fa fa-check font-large-1  " style="color:#0BE000"></i>'
+	}else{
+		var iconInfo = '<i class="fa fa-times font-large-1  " style="color:#FF581B"></i>'
+	}
+	
+    
+	tabla += `<tr>
+				
+				<td>`+data.users[i].id+`</td>
+				<td>`+data.users[i].pernombre.replace(/['"]+/g, '')+`</td>
+				<td>`+data.users[i].perapelli.replace(/['"]+/g, '')+`</td>
+				<td>`+data.users[i].percorreo.replace(/['"]+/g, '')+`</td>
+				<td>`+data.users[i].log.replace(/['"]+/g, '')+`</td>
+				<td>`+iconInfo+`</td>
+               
+            </tr>`;
+	
+  }
+  $('.table-responsive').fadeOut();
+
+  $('.table-responsive').html(tabla);
+
+  document.querySelector('#anchor').scrollIntoView()
+
+  $('.table-responsive').fadeIn(1000);
+}
+
+
+
+
+function actionsLog(rsp) {
+
+	data = $.parseJSON(rsp);
+
+	toastr.remove();
+
+	if (data.errcod == 0) {
+		
+		//Toast para caso de exito
+		toastr.success(data.errmsg, "Importacion");
+	}
+	else {
+		//Toast para error de importacion
+		toastr.error(data.errmsg, "Importacion");
+		
+		alert(data.tipo)
+
+	switch(data.tipo){
+		case 'area':
+			logErrorArea(data);
+			break;
+		case 'perfil':
+			logErrorUser(data);
+			break;
+		case 'sector':
+			logErrorSector(data);
+			break;
+		case 'subsector':
+			logErrorSubSector(data);
+			break;
+		case 'categoria':
+			logErrorCategoria(data);
+			break;
+		case 'subcategoria':
+			logErrorSubCategoria(data);
+			break;
+		case 'industria':
+			logErrorIndustria(data);
+			break;
+			
+	}
+	////////////////////////////////////
+}
+	
+}
+//Trigger al imput
+function inputClick(importType) {
+  type = importType;
+
+  $("#inputImport").trigger("click");
+}
+
+//Envio del archivo por ajax.
+function fileSend() {
+
+  var file = document.getElementById("inputImport").files[0];
+
+  var ext = file.name.split(".");
+  ext = ext[ext.length - 1];
+
+  if (ext == "xlsx") {
+
+    var file_data = $("#inputImport").prop("files")[0];
+    
+	var form_data = new FormData();
+	
+	form_data.append("file", file_data);
+	
+	//Toast para aviso de ejecucion de importacion
+
+	toastr.warning("Importando", "Importacion");
+	
+    $.ajax({
+      url: "importar" + type + ".php",
+      dataType: "text",
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: form_data,
+      type: "post"
+    }).done(rsp => {
+	 
+		
+	  actionsLog(rsp);
+	
+	});
+  } else {
+		//Toast para archivo invalido
+		toastr.error("Archivo Invalido", "Importacion");
+		
+  }
+}
+
+
+//
+
+</script>
+<!-- FIN IMPORTAR -->

@@ -1,0 +1,223 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header"> {pertipotittle}</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Clase</label>
+									<div class="col-md-9">
+										
+										<!-- ---------------------------- ANCHOR CLASES ---------------------------- -->
+										<select id="perclases" name="" class="form-control" >
+
+											<option value="" >Selecicone...</option>
+											<!-- BEGIN clases  -->
+											<option value="{perclases}" {checked} >{percladess}</option>
+											<!-- END  clases -->	
+											
+										</select>
+										<!-- ---------------------------------- X ---------------------------------- -->
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Tipo a ver</label>
+									<div class="col-md-9"> 
+
+										<!-- ------------- ANCHOR CLAVES PRIMARIAS PARA PER_TIPO_PERM -------------- -->
+
+										<input type="hidden" id="pertipo" name="pertipo" value="{pertipoo}">
+
+										<input type="hidden" id="codclase" name="codclase" value="{codclase}">
+										
+										
+										<input type="hidden" id="pertipoperm" name="pertipo" value="{pertipoperm}">
+										
+										
+										<!-- ---------------------------------- X ---------------------------------- -->
+										
+										<!-- ---------------------- ANCHOR TIPOS DE PERFILES ----------------------- -->
+										<select id="pertipdst" name="" class="form-control" onchange="getClases(this);" >
+											<option value="" >Selecicone...</option>
+											<!-- BEGIN tipo -->
+											<option value="{pertiposelected}" {checked}>{pertipdesesp}</option>
+											<!-- END tipo -->	
+
+										</select>
+										<!-- ---------------------------------- X ---------------------------------- -->
+										
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Clase a ver</label>
+									<div class="col-md-9">
+										
+										<!-- ---------------------------- ANCHOR CLASES ---------------------------- -->
+										<select id="perclase" name="" class="form-control" >
+
+											<!-- BEGIN clase  -->
+											<option value="{perclase}" {checked} >{perclades}</option>
+											<!-- END  clase -->	
+											
+										</select>
+										<!-- ---------------------------------- X ---------------------------------- -->
+									</div>
+								</div>
+						
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroVisibilidad();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowserVisibilidad({pertipoo});">
+									<i  class="icon-trash"></i> {Idioma_BotonCan}
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span ></span>
+</section>
+<script>
+
+$(document).ready(function() {
+	
+			
+			
+		});
+
+		
+	/*-- -------------------------- ANCHOR GET CLASES -------------------------- */
+	
+	function getClases(obj){//Se cargan las clases en relacion con el Tipo de Perfil
+		
+		var pertipo = $(obj).val();
+		
+		$.ajax({
+			type: "POST",
+			url: "getclases.php",
+			data: {"pertipo": pertipo}
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			console.log(data);
+			
+			var clases = $('#perclase');
+			clases.empty();
+			$("<option/>", {
+					val: '',
+					text: 'Seleccione...'
+				}).appendTo(clases);
+			
+			$.each(data,function(){
+				
+				$("<option/>", {
+					val: this.perclase,
+					text: this.perclades
+				}).appendTo(clases);
+			});
+		});
+	
+	}
+
+	/*-- -------------------------- AX				-------------------------- */
+
+	function guardarMaestroVisibilidad(){
+		var errcod = 0;
+		var errmsg = '';
+		var pertipo = $('#pertipo').val();
+		var pertipdesesp = $('#pertipdesesp').val();
+
+	/*-- ------------------------ ANCHOR VALIDAR COMBOS ------------------------ --*/
+
+		var codclase 		= $('#perclases').val();	
+		var pertipdst 		= $('#pertipdst').val();
+		var perclase 		= $('#perclase').val();
+
+		if(codclase == '' || pertipdst == ''  || perclase == ''){ errcod = 1;}
+
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestrov();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}else{
+			toastr.error('Revisar campos vacios!', '{Idioma_GuardarSwal}');
+		}
+	}
+	
+	function guardarMaestrov(){
+
+
+		//ANCHOR RECORRO TODOS LOS PERFILES QUE TIENE PERMITIDO VER
+		
+		//TODO ENVIAR POR POST AL PHP Y GUARDAR EN LA TABLA PER_TIPO_PERM
+
+		var pertipo 		= $('#pertipo').val();
+		var visibilidad		= $('#visibilidad').val();
+		//CLASE A VER
+		var clase 			= $('#perclase').val();
+		var pertipoperm		= $('#pertipoperm').val();
+		var pertipdst 		= $('#pertipdst').val();
+		var codclase 		= $('#perclases').val();
+
+		
+
+		var data = {"pertipo"			:pertipo,
+					"pertipoperm"   	:pertipoperm,
+					"visibilidad"		:visibilidad,
+					"pertipdst"			:pertipdst,
+					"clase"				:clase,
+					"codclase"			:codclase
+					};
+
+		console.log(data);
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grbvisibilidad.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowserVisibilidad(pertipo);
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

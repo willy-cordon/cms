@@ -1,0 +1,158 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">{Idioma_MaestroEncPreg}</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								
+								<!-- <div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Tipo: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="encreg" name="encreg" value="{encreg}">
+										<input type="hidden" id="encpreitm" name="encpreitm" value="{encpreitm}">
+										<input type="text" id="encpretip"  name="encpretip" class="form-control" value="{encpretip}">
+									</div>
+								</div> -->
+								<div class="form-group row">
+									<label  class="col-md-3 label-control" for="encpretip">Tipo de pregunta:</label>
+									<div class="col-md-9">
+									<select class="custom-select form-control"id="encpretip" name="encpretip" >
+									  <option value="0" {encpretipsel0}>Seleccione</option>
+									  <option value="1" {encpretipsel1}>Libre</option>
+									  <option value="2" {encpretipsel2}>Tabulado</option>
+									  <option value="3" {encpretipsel3}>Clasificado</option>
+									</select>
+									</div>
+								  </div>
+								 
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="pernombre">Pregunta: </label>
+									<div class="col-md-9">
+										<input type="hidden" id="encreg" name="encreg" value="{encreg}">
+										<input type="hidden" id="encpreitm" name="encpreitm" value="{encpreitm}">
+										<input type="text" id="encpregun"  name="encpregun" class="form-control" value="{encpregun}">
+									</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-md-3 label-control" for="pernombre">Pregunta Valor: </label>
+										<div class="col-md-9">
+											
+											<input type="hidden" id="encpreitm" name="encpreitm" value="{encpreitm}">
+											<input type="text" id="encpreval"  name="encpreval" class="form-control" value="{encpreval}">
+										</div>
+								</div>
+									
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="parorden">{Idioma_Orden}: </label>
+									<div class="col-md-9">
+										<input type="text" id="encpreord"  name="encpreord" class="form-control" value="{encpreord}">
+									</div>
+								</div>
+							
+																				
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> {Idioma_Guardar}
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowserPreg({encreg});">
+									<i class="icon-trash"></i> {Idioma_BotonCan}
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+	$('#encpreord').autoNumeric({aSep: '.', aDec: ',', mDec: '0',  vMin: '0', vMax: '999' });
+
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var encreg 	  = $('#encreg').val();
+		var encpreitm = $('#encpreitm').val();
+		var encpretip = $('#encpretip').val();
+		var encpregun = $('#encpregun').val();
+		var encpreval = $('#encpreval').val();
+		var encpreord = $('#encpreord').val();
+		
+
+		
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	
+	function guardarMaestro(){
+		var encreg 	  = $('#encreg').val();
+		var encpreitm = $('#encpreitm').val();
+		var encpretip = $('#encpretip').val();
+		var encpregun = $('#encpregun').val();
+		var encpreval = $('#encpreval').val();
+		var encpreord = $('#encpreord').val();
+	
+		
+		var data = {"encreg":encreg,
+					"encpreitm":encpreitm,
+					"encpretip":encpretip,
+					"encpregun":encpregun,
+					"encpreval":encpreval,
+					"encpreord":encpreord
+					};
+		console.log(data);
+		$.ajax({
+		  type: "POST",
+		  url: 'grbPreg.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowserPreg(encreg);
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Convex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>Business Revolution</title>
+    <link rel="apple-touch-icon" sizes="60x60" href="../../app-assets/img/ico/apple-icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../app-assets/img/ico/apple-icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../app-assets/img/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../app-assets/img/ico/apple-icon-152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../app-assets/img/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="../../app-assets/img/ico/favicon-32.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/fonts/feather/style.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/fonts/simple-line-icons/style.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/prism.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/css/app.css">	
+    <link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/sweetalert2.min.css">
+	<link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/toastr.css">
+	<link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/switchery.min.css">
+	<link rel="stylesheet" type="text/css" href="../../app-assets/css/jquery.multiselect.css">
+	<link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/fullcalendar3/fullcalendar.min.css">
+	<link rel="stylesheet" type="text/css" href="../../app-assets/vendors/css/raty/jquery.raty.css">
+    
+	
+	
+
+	
+	<style>
+        body{
+            overflow: hidden;
+        }
+		ul,li { margin:0; padding:0; list-style:none;}
+        .titleenc{
+            font-size: 13px !important;
+        }
+	</style>
+  </head>
+	<body style="margin: 0 auto; padding: 0 auto; ">
+		<div class="col-md-12"style=" border:0; margin:0;padding:0;">
+			<img src="../backbarrasup.jpg" style="top:0px; left:0px; width:100%;"></img>
+		</div>
+		<div class="container-fluid" style="background:white; border:0; margin:0;padding:0; width:100%;">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-block" >
+								<div class="row" >
+									<div class="col-md-12" >
+                                        <div class="row justify-content-md-center" style="overflow: scroll; overflow-x: hidden; overflow-y: auto; height:400px;">
+											<h6 style="{styletitle}">{Msg}</h6>
+                                            <div class="col-md-8">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <div class="card-title-wrap bar-primary">
+                                                            <h4 class="card-title text-center" id="basic-layout-card-center">{encdescri}</h4>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="px-3">
+                                                            <form class="form">
+                                                                <input type="hidden" id="reureg" name="reureg" value="{reureg}">
+                                                                <input type="hidden" id="encreg" name="encreg" value="{encreg}">
+                                                                
+                                                                <div class="form-body">
+                                                                    <!-- BEGIN preguntas -->
+                                                                    <div id="rowcontent{encpreitm}">
+                                                                        <h5>{encpregun}</h5>
+                                                                        <input type="hidden" id="encpreitm" name="encpreitm" value="{encpreitm}">
+                                                                        
+                                                                        <div id="dvblock" class="form-group" style="{pregtip1}" data-type="1">
+                                                                            <!--<label for="eventRegInput1"></label>-->
+                                                                            <textarea class="form-control" rows="2" id="encvalres"  name="encvalres" class="form-control" value="#">  </textarea>
+                                                                        </div>
+
+                                                                        <div id="dvblock"  class="form-group " style="{pregtip2}" data-type="2">
+                                                                            <select class="custom-select form-control" id="encvalres" name="encvalres" >
+                                                                            <option value="0">Seleccione una opcion...</option>
+                                                                            <!-- BEGIN preval -->
+                                                                            <option value="{encpreval}">{encpreval}</option>
+                                                                            <!-- END preval -->
+                                                                            </select>
+                                                                        </div>
+                                                                        
+                                                                        <div id="dvblock"  class="card-body" style="{pregtip3}" data-type="3">
+                                                                            <div id="PregStart{encpreitm}">
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                        <hr>
+                                                                    </div>
+                                                                    <!-- END preguntas -->
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="form-actions center">
+                                                                    <button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestro();" {Msgbutton}>
+                                                                        <i class="icon-note"></i> Guardar
+                                                                    </button>
+                                                                        <!-- <button type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+                                                                            <i class="icon-trash"></i> {Idioma_BotonCan}
+                                                                        </button> -->
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </body>
+
+
+     <!-- BEGIN VENDOR JS-->
+    <script src="../../app-assets/vendors/js/core/jquery-3.3.1.min.js"></script>
+    <script src="../../app-assets/vendors/js/core/popper.min.js"></script>
+    <script src="../../app-assets/vendors/js/core/bootstrap.min.js"></script>
+    <script src="../../app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../../app-assets/vendors/js/prism.min.js"></script>
+    <script src="../../app-assets/vendors/js/jquery.matchHeight-min.js"></script>
+    <script src="../../app-assets/vendors/js/screenfull.min.js"></script>
+    <script src="../../app-assets/vendors/js/pace/pace.min.js"></script>
+
+	<script src="../../app-assets/vendors/js/jquery.raty.js"></script>
+    <script src="../../app-assets/js/rating.js"></script>
+
+    <script src="../../app-assets/vendors/js/sweetalert2.min.js"></script>
+    <script src="../../app-assets/vendors/js/toastr.min.js"></script>
+    <script src="../../app-assets/vendors/js/switchery.min.js"></script>
+    <!-- <script src="../../app-assets/js/reuniones.js"></script> -->
+
+
+ 
+<!--	<script src="../../app-assets/vendors/js/fullcalendar.min.js"></script>-->
+<!--	<script src="../../app-assets/fullcalendar3/fullcalendar.min.js"></script>-->
+<!--	<script src="../../app-assets/vendors/js/moment.min.js"></script>-->
+<!--	<script src="../../app-assets/vendors/js/fullcalendar.min.js"></script>-->
+<!--	<script src="../../app-assets/fullcalendar3/fullcalendar.min.js"></script>-->
+<!--	<script src='../../app-assets/fullcalendar3/es.js'></script>-->
+    <!-- END PAGE VENDOR JS-->
+    
+    <script> 
+		 
+         $.fn.raty.defaults.path = '../../app-assets/img/raty/';
+        
+         <!-- BEGIN jsclasificar -->
+         $('div[id="PregStart{encpreitmcla}"]').raty({
+             number: {encpreval},
+             click:function llamar(score,evt){
+                 console.log(score);
+                 }
+             }
+         );	
+         <!-- END jsclasificar -->	
+        
+        function guardarMaestro(){
+            var errmsg = '';
+			var datainfo = '{datainfo}';
+            var reureg = $('#reureg').val()
+            var encreg = $('#encreg').val()
+            
+            var datasend = {"datainfo":datainfo,
+							"reureg":reureg,
+                            "encreg":encreg,
+                            "preguntas":[]};
+        
+            $.each($('input[id="encpreitm"]'),function(){
+                var row = $(this).closest('div');
+                var div = row.find('div[id="dvblock"][style*="display:visible"]');
+                
+                if(div.css('display') == 'block'){
+                    var tipo = div.data('type');
+                    var valres = '';
+                    
+                    switch(tipo){
+                        case 1: valres = div.find('#encvalres').val(); break;
+                        case 2: valres = div.find('#encvalres option:selected').val(); break;
+                        case 3: valres = div.find('#PregStart'+this.value).raty('score'); break;
+                    }
+                }
+                
+                var itm = {"encpreitm": this.value,
+                            "encvalres": valres};
+                datasend.preguntas.push(itm);
+            });
+            
+			$('#btnguardar').hide();
+			
+            $.ajax({
+                type: "POST",
+                url: "grbResp.php",
+                data: datasend
+            }).done(function( rsp ) {
+                data = $.parseJSON(rsp);
+				$('#btnguardar').show();
+				
+                if(data.errcod == 0){
+                    toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+                    //swal("GUARDAR", data.errmsg, "success").done();
+                    location.href='presentaciones.php?P={datainfo}';
+                    
+                }else{
+                    toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+                    //swal("GUARDAR", data.errmsg, "error").done();
+                }
+                
+            });
+        }
+		
+	</script>
+</html>

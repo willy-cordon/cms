@@ -1,0 +1,159 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Maestro de Categor&iacuteas</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="px-3">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="catdescri">Nombre(ESP): ({catcodigo})</label>
+									<div class="col-md-9">
+										<input type="hidden" id="catcodigo" name="catcodigo" value="{catcodigo}">
+										<input type="text" id="catdescri"  name="catdescri" class="form-control" value="{catdescri}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="catdesing">Nombre (ING): </label>
+									<div class="col-md-9">
+										<input type="text" id="catdesing"  name="catdesing" class="form-control" value="{catdesing}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="secdescri">Sector: </label>
+									<div class="col-md-9">
+										<select id="seccodigo" name="seccodigo" class="form-control">
+											<option value="">Seleccione sector...</option>
+											<!-- BEGIN sectores -->
+											<option value="{seccodigo}" {secselected}>{secdescri}</option>
+											<!-- END sectores -->
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="secsubdes">Subsector: </label>
+									<div class="col-md-9">
+										<select id="secsubcod" name="secsubcod" class="form-control">
+											<option value="">Seleccione subsector...</option>
+											<!-- BEGIN subsector -->
+											<option value="{secsubcod}" {secsubselected}>{secsubdes}</option>
+											<!-- END subsector -->
+										</select>
+									</div>
+								</div>
+								
+																			
+							</div>
+
+							<div class="form-actions">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> Guardar
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> Cancelar
+								</button>
+								&nbsp;&nbsp;
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+		
+<script>
+	$('#seccodigo').change(function(){
+		var seccod 	= $(this).val();
+		var data	= {"seccodigo":seccod};
+		
+		//Busco los subsectores del sector
+		$.ajax({
+		  type: "POST",
+		  url: '../func/lstsubsectores.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			$('#secsubcod').empty();
+			$('#secsubcod').append('<option value="">Seleccione subsector...</option>');
+			
+			$.each(data,function(){
+				$('#secsubcod').append('<option value="'+this.secsubcod+'">'+this.secsubdes+'</option>');
+			});
+		});
+	});
+
+
+	function guardarMaestroMsg(){
+		var errcod = 0;
+		var errmsg = '';
+		var catcodigo = $('#catcodigo').val();
+		var catdescri = $('#catdescri').val();		
+		var secsubcod = $('#secsubcod').val();
+
+		if(errcod==0){
+			swal({
+				title: "{Idioma_GuardarSwal}",
+				text: "{Idioma_Confirmar}",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: '{Idioma_BotonConf}',
+				cancelButtonText: '{Idioma_BotonCan}',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+	
+	function guardarMaestro(){
+		var catcodigo = $('#catcodigo').val();
+		var catdescri = $('#catdescri').val();
+		var catdesing = $('#catdesing').val();					
+		var secsubcod = $('#secsubcod').val();
+		
+		var data = {"catcodigo":catcodigo,
+					"catdescri":catdescri,
+					"catdesing":catdesing,					
+					"secsubcod":secsubcod};
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, '{Idioma_GuardarSwal}');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, '{Idioma_GuardarSwal}');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+</script>
+	 
+	  
+	  

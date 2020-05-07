@@ -1,0 +1,246 @@
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Maestro agenda</h2>
+		</div>
+	</div>
+	
+
+	<!--New formulario-->
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-body">
+				<div class="px-3">
+					<form class="form">
+						<div class="form-body">
+
+							<div class="form-group">
+								<label for="timesheetinput1">Título</label>
+								<div class="position-relative has-icon-left">
+									<input type="hidden" id="agereg" name="agereg" value="{agereg}">
+									<input type="text" id="agetitulo"  name="agetitulo" class="form-control" value="{agetitulo}">
+									<div class="form-control-position">
+										<!--En caso que requiera icono-->
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="timesheetinput2">Descripción</label>
+								<div class="position-relative has-icon-left">
+									<textarea class="form-control" rows="4" id="agedescri"  name="agedescri" class="form-control" value="{agedescri}" maxlength="3000"> {agedescri} </textarea>
+									<div class="form-control-position">
+										<!--En caso que requiera icono-->
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="timesheetinput2">Lugar</label>
+								<div class="position-relative has-icon-left">
+									<select id="agelugar" name="agelugar" class="form-control" >
+										<option value="" >Seleccione...</option>
+										<option value="Auditorio Agrícola" {agelug1}>Auditorio Agrícola</option>
+										<option value="Auditorio Ganadero" {agelug2}>Auditorio Ganadero</option>
+										<option value="Auditorio Institucional" {agelug3}>Auditorio Institucional</option>
+										<option value="Auditorio Prensa" {agelug4}>Auditorio Prensa</option>
+										<option value="Carpa Internacional" {agelug5}>Carpa Internacional</option>
+										<option value="Centro de Expertos" {agelug6}>Centro de Expertos</option>
+										<option value="Dinámicas a campo" {agelug7}>Dinámicas a campo</option>
+										<option value="Espacio de Remates" {agelug8}>Espacio de Remates</option>
+										<option value="Espacio Agtech" {agelug9}>Espacio Agtech</option>
+										<option value="Pistas de Test-Drive" {agelug10}>Pistas de Test-Drive</option>
+										<option value="Sector de Ganadería" {agelug11}>Sector de Ganadería</option>
+										<option value="Tecnódromo" {agelug12}>Tecnódromo</option>
+									</select>
+									<!--<input type="text" id="agelugar" class="form-control" name="agelugar" value="{agelugar}">-->
+									<div class="form-control-position">
+										<!--En caso que requiera icono-->
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group ">
+								<label >Speakers: </label>
+								
+									<select multiple id="spkreg" name="spkreg" class="form-control" >
+										<option value="" >Seleccione...</option>
+										<!-- BEGIN speakers -->
+											<option value="{spkreg}" {spkselect}>{spktitulo}
+											</option>
+										<!-- END speakers -->
+									</select>
+							</div>
+
+							<!-- <div class="form-group">
+								NUEVO CAMPO
+							</div> -->
+
+							<div class="form-group">
+								<label for="timesheetinput3">Fecha</label>
+								<div class="position-relative has-icon-left">
+									<input type="date" id="agefch" class="form-control" name="agefch" value="{agefch}">
+									<div class="form-control-position">
+										<i class="ft-message-square"></i>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="timesheetinput5">Hora Inicio</label>
+										<div class="position-relative has-icon-left">
+											<input type="time" id="agehorini" class="form-control" name="agehorini" value="{agehorini}">
+											<div class="form-control-position">
+												<i class="ft-clock"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="timesheetinput6">Hora Fin</label>
+										<div class="position-relative has-icon-left">
+											<input type="time" id="agehorfin" class="form-control" name="agehorfin" value="{agehorfin}">
+											<div class="form-control-position">
+												<i class="ft-clock"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="timesheetinput2">Preguntas</label>
+								<div class="position-relative has-icon-left">
+									<select id="ageprehab" name="ageprehab" class="form-control" >
+										<option value="S" {ageprehabS}>Permitir preguntas</option>
+										<option value="N" {ageprehabN}>No permitir preguntas</option>
+									</select>
+								</div>
+							</div>
+						
+						</div>
+
+						<div class="form-actions right">
+								<button id="btnguardar" type="button" class="btn btn-success" onclick="guardarMaestroMsg();">
+									<i class="icon-note"></i> Guardar
+								</button>
+								<button id="btncancelar" type="button" class="btn btn-danger mr-1" onclick="showBrowser();">
+									<i class="icon-trash"></i> Cancelar
+								</button>
+								&nbsp;&nbsp;
+							</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<script>
+	
+	$('#spkreg').multiselect({
+			columns: 1,
+			placeholder: 'Seleccione speakers',
+			search: true,
+			selectAll: true
+		});
+
+	
+
+	function guardarMaestroMsg(){
+		
+		var errcod = 0;
+		var errmsg = '';
+		//var avireg = $('#avireg').val();
+		//var avititulo = $('#avititulo').val();
+		//var aviurl = $('#aviurl'). val();
+		//var aviimagen = $('#aviimagen').val();
+			
+		if(errcod==0){
+			swal({
+				title:"SAVE",
+				text: "¿Confirma guardar los cambios / Are sure?",
+				type: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				guardarMaestro();
+				
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+	}
+
+	function guardarMaestro(){
+		var agereg 		= $('#agereg').val();
+		var agetitulo 	= $('#agetitulo').val();
+		var agedescri 	= $('#agedescri').val();
+		var agelugar 	= $('#agelugar').val();
+		var agefch 		= $('#agefch').val();
+		var agehorini 	= $('#agehorini').val();
+		var agehorfin 	= $('#agehorfin').val();
+		var estcodigo	= $('#estcodigo').val();
+		var spkreg     	= $('#spkreg').val();
+		var ageprehab   = $('#ageprehab').val();
+		
+		let speakers=''
+		$.each(spkreg,function(i,val){ 
+			speakers+= val+','; 
+			
+		});
+		speakers += '0';
+			
+		
+		var data = {"agereg":agereg,
+					"agetitulo":agetitulo,
+					"agedescri":agedescri,
+					"agelugar":agelugar,
+					"agefch":agefch,
+					"agehorini":agehorini,
+					"agehorfin":agehorfin,
+					"estcodigo":estcodigo,
+					"speakers":speakers,
+					"ageprehab":ageprehab
+					};
+		
+		$.ajax({
+		  type: "POST",
+		  url: 'grb.php',
+		  data: data
+		}).done(function( rsp ) {
+			data = $.parseJSON(rsp);
+			
+			if(data.errcod == 0){
+				toastr.success(data.errmsg, 'SAVE');			
+				//swal("GUARDAR", data.errmsg, "success").done();
+				showBrowser();
+			}else{
+				toastr.error(data.errmsg, 'SAVE');	
+				//swal("GUARDAR", data.errmsg, "error").done();
+			}
+			
+		});
+	}
+	
+	
+
+</script>
+	 
+	  
+	  
