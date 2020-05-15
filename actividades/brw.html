@@ -1,13 +1,44 @@
 ﻿<div class="container-fluid">
-<div class="row">
-	<div class="col-md-12">
-		<div class="card">
-			<div class="card-body">
-				<div class="card-block">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<div id='fc-external-drag'> 
-							
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-block">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<div class="container">
+
+									<div class="row">
+										<div class="col-xs-12 ">
+											<nav>
+
+												<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+
+
+													<!-- BEGIN tabs -->
+													<a class="nav-item nav-link {active} " id="nav-home-tab"
+														data-toggle="tab" href="#dia{id}" role="tab"
+														aria-controls="nav-home" aria-selected="true">{dia}</a>
+													<!-- END tabs -->
+
+
+
+												</div>
+											</nav>
+											<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+												<!-- BEGIN actividades -->
+												<div class="tab-pane fade show {active}" id="dia{diact}" role="tabpanel"
+													aria-labelledby="nav-home-tab">
+													{agereg} - {agetitulo} <br>
+												</div>
+
+												<!-- END actividades -->
+											</div>
+
+										</div>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -16,63 +47,11 @@
 		</div>
 	</div>
 </div>
-</div>
-                
+
+
+
+
 <script>
-	
-	$('#fc-external-drag').fullCalendar({
-		header: {
-			left: '',
-			center: 'title',
-			right: ''
-		},
-		editable: false,
-		locale: 'es',
-		droppable: false, // this allows things to be dropped onto the calendar
-		defaultDate: '{hoy}',
-		defaultView: 'listWeek',
-		allDaySlot: false,
-		nowIndicator: true,
-		slotDuration: '00:{horaint}:00',
-		slotLabelInterval: '01:00',
-		slotLabelFormat: 'HH(:mm)',
-		scrollTime: '{horaini}',
-		minTime: '{minTimeEvent}',
-		maxTime: '{maxTimeEvent}',
-		businessHours:{
-			dow: [ 0, 1, 2, 3, 4, 5, 6 ], // Monday, Tuesday, Wednesday
-			start: '{eventoInicio}', // 8am
-			end: '{eventoFin}' // 6pm
-		  },
-		events: [
-				<!-- BEGIN actividades -->
-					{
-						id: '{agereg}',
-						title: '{agetitulo} - Lugar:{agelugar}',
-						start: '{agehorini}',
-						end: '{agehorfin}',
-						color: '{color}'
-					},
-				<!-- END actividades -->
-					{
-						title: 'NULL',
-						start: '1990-01-01',
-						color: 'black'
-					}
-		],
-		drop: function() {
-			// is the "remove after drop" checkbox checked?
-			if ($('#drop-remove').is(':checked')) {
-				// if so, remove the element from the "Draggable Events" list
-				//$(this).remove();
-			}
-		},
-		eventClick: function(calEvent, jsEvent, view) {
-			//console.log('Event: ' + calEvent.title);
-			//console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-			//console.log('View: ' + view.name);
-			showView(calEvent.id);
-			
-		}
-	});
-</script>				
+
+
+</script>

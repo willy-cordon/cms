@@ -1,7 +1,7 @@
 <?
 if (!isset($_SESSION))  session_start();
-// include($_SERVER["DOCUMENT_ROOT"] . '/webcoordinador/func/zglobals.php'); //DEV
-include($_SERVER["DOCUMENT_ROOT"].'/func/zglobals.php'); //PRD
+//include($_SERVER["DOCUMENT_ROOT"] . '/webcoordinador/func/zglobals.php'); //DEV
+include($_SERVER["DOCUMENT_ROOT"] . '/func/zglobals.php'); //PRD
 //--------------------------------------------------------------------------------------------------------------
 require_once GLBRutaFUNC . '/sigma.php';
 require_once GLBRutaFUNC . '/zdatabase.php';
@@ -215,7 +215,7 @@ $tmpl->setVariable('perpasacc', $perpasacc);
 $tmpl->setVariable('peravatar', str_replace('../', '', $peravatar));
 
 //Nombre del Evento
-if(isset($_SESSION['PARAMETROS'])){
+if (isset($_SESSION['PARAMETROS'])) {
 
 	$tmpl->setVariable('SisNombreEvento', $_SESSION['PARAMETROS']['SisNombreEvento']);
 }
@@ -308,6 +308,8 @@ $query = "SELECT AVIREG, AVITITULO, AVIDESCRIP, AVIIMAGEN, AVIURL
 // logerror($query);
 $Table = sql_query($query, $conn);
 $countnoticias = -1;
+
+$active = 'active';
 for ($i = 0; $i < $Table->Rows_Count; $i++) {
 	$row = $Table->Rows[$i];
 	$avireg 	= trim($row['AVIREG']);
@@ -330,9 +332,13 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 	$tmpl->setVariable('avireg', $avireg);
 	$tmpl->setVariable('avititulo', $avititulo);
 	$tmpl->setVariable('avidescrip', $avidescrip);
+	$tmpl->setVariable('active', $active);
 	$tmpl->setvariable('aviurl', $aviurl);
 	$tmpl->setVariable('aviimagen', $pathimg . '/' . $avireg . '/' . $aviimagen);
 	$tmpl->parse('noticias');
+
+	$active = "";
+
 	$countnoticias++;
 }
 
@@ -534,6 +540,52 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 		$tmpl->parse('actividades');
 	}
 }
+
+$query = "SELECT EXPBANIMG2, EXPREG,EXPFOLLETO, EXPNOMBRE,EXPANUNCIOBANNER, EXPANUNCIOCUADR
+FROM EXP_MAEST
+WHERE ESTCODIGO<>3";
+$Table = sql_query($query, $conn);
+
+$active = 'active';
+$active2 = 'active';
+for ($i = 0; $i < $Table->Rows_Count; $i++) {
+
+	$row = $Table->Rows[$i];
+	$expbanimg1 = trim($row['EXPBANIMG2']);
+	$expreg = trim($row['EXPREG']);
+	$expfolleto = trim($row['EXPFOLLETO']);
+	$expnombre = trim($row['EXPNOMBRE']);
+	$expcod = trim($row['EXPREG']);
+	$expanunciobanner = trim($row['EXPANUNCIOBANNER']);
+	$expanunciocuadr = trim($row['EXPANUNCIOCUADR']);
+
+
+	$tmpl->setCurrentBlock('bannersponsor');
+	$tmpl->setVariable('active', $active);
+	$tmpl->setVariable('expreg', $expreg);
+	$tmpl->setVariable('expfolleto', $expfolleto);
+	$tmpl->setVariable('expcod', $expcod);
+	$tmpl->setVariable('expnombre', $expnombre);
+
+	$tmpl->setVariable('expbamimg1', $expbanimg1);
+	$tmpl->setVariable('expanunciobanner', $expanunciobanner);
+
+	$tmpl->parse('bannersponsor');
+
+
+
+	$tmpl->setCurrentBlock('anuncio');
+
+	$tmpl->setVariable('active', $active2);
+	$tmpl->setVariable('expreg', $expreg);
+	$tmpl->setVariable('expanunciocuadr', $expanunciocuadr);
+	$tmpl->parse('anuncio');
+
+	$active = '';
+	$active2 = '';
+}
+
+
 
 
 $tmpl->show();

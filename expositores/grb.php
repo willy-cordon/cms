@@ -322,6 +322,94 @@ if (isset($_FILES['expbanimg3'])) {
 	$err = sql_execute($query, $conn, $trans);
 }
 
+//BANNER Responsive
+if (isset($_FILES['expfolleto'])) {
+	$ext 	= pathinfo($_FILES['expfolleto']['name'], PATHINFO_EXTENSION);
+	$name 	= "EXP_FOLLETO_" . date("H-i-s.") . $ext;
+
+	if (!file_exists($pathimagenes . $expreg)) {
+		mkdir($pathimagenes . $expreg);
+	}
+	if (file_exists($pathimagenes . $expreg . '/' . $name)) {
+		unlink($pathimagenes . $expreg . '/' . $name);
+	}
+
+	//Limpio el directorio - - - - - - - - - - - - - - - - - 
+	$dirint = dir($pathimagenes . $expreg . '/');
+	while (($archivo = $dirint->read()) !== false) {
+		if (strpos($archivo, 'EXP_FOLLETO_') !== false) {
+			unlink($pathimagenes . $expreg . '/' . $archivo);
+		}
+	}
+	$dirint->close();
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+	move_uploaded_file($_FILES['expfolleto']['tmp_name'], $pathimagenes . $expreg . '/' . $name);
+
+
+	$query = "	UPDATE EXP_MAEST SET EXPFOLLETO='$name' WHERE EXPREG=$expreg ";
+	$err = sql_execute($query, $conn, $trans);
+}
+
+
+//anuncios 	expanunciobanner/expanunciocuadr
+if (isset($_FILES['expanunciobanner'])) {
+	$ext 	= pathinfo($_FILES['expanunciobanner']['name'], PATHINFO_EXTENSION);
+	$name 	= "EXP_ANUNCIO_BANNER_" . date("H-i-s.") . $ext;
+
+	if (!file_exists($pathimagenes . $expreg)) {
+		mkdir($pathimagenes . $expreg);
+	}
+	if (file_exists($pathimagenes . $expreg . '/' . $name)) {
+		unlink($pathimagenes . $expreg . '/' . $name);
+	}
+
+	//Limpio el directorio - - - - - - - - - - - - - - - - - 
+	$dirint = dir($pathimagenes . $expreg . '/');
+	while (($archivo = $dirint->read()) !== false) {
+		if (strpos($archivo, 'EXP_ANUNCIO_BANNER') !== false) {
+			unlink($pathimagenes . $expreg . '/' . $archivo);
+		}
+	}
+	$dirint->close();
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+	move_uploaded_file($_FILES['expanunciobanner']['tmp_name'], $pathimagenes . $expreg . '/' . $name);
+
+
+	$query = "	UPDATE EXP_MAEST SET EXPANUNCIOBANNER='$name' WHERE EXPREG=$expreg ";
+	$err = sql_execute($query, $conn, $trans);
+}
+
+if (isset($_FILES['expanunciocuadr'])) {
+	$ext 	= pathinfo($_FILES['expanunciocuadr']['name'], PATHINFO_EXTENSION);
+	$name 	= "EXP_ANUNCIO_CUADRADO_" . date("H-i-s.") . $ext;
+
+	if (!file_exists($pathimagenes . $expreg)) {
+		mkdir($pathimagenes . $expreg);
+	}
+	if (file_exists($pathimagenes . $expreg . '/' . $name)) {
+		unlink($pathimagenes . $expreg . '/' . $name);
+	}
+
+	//Limpio el directorio - - - - - - - - - - - - - - - - - 
+	$dirint = dir($pathimagenes . $expreg . '/');
+	while (($archivo = $dirint->read()) !== false) {
+		if (strpos($archivo, 'EXP_ANUNCIO_CUADRADO') !== false) {
+			unlink($pathimagenes . $expreg . '/' . $archivo);
+		}
+	}
+	$dirint->close();
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+	move_uploaded_file($_FILES['expanunciocuadr']['tmp_name'], $pathimagenes . $expreg . '/' . $name);
+
+
+	$query = "	UPDATE EXP_MAEST SET EXPANUNCIOCUADR='$name' WHERE EXPREG=$expreg ";
+	$err = sql_execute($query, $conn, $trans);
+}
+
+
 //--------------------------------------------------------------------------------------------------------------
 if ($err == 'SQLACCEPT' && $errcod == 0) {
 	sql_commit_trans($trans);

@@ -277,12 +277,12 @@
 			$tmpl->setVariable('esfavorito'	, $esfavo);
 			if($esfavo==1){
 				//logerror('entrocorazon lleno');
-				$tmpl->setVariable('colorfavo'	, 'fa-heart');
+				$tmpl->setVariable('colorfavo'	, 'fa-star');
 			
 			}else{
 				//logerror('entrocorazon vacio');
 				
-				$tmpl->setVariable('colorfavo'	, 'fa-heart-o');
+				$tmpl->setVariable('colorfavo'	, 'fa-star-o');
 			}
 
 			//Busco si ya tengo una reunion con este perfil

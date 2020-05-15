@@ -25,6 +25,8 @@
 											<input type="text" id="expnombre" name="expnombre" class="form-control"
 												value="{expnombre}">
 										</div>
+
+
 										<div class="col-md-12 mt-3">
 											<label for="pernombre">Categoria: </label>
 											<select id="expcatego" name="expcatego" class="form-control">
@@ -38,12 +40,49 @@
 								</div>
 
 
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title-wrap bar-warning">
+											<h6 class="card-title">Anuncios Sitio</h6>
+										</div>
+									</div>
+
+									<div class="card-body p-3">
+
+										<div class="col-md-12 mt-3">
+											<label for="pernombre">Banner: </label>
+
+											<input type="file" name="expanunciobanner" id="expanunciobanner">
+											<label for="expanunciobanner">{expanunciobanner}</label>
+
+										</div>
+
+										<div class="col-md-12 mt-3">
+											<label for="pernombre">Cuadrado: </label>
+
+											<input type="file" name="expanunciocuadr" id="expanunciocuadr">
+											<label for="expanunciocuadr">{expanunciocuadr}</label>
+
+										</div>
+
+										<div class="col-md-12 mt-3">
+											<label for="pernombre">Folleto: </label>
+
+											<input type="file" name="expfolleto" id="expfolleto">
+											<label for="expfolleto">{expfolleto}</label>
+
+										</div>
+
+									</div>
+								</div>
 
 								<div class="card">
 									<div class="card-header">
 										<div class="card-title-wrap bar-warning">
 											<h6 class="card-title">Datos de contacto</h6>
 										</div>
+
+
 									</div>
 
 									<div class="card-body p-2">
@@ -552,6 +591,24 @@
 		if (typeof ($('#expavatar')[0].files[0]) !== "undefined") {
 			formData.append('expavatar', $('#expavatar')[0].files[0]);
 		}
+
+
+		//folleto
+		if (typeof ($('#expfolleto')[0].files[0]) !== "undefined") {
+			formData.append('expfolleto', $('#expfolleto')[0].files[0]);
+		}
+
+
+		//anuncios 	expanunciobanner/expanunciocuadr
+
+		if (typeof ($('#expanunciobanner')[0].files[0]) !== "undefined") {
+			formData.append('expanunciobanner', $('#expanunciobanner')[0].files[0]);
+		}
+
+		if (typeof ($('#expanunciocuadr')[0].files[0]) !== "undefined") {
+			formData.append('expanunciocuadr', $('#expanunciocuadr')[0].files[0]);
+		}
+
 
 		$.ajax({
 			type: "POST",

@@ -53753,4 +53753,45 @@ input[type='checkbox'].switch, input[type='radio'].switch {
     height: 300px;
   }
 
+
+
+
+  .carousel-sponsor {
+    position: relative;
+  }
+
+  .folleto {
+    position: absolute;
+    top: 10%;
+    right: 1%;
+    background-color: #fd8105;
+    color: white;
+
+  }
+  /* BANNERS SECCIONES */
+
+  .banner-fixed{
+     position: fixed; 
+     z-index: 1000;
+     bottom: 10px; 
+  }
+
+  .banner-fixed img{
+    width: 50%;
+  }
  
+
+  .banner-head img{
+    width: 80%
+  }
+
+  
+@media (max-width: 900px) {
+  .banner-fixed img{
+    width: 100%;
+  }
+
+  .banner-head img{
+    width: 100%
+  }
+}

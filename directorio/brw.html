@@ -5,7 +5,7 @@
 	<div class="card-contact">
 
 		<div class="fav actions float-right mt-2 mr-2" onclick="setFavorito(this,{percodigo})" data-favo="{esfavorito}">
-			<i class="fa fa-fw  fa-heart-o danger" style="font-size:20px;"></i>
+			<i style="color: goldenrod; font-size: 20px;" class="fa fa-fw  fa fa-star-o " style="font-size:20px;"></i>
 		</div>
 		<div class="mt-2 mb-2">
 
@@ -84,12 +84,12 @@
 		var esfavo = $(obj).data('favo');
 
 		if (esfavo == 1) {
-			$(obj).find('i').removeClass('fa-heart');
-			$(obj).find('i').addClass('fa-heart-o');
+			$(obj).find('i').removeClass('fa-star');
+			$(obj).find('i').addClass('fa-star-o');
 			$(obj).data('favo', 0);
 		} else {
-			$(obj).find('i').addClass('fa-heart');
-			$(obj).find('i').removeClass('fa-heart-o');
+			$(obj).find('i').addClass('fa-star');
+			$(obj).find('i').removeClass('fa-star-o');
 			$(obj).data('favo', 1);
 		}
 

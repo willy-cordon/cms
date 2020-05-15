@@ -71,6 +71,8 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 	$expimg1 	= trim($row['EXPIMG1']);
 	$expimg2 	= trim($row['EXPIMG2']);
 	$expimg3 	= trim($row['EXPIMG3']);
+	$expfolleto 	= trim($row['EXPFOLLETO']);
+
 
 
 
@@ -111,6 +113,8 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 	$tmpl->setVariable('expvid1', $expvid1);
 	$tmpl->setVariable('expvid2', $expvid2);
 	$tmpl->setVariable('expvid3', $expvid3);
+	$tmpl->setVariable('expfolleto', $expfolleto);
+	
 	$tmpl->parse('browser');
 }
 

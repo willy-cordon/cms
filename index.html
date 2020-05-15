@@ -10,7 +10,7 @@
 	<meta name="keywords"
 		content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
 	<meta name="author" content="PIXINVENT">
-	<title>{SisNombreEvento}</title>
+	<title>CMS Online</title>
 	<link rel="apple-touch-icon" sizes="60x60" href="app-assets/img/ico/apple-icon-60.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="app-assets/img/ico/apple-icon-76.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="app-assets/img/ico/apple-icon-120.png">
@@ -40,7 +40,7 @@
 	<div class="wrapper nav-collapsed menu-collapsed">
 
 		<!-- Menu  -->
-		<div data-active-color="white" data-background-color="black" data-image="app-assets/img/sidebar-bg/04.jpg"
+		<div data-active-color="white" data-background-color="black" data-image="imagenes-evento/menu.jpg"
 			class="app-sidebar">
 
 
@@ -48,8 +48,12 @@
 			<div class="sidebar-content ">
 				<div class="nav-container">
 					<div class="sidebar-header">
-						<div class="logo clearfix"><a href="index" class="logo-text d-flex justify-content-center"></a>
-							<div class="logo-img"><img src="app-assets/img/logo-light.png" alt="logo" /></div>
+						<div class="logo clearfix">
+							<a href="index" class="logo-text d-flex justify-content-center">
+
+								<img class=" p-1" src="imagenes-evento/logo.png" alt="logo" width="100px"
+									height="100px" />
+							</a>
 						</div>
 					</div>
 					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
@@ -202,79 +206,11 @@
 					<span class="d-lg-none navbar-right navbar-collapse-toggle">
 						<a class="open-navbar-container"><i class="ft-more-vertical"></i></a>
 					</span>
-					<!---->
-					<!--
-			<a class="ml-2 display-inline-block">
-				<i class="ft-shopping-cart blue-grey darken-4"></i>
-				<p class="d-none">cart</p>
-			</a>
-            -->
-					<!--
-			<div class="dropdown ml-2 display-inline-block">
-				<a id="apps" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle">
-					<i class="ft-edit blue-grey darken-4"></i>
-					<span class="mx-1 blue-grey darken-4 text-bold-400">Apps</span>
-				</a>
-				<div class="apps dropdown-menu">
-					<div class="arrow_box">
-						<a href="chat.html" class="dropdown-item py-1">
-							<span>Chat</span>
-						</a>
-						
-						<a href="taskboard.html" class="dropdown-item py-1">
-							<span>TaskBoard</span>
-						</a>
-						<a href="calendar.html" class="dropdown-item py-1">
-							<span>Calendar</span>
-						</a>
-					</div>
-				</div>
-            </div>
-			-->
 				</div>
 
 				<div class="navbar-container ">
 					<div id="navbarSupportedContent" class="collapse navbar-collapse">
 						<ul class="navbar-nav">
-
-							<!-- <li class=" nav-item mt-2 navbar-search text-left dropdown"><a id="search" href="#"
-									data-toggle="dropdown" class="nav-link dropdown-toggle"><i
-										class="ft-search blue-grey darken-4"></i></a>
-								<div aria-labelledby="search" class="search dropdown-menu dropdown-menu-right ">
-									<div class="arrow_box_right">
-										<form role="search" class="navbar-form navbar-right">
-											<div class="position-relative has-icon-right mb-0">
-												<input id="navbar-search" type="text" placeholder="Search"
-													class="form-control" />
-												<div class="form-control-position navbar-search-close"><i
-														class="ft-x"></i></div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</li> -->
-
-							<li class="dropdown nav-item mt-1">
-								<a id="dropdownBasic" href="#" data-toggle="dropdown"
-									class="nav-link position-relative dropdown-toggle">
-									<i class="ft-flag blue-grey darken-4"></i>
-									<span class="selected-language d-none"></span>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<div class="arrow_box_right">
-										<a href="index.php?language=ing" class="dropdown-item py-1">
-											<img src="app-assets/img/flags/us.png" alt="English Flag" class="langimg" />
-											<span> English</span>
-										</a>
-										<a href="index.php?language=esp" class="dropdown-item py-1">
-											<img src="app-assets/img/flags/es.png" alt="Spanish Flag" class="langimg" />
-											<span> Spanish</span>
-										</a>
-
-									</div>
-								</div>
-
-							</li>
 
 							<li class="dropdown nav-item mt-1 " id="notigroup">
 								<a id="dropdownBasic2" href="#" onclick="notificationupd()" data-toggle="dropdown"
@@ -288,27 +224,14 @@
 								</a>
 
 								<div class="notification-dropdown dropdown-menu dropdown-menu-right " id="notiopen">
-
 									<div class="arrow_box_right">
 										<div class="noti-list" id="notification">
-
-
-											<!--Recibe las notificaciones-->
 										</div>
-
-										<!--   a  class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read All Notifications</a -->
 									</div>
 								</div>
 							</li>
 
-							<!--
-                <li class="nav-item mt-1 d-none d-lg-block">
-					<a id="navbar-notification-sidebar" href="javascript:;" class="nav-link position-relative notification-sidebar-toggle">
-						<i style="color:grey;" class="ft-filter">{Idioma_Filtros}</i>
-						<p class="d-none">Notifications Sidebar</p>
-					</a>
-				</li>
-				-->
+
 
 							<li class="dropdown nav-item mr-0">
 								<a id="dropdownBasic3" href="#" data-toggle="dropdown"
@@ -318,9 +241,6 @@
 											title="{pernombre} {perapelli}" />
 									</span>
 									<p class="d-none">Usuario</p>
-
-
-
 								</a>
 								<div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
 									<div class="arrow_box_right">
@@ -362,36 +282,43 @@
 
 						<!-- Slide banner -->
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-							</ol>
+
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100" src="banimg/banner-1082646_1280.jpg" alt="First slide">
+									<img class="d-block w-100" src="imagenes-evento/banner.jpg" alt="First slide">
 								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="banimg/banner-1082646_1280.jpg" alt="Second slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="banimg/banner-1082646_1280.jpg" alt="Third slide">
-								</div>
+
 							</div>
-							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
+
 						</div>
-						<!-- Fin slider banner -->
 
 
+
+
+						<div class="carousel-container  mt-4 mb-2">
+
+
+							<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+								<div class="carousel-inner" style="height: 120px;">
+									<!-- BEGIN bannersponsor -->
+
+									<div class="carousel-item {active} carousel-sponsor">
+
+										<img class="d-block w-100 h-100" src="expimg/{expreg}/{expanunciobanner}">
+
+
+
+
+									</div>
+
+									<!-- END bannersponsor -->
+								</div>
+
+							</div>
+							<!-- Fin slider banner -->
+
+						</div>
 						<!-- ------------------------ END SECTION CAROUSEL ------------------------- -->
 
 
@@ -522,6 +449,7 @@
 
 
 														<!-- END spkimg -->
+														<!-- BEGIN actividades -->
 													</ul>
 												</td>
 												<td class="text-truncate">{agelugar} </td>
@@ -550,7 +478,85 @@
 
 						<div class="col-lg-12 col-xl-12 col-md-12 d-flex justify-content-center">
 
-							<div class="col-xl-6 col-sm-12 col-lg-6 col-md-6 ">
+							<div class="col-xl-4 col-sm-12 col-lg-4 col-md-4 h-100">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title-wrap bar-danger">
+											<h4 class="card-title">Galeria de anuncios</h4>
+										</div>
+									</div>
+
+
+									<div class="card-body h-100">
+										<div class="col-12 col-sm-12" id="activity">
+
+											<div class="mb-2">
+												<div id="carouselExampleIndicators" class="carousel slide"
+													data-ride="carousel">
+													<div class="carousel-inner">
+														<!-- BEGIN anuncio -->
+														<div class="carousel-item {active} p-4 ">
+
+															<img class="d-block w-100"
+																src="expimg/{expreg}/{expanunciocuadr}">
+														</div>
+														<!-- END anuncio -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+							<div class=" col-xl-4 col-sm-12 col-lg-4 col-4 card ">
+								<div class=" card p-2 container-noti">
+									<div class="card-header">
+										<div class="card-title-wrap bar-danger">
+											<h4 class="card-title ">Noticias</h4>
+										</div>
+									</div>
+									<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+										<div class="carousel-inner">
+
+											<!-- BEGIN noticias -->
+											<div class="carousel-item {active} text-center">
+												<div class="col-12 text-center">
+
+													<img class="card-img-top d-block w-100" src="{aviimagen}"
+														alt="Card image cap" style="width: 400px;">
+												</div>
+												<div class="card-body">
+													<div class="card-block">
+														<h5 class="card-title-noti card-title font-small-1 ">
+															{avititulo}</h5>
+														<a href="{aviurl}" class="mt-2 btn  cc_pointer w-100 "
+															style="background-color: #fd8105;color: white;">Leer
+															Mas</a>
+													</div>
+												</div>
+											</div>
+											<!-- END noticias -->
+										</div>
+										<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+											data-slide="prev">
+											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="sr-only">Previous</span>
+										</a>
+										<a class="carousel-control-next" href="#carouselExampleControls" role="button"
+											data-slide="next">
+											<span class="carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="sr-only">Next</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-sm-12 col-lg-4 col-md-4 ">
 								<div class="card">
 									<div class="card-header">
 										<div class="card-title-wrap bar-danger">
@@ -567,10 +573,10 @@
 														<img id="" src="{peravatar}" alt="avatar"
 															title="{pernombre} {perapelli}">
 													</div>
-													<div class="act-time">{reufecha}</div>
+													<div style="color: #362a72;" class="act-time">{reufecha}</div>
 													<div class="base-timeline-info">
-														<a href="#"
-															class="text-uppercase text-success font-small-1 ">{percompan}</a>
+														<a style="color: #fd8105;" href="#"
+															class="text-uppercase  font-small-1 ">{percompan}</a>
 
 
 													</div>
@@ -584,60 +590,15 @@
 										</div>
 
 										<div class="col-lg-12">
-											<a href="calendario/bsq"
-												class="btn btn-primary btn-md btn-block text-center">Ver mas</a>
+											<a href="calendario/bsq" class="btn  btn-md btn-block text-center"
+												style="background-color: #362a72; color: white;">Ver
+												mas</a>
 										</div>
 									</div>
 
 								</div>
 							</div>
 
-
-							<div class="col-xl-4 col-sm-12 col-lg-4 col-md-3">
-								<div class="card">
-									<div class="card-header">
-										<div class="card-title-wrap bar-danger">
-											<h4 class="card-title">Speakers</h4>
-										</div>
-									</div>
-
-
-									<div class="card-body">
-										<div class="col-12 col-sm-12 timeline-right d-flex justify-content-center"
-											id="activity">
-
-											<div class="container-speakers">
-												<!-- BEGIN spk -->
-												<div class="col-12">
-
-													<div class="media mb-3">
-														<img alt="96x96"
-															class="media-object d-flex mr-3 align-self-center bg-primary height-50 rounded-circle"
-															src="spkimg/{spkreg}/{spkimg}">
-														<div class="media-body">
-															<h4 class="font-medium-1 mt-1 mb-0"> {spktitulo}
-															</h4>
-															<span
-																class="font-small-3 grey mb-0 text-bold-500">{spkcargo}<br></span>
-															<span class=" font-small-3 grey mb-0 ">{spkempres}
-															</span>
-														</div>
-
-													</div>
-												</div>
-												<!-- END spk -->
-											</div>
-										</div>
-
-
-
-
-									</div>
-
-
-								</div>
-
-							</div>
 						</div>
 
 					</div>
@@ -645,54 +606,48 @@
 
 
 
-
-
-
-					<!-- ----------------- END SECTION CALENDARIO // ACTIVIDAD ----------------- -->
-
-
-					<!-- ----------------------------------------------------------------------- -->
-					<!--                            SECTION NOTICIAS                             -->
-					<!-- ----------------------------------------------------------------------- -->
-
-					<div class=" col-xl-12 col-sm-12 col-lg-12 col-12 ">
-						<div class=" card p-2 container-noti">
+					<div class="col-xl-12 col-sm-12 col-lg-12 col-md-12 ">
+						<div class="card">
 							<div class="card-header">
 								<div class="card-title-wrap bar-danger">
-									<h4 class="card-title ">Noticias</h4>
+									<h4 class="card-title">Calendario Personal</h4>
 								</div>
 							</div>
-							<!-- BEGIN notise -->
-							<div class="row d-flex justify-content-center">
-								<!-- BEGIN noticias -->
-								<div class="card card col-xl-3 col-lg-12 col-10 m-2  card-noti ">
-									<img class="card-img-top p-2" src="{aviimagen}" alt="Card image cap"
-										style="height:200px;">
-									<div class="card-body">
-										<div class="card-block">
-											<h5 class="card-title-noti card-title font-small-1 ">
-												{avititulo}</h5>
-											<a href="{aviurl}"
-												class="mt-2 btn btn-outline-success btn-sm btn-block cc_pointer">Leer
-												Mas</a>
-										</div>
-									</div>
+							<div class="card-body">
+								<div class="col-12 timeline-right d-flex justify-content-center" id="activity">
 
+									<ul class="list-unstyled base-timeline activity-timeline  ">
+										<!-- BEGIN notificaciones -->
+										<li class="timeline-item">
+											<div class="timeline-icon">
+												<img id="" src="{peravatar}" alt="avatar"
+													title="{pernombre} {perapelli}">
+											</div>
+											<div style="color: #362a72;" class="act-time">{reufecha}</div>
+											<div class="base-timeline-info">
+												<a style="color: #fd8105;" href="#"
+													class="text-uppercase  font-small-1 ">{percompan}</a>
+
+
+											</div>
+											<small class="text-muted">
+												{reuhora}
+											</small>
+										</li>
+										<!-- END notificaciones -->
+
+									</ul>
 								</div>
-								<!-- END noticias -->
 
+								<div class="col-lg-12">
+									<a href="calendario/bsq" class="btn  btn-md btn-block text-center"
+										style="background-color: #362a72; color: white;">Ver
+										mas</a>
+								</div>
 							</div>
-							<!-- END notise -->
+
 						</div>
 					</div>
-
-
-					<!-- ------------------------ END SECTION NOTICIAS ------------------------- -->
-
-
-
-
-
 				</div>
 			</div>
 		</div>
@@ -887,8 +842,13 @@
 	<!-- END PAGE LEVEL JS-->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/js/mdb.min.js">
 	</script>
+
+
+
+
 </body>
 
+>
 
 
 
