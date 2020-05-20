@@ -53795,3 +53795,30 @@ input[type='checkbox'].switch, input[type='radio'].switch {
     width: 100%
   }
 }
+
+
+
+
+.color-principal-evento{
+  color: #fd8105;
+}
+
+.color-secundario-evento{
+  color: #362a72;
+}
+
+.bg-main-event{
+  background-color: #fd8105;
+}
+
+.bg-sec-event{
+  background-color: #362a72;
+}
+
+.titulo-charla{
+  color: var(--gray)
+}
+
+.titulo-charla:hover{
+  color: var(--gray)
+}

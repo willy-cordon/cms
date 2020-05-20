@@ -11,12 +11,8 @@
 		content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
 	<meta name="author" content="PIXINVENT">
 	<title>CMS Online</title>
-	<link rel="apple-touch-icon" sizes="60x60" href="app-assets/img/ico/apple-icon-60.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="app-assets/img/ico/apple-icon-76.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="app-assets/img/ico/apple-icon-120.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="app-assets/img/ico/apple-icon-152.png">
-	<link rel="shortcut icon" type="image/x-icon" href="app-assets/img/ico/favicon.ico">
-	<link rel="shortcut icon" type="image/png" href="app-assets/img/ico/favicon-32.png">
+
+	<link rel="shortcut icon" type="image/png" href="imagenes-evento/logo.jpg">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-touch-fullscreen" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -37,6 +33,7 @@
 
 <body data-col="2-columns" class=" 2-columns ">
 	<!-- ////////////////////////////////////////////////////////////////////////////-->
+	<!-- ////////////////////////////////////////////////////////////////////////////-->
 	<div class="wrapper nav-collapsed menu-collapsed">
 
 		<!-- Menu  -->
@@ -51,22 +48,21 @@
 						<div class="logo clearfix">
 							<a href="index" class="logo-text d-flex justify-content-center">
 
-								<img class=" p-1" src="imagenes-evento/logo.png" alt="logo" width="100px"
-									height="100px" />
+								<img class=" p-1" src="imagenes-evento/logo.jpg" alt="logo" width="50%" />
 							</a>
 						</div>
 					</div>
 					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
 						style="display:{viewadmin}">
 						<li class="has-sub nav-item">
-							<a href="#">
-								<i class="icon-home"></i>
+							<a>
+								<i class="icon-settings"></i>
 								<span data-i18n="" class="menu-title">{Idioma_Configuracion}</span>
 							</a>
 							<ul class="menu-content">
 								<li><a href="perfiles/bsq" class="menu-item">{Idioma_Perfiles}</a></li>
 								<li class="has-sub">
-									<a href="#">{Idioma_Productos}</a>
+									<a href="">{Idioma_Productos}</a>
 									<ul class="menu-content">
 										<li><a href="sectores/bsq" class="menu-item"
 												style="{btnsectores}">{Idioma_Sectores}</a></li>
@@ -79,7 +75,8 @@
 									</ul>
 								</li>
 								<li style="{ParamMenuNoticias}"><a href="avisos/bsq"
-										class="menu-item">{Idioma_Noticias}</a></li>
+										class="menu-item">{Idioma_Noticias}</a>
+								</li>
 								<li style="{ParamMenuAgenda}"><a href="agenda/bsq" class="menu-item">{Idioma_Agenda}</a>
 								</li>
 								<li style="{ParamMenuMensajes}"><a href="mensajeria/bsq"
@@ -89,17 +86,21 @@
 								<li style="{ParamMenuMensajes}"><a href="tipos/bsq" class="menu-item">Tipos De
 										Perfil</a></li>
 								<li style="{ParamMenuMensajes}"><a href="clases/bsq" class="menu-item">Clase</a></li>
-								<li style="{ParamMenuMensajes}"><a href="cupones/bsq" class="menu-item">Cupones</a></li>
-								<li style="{ParamMenuMensajes}"><a href="idioma/bsq" class="menu-item">Idioma</a></li>
-								<li style="{ParamMenuMensajes}"><a href="pitcher/bsq" class="menu-item">Pitcher</a></li>
+								<li style="{ParamMenuMensajes}"><a href="cupones/bsq" class="menu-item">Cupones</a>
+								</li>
+								<li style="{ParamMenuMensajes}"><a href="idioma/bsq" class="menu-item">Idioma</a>
+								</li>
+								<li style="{ParamMenuMensajes}"><a href="pitcher/bsq" class="menu-item">Pitcher</a>
+								</li>
 								<li><a href="expositores/bsq" class="menu-item">{Idioma_ExpositoresApp}</li>
 								<li><a href="traduccion/bsq">{Idioma_Tradiccion}</a></li>
 
 								<li style="{ParamMenuExportar}" class="has-sub">
-									<a href="#">Exportar</a>
+									<a href="">Exportar</a>
 									<ul class="menu-content">
 										<li><a href="exportar/exportarPerfiles.php" class="menu-item"
-												style="#">Perfiles</a></li>
+												style="#">Perfiles</a>
+										</li>
 										<li><a href="exportar/exportarReuniones.php" class="menu-item"
 												style="#">Reuniones</a></li>
 										<li><a href="exportar/exportarChats.php" class="menu-item"
@@ -119,18 +120,18 @@
 					</ul>
 					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
 						<li class="has-sub nav-item">
-							<a href="#">
-								<i class="icon-home"></i>
-								<span data-i18n="" class="menu-title">{Idioma_Directorio}</span>
+							<a>
+								<i class="icon-list"></i>
+								<span data-i18n="" class="menu-title">Asistentes</span>
 							</a>
 							<ul class="menu-content">
 								<li><a href="directorio/bsq" class="menu-item">{Idioma_Buscar}</a></li>
 								<li><a href="directorio/bsq?R" class="menu-item">{Idioma_Recomendados}</a></li>
 								<li class="has-sub">
-									<a href="#">{Idioma_Reuniones}</a>
+									<a href="">{Idioma_Reuniones}</a>
 									<ul class="menu-content">
 										<input type="hidden" id="fltbuscar" name="fltbuscar" value="{fltbuscar}">
-										<li {fltbuscaractive_1}><a href="reuniones/bsq?T=1"
+										<li {fltbuscaractive_1}><a href=".reuniones/bsq?T=1"
 												class="menu-item">{Idioma_ReunionesEnviadas}<span id="cantenv"
 													class="tag badge badge-pill badge-primary mt-1">{cantEnviados}</span></a>
 										</li>
@@ -151,26 +152,54 @@
 							</ul>
 						</li>
 					</ul>
-					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-						<li class="nav-item">
-							<a href="calendario/bsq">
-								<i class="icon-calendar"></i>
-								<span data-i18n="" class="menu-title">{Idioma_Calendario}</span>
-							</a>
-						</li>
-					</ul>
+
 					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
 						style="{ParamMenuActividades}">
-						<li class="nav-item">
-							<a href="actividades/bsq">
-								<i class=" fa fa-tasks"></i>
-								<span data-i18n="" class="menu-title">{Idioma_Actividades}</span>
+						<li class="nav-item ">
+							<a href="stand/bsq">
+								<i class="icon-badge"></i>
+								<span data-i18n="" class="menu-title">Sponsor</span>
 							</a>
 						</li>
 						<li class="nav-item ">
-							<a href="stand/bsq">
+							<a href="">
+								<i class="icon-speech"></i>
+								<span data-i18n="" class="menu-title">Mensajes</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="actividades/bsq">
+								<i class=" fa fa-tasks"></i>
+								<span data-i18n="" class="menu-title">Programa</span>
+							</a>
+						</li>
+
+						<li class="nav-item ">
+							<a href="">
+								<i class="icon-user"></i>
+								<span data-i18n="" class="menu-title">Speakers</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="calendario/bsq">
 								<i class="icon-calendar"></i>
-								<span data-i18n="" class="menu-title">Stand Virtual</span>
+								<span data-i18n="" class="menu-title">Reuniones</span>
+							</a>
+						</li>
+
+
+						<li class="nav-item ">
+							<a href="">
+								<i class="icon-bubbles"></i>
+								<span data-i18n="" class="menu-title">Noticias</span>
+							</a>
+						</li>
+
+
+						<li class="nav-item ">
+							<a href="">
+								<i class="icon-bubbles"></i>
+								<span data-i18n="" class="menu-title">Credihub</span>
 							</a>
 						</li>
 					</ul>
@@ -179,7 +208,7 @@
 						
 						<button type="button" class="btn btn-outline-warning" >
 
-								<i class="fa fa-cogs"> <a  href="configuracion/bsq.php" >Configuración</a> </i>
+								<i class="fa fa-cogs"> <a  href="../configuracion/bsq.php" >Configuración</a> </i>
 
 						</button>
 					</div>  -->
@@ -188,6 +217,7 @@
 			</div>
 			<div class="sidebar-background"></div>
 		</div>
+
 
 		<!-- Menu End -->
 
@@ -213,7 +243,7 @@
 						<ul class="navbar-nav">
 
 							<li class="dropdown nav-item mt-1 " id="notigroup">
-								<a id="dropdownBasic2" href="#" onclick="notificationupd()" data-toggle="dropdown"
+								<a id="dropdownBasic2" href="" onclick="notificationupd()" data-toggle="dropdown"
 									class="nav-link position-relative dropdown-toggle">
 									<i class="ft-bell blue-grey darken-4"></i>
 
@@ -234,7 +264,7 @@
 
 
 							<li class="dropdown nav-item mr-0">
-								<a id="dropdownBasic3" href="#" data-toggle="dropdown"
+								<a id="dropdownBasic3" href="" data-toggle="dropdown"
 									class="nav-link position-relative dropdown-user-link dropdown-toggle">
 									<span class="avatar avatar-online">
 										<img id="navbar-avatar" src="{peravatar}" alt="avatar"
@@ -244,12 +274,12 @@
 								</a>
 								<div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
 									<div class="arrow_box_right">
-										<a href="perfiles/miperfil" class="dropdown-item py-1">
+										<a href="../perfiles/miperfil" class="dropdown-item py-1">
 											<i class="ft-edit mr-2"></i>
 											<span>{Idioma_miPerfil}</span>
 										</a>
 										<div class="dropdown-divider"></div>
-										<a href="login" class="dropdown-item">
+										<a href="../login" class="dropdown-item">
 											<i class="ft-power mr-2"></i>
 											<span>{Idioma_Salir}</span>
 										</a>
@@ -300,19 +330,25 @@
 
 							<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
-								<div class="carousel-inner" style="height: 120px;">
-									<!-- BEGIN bannersponsor -->
-
-									<div class="carousel-item {active} carousel-sponsor">
-
-										<img class="d-block w-100 h-100" src="expimg/{expreg}/{expanunciobanner}">
+								<div class="carousel-inner" style="height: 100px;">
 
 
-
-
+									<div class="carousel-item active carousel-sponsor">
+										<img class="d-block w-100 h-100" src="imagenes-evento/banners/banner1.jpg">
+									</div>
+									<div class="carousel-item  carousel-sponsor">
+										<img class="d-block w-100 h-100" src="imagenes-evento/banners/banner2.jpg">
+									</div>
+									<div class="carousel-item  carousel-sponsor">
+										<img class="d-block w-100 h-100" src="imagenes-evento/banners/banner3.jpg">
+									</div>
+									<div class="carousel-item  carousel-sponsor">
+										<img class="d-block w-100 h-100" src="imagenes-evento/banners/banner4.jpg">
+									</div>
+									<div class="carousel-item  carousel-sponsor">
+										<img class="d-block w-100 h-100" src="imagenes-evento/banners/banner5.jpg">
 									</div>
 
-									<!-- END bannersponsor -->
 								</div>
 
 							</div>
@@ -329,33 +365,15 @@
 
 						<div class="row">
 							<div class="col-xl-3 col-lg-6 col-12">
-								<a href="stand/bsq">
+								<a href="actividades/bsq">
 									<div class="card">
 										<div class="card-body">
 											<div class="media align-items-stretch">
 												<div class="p-2 text-center gradient-light-blue-cyan rounded-left pt-3">
-													<i class="icon-user font-large-2 text-white"></i>
+													<i class="icon-book-open font-large-2 text-white"></i>
 												</div>
 												<div class="p-2 media-body center-content cta-home bt01">
-													<h6 class="card-title">Stand Virtual</h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-
-							<div class="col-xl-3 col-lg-6 col-12">
-								<a href="directorio/bsq?R">
-									<div class="card">
-										<div class="card-body">
-											<div class="media align-items-stretch">
-												<div
-													class="p-2 text-center gradient-orange-amber rounded-left pt-3 center-content">
-													<i class="icon-users font-large-2 text-white"></i>
-												</div>
-												<div class="p-2 media-body center-content  cta-home">
-													<h6 class="card-title">{Idioma_Recomendados}</h6>
+													<h6 class="card-title">Programa</h6>
 												</div>
 											</div>
 										</div>
@@ -368,11 +386,29 @@
 									<div class="card">
 										<div class="card-body">
 											<div class="media align-items-stretch">
+												<div
+													class="p-2 text-center gradient-orange-amber rounded-left pt-3 center-content">
+													<i class="icon-list font-large-2 text-white"></i>
+												</div>
+												<div class="p-2 media-body center-content  cta-home">
+													<h6 class="card-title">Asistentes</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+
+							<div class="col-xl-3 col-lg-6 col-12">
+								<a href="stand/bsq">
+									<div class="card">
+										<div class="card-body">
+											<div class="media align-items-stretch">
 												<div class="p-2 text-center gradient-mint rounded-left pt-3">
-													<i class="icon-notebook font-large-2 text-white"></i>
+													<i class="icon-badge font-large-2 text-white"></i>
 												</div>
 												<div class="p-2 media-body center-content  cta-home ">
-													<h6 class="card-title">{Idioma_Directorio}</h6>
+													<h6 class="card-title">Sponsors</h6>
 												</div>
 											</div>
 										</div>
@@ -381,16 +417,16 @@
 							</div>
 
 							<div class="col-xl-3 col-lg-6 col-12 ">
-								<a href="directorio/bsq?F">
+								<a href="#">
 									<div class="card">
 										<div class="card-body">
 											<div class="media align-items-stretch">
 												<div
 													class="p-2 text-center gradient-red-pink rounded-left pt-3 center-content">
-													<i class="icon-star font-large-2 text-white"></i>
+													<i class="icon-bubbles font-large-2 text-white"></i>
 												</div>
 												<div class="p-2 media-body center-content  cta-home ">
-													<h6 class="card-title">{Idioma_fav}</h6>
+													<h6 class="card-title">Mensajes</h6>
 												</div>
 											</div>
 										</div>
@@ -413,7 +449,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title-wrap bar-danger">
-										<h4 class="card-title">Calendario del evento <span
+										<h4 class="card-title">Proximas conferencias<span
 												class="badge badge-danger text-white ml-2">Hoy</span></td>
 										</h4>
 
@@ -428,43 +464,40 @@
 													<th class="border-top-0">Descripcion</th>
 													<th class="border-top-0">Oradores</th>
 
-													<th class="border-top-0">Lugar</th>
+													<th class="border-top-0">Fecha</th>
 													<th class="border-top-0">Horario</th>
+													<th class="border-top-0">Lugar</th>
 
 
 												</tr>
 											</thead>
 											<tbody>
 												<!-- BEGIN actividades -->
-												<td class="text-truncate text-bold-500">{agetitulo}</td>
-												<td class="text-truncate p-1">
-													<ul class="list-unstyled  m-0">
-														<!-- BEGIN spkimg -->
-														<li data-toggle="tooltip" data-popup="tooltip-custom"
-															data-original-title="Kimberly Simmons"
-															class="avatar avatar-sm pull-up">
-															<img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-																src="spkimg/{spkreg}/{spkimg}" alt=" Avatar">
-														</li>
+
+												<tr class="actividad">
+													<td class="text-truncate text-bold-500"> <a href="actividades/bsq"
+															class="titulo-charla">{titulocharla}</a></td>
+													<td class="text-truncate p-1">
+														<ul class="list-unstyled  m-0">
+
+															<!-- BEGIN spkimg -->
+															<li class="avatar avatar-sm pull-up text-center">
+																<img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
+																	src="spkimg/{spkreg}/{spkimg}" alt=" Avatar">
+															</li>
 
 
-														<!-- END spkimg -->
-														<!-- BEGIN actividades -->
-													</ul>
-												</td>
-												<td class="text-truncate">{agelugar} </td>
-												<td class="text-truncate"><i class=" font-medium-1 mr-1"></i>
-													<span class="badge badge-info">{agehorini}</span></td>
+															<!-- END spkimg -->
+														</ul>
+													</td>
+													<td class="text-truncate"><i class=" font-medium-1 mr-1"></i>
+														<span class="badge badge-info">{agefch}</span></td>
 
+													<td class="text-truncate"><i class=" font-medium-1 mr-1"></i>
+														<span class="badge badge-info">{agehorini} {agefch}</span></td>
 
-												<!-- <	<td class="text-truncate p-1">
-
-														<a class="btn mr-1 shadow-z-2 btn-info">Info</a>
-
-													</td>> -->
-
+													<td class="text-truncate">{agelugar} </td>
 												</tr>
-
 
 												<!-- END actividades -->
 
@@ -482,7 +515,7 @@
 								<div class="card">
 									<div class="card-header">
 										<div class="card-title-wrap bar-danger">
-											<h4 class="card-title">Galeria de anuncios</h4>
+											<h4 class="card-title">Destaque</h4>
 										</div>
 									</div>
 
@@ -494,13 +527,19 @@
 												<div id="carouselExampleIndicators" class="carousel slide"
 													data-ride="carousel">
 													<div class="carousel-inner">
-														<!-- BEGIN anuncio -->
-														<div class="carousel-item {active} p-4 ">
+
+														<div class="carousel-item active p-2 ">
 
 															<img class="d-block w-100"
-																src="expimg/{expreg}/{expanunciocuadr}">
+																src="imagenes-evento/galeria-anuncios/galeria-anuncio1.jpg">
 														</div>
-														<!-- END anuncio -->
+
+														<div class="carousel-item  p-4 ">
+
+															<img class="d-block w-100"
+																src="imagenes-evento/galeria-anuncios/galeria-anuncio2.jpg">
+														</div>
+
 													</div>
 												</div>
 											</div>
@@ -518,7 +557,7 @@
 								<div class=" card p-2 container-noti">
 									<div class="card-header">
 										<div class="card-title-wrap bar-danger">
-											<h4 class="card-title ">Noticias</h4>
+											<h4 class="card-title ">Novedades</h4>
 										</div>
 									</div>
 									<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -560,38 +599,42 @@
 								<div class="card">
 									<div class="card-header">
 										<div class="card-title-wrap bar-danger">
-											<h4 class="card-title">Calendario Personal</h4>
+											<h4 class="card-title">Mi Agenda</h4>
 										</div>
 									</div>
 									<div class="card-body">
 										<div class="col-12 timeline-right d-flex justify-content-center" id="activity">
 
 											<ul class="list-unstyled base-timeline activity-timeline  ">
-												<!-- BEGIN notificaciones -->
-												<li class="timeline-item">
+												<!-- BEGIN personal-calendar -->
+
+
+												<li class="timeline-item ">
 													<div class="timeline-icon">
-														<img id="" src="{peravatar}" alt="avatar"
-															title="{pernombre} {perapelli}">
+														<img width="100%" id="" src="{avatar}" alt="avatar">
 													</div>
-													<div style="color: #362a72;" class="act-time">{reufecha}</div>
-													<div class="base-timeline-info">
-														<a style="color: #fd8105;" href="#"
-															class="text-uppercase  font-small-1 ">{percompan}</a>
+													<div class="act-time font-small-2 color-secundario-evento">
+														{horareunion}
+													</div>
+													<div class="base-timeline-info text-left mr-2">
+														<span
+															class="text-uppercase  font-small-1 color-principal-evento ">{nombre}
+															{apellido}</span>
 
 
 													</div>
-													<small class="text-muted">
-														{reuhora}
-													</small>
+
 												</li>
-												<!-- END notificaciones -->
+
+												<!-- END personal-calendar -->
+
 
 											</ul>
 										</div>
 
 										<div class="col-lg-12">
-											<a href="calendario/bsq" class="btn  btn-md btn-block text-center"
-												style="background-color: #362a72; color: white;">Ver
+											<a href="calendario/bsq"
+												class="btn  btn-md btn-block text-center bg-sec-event text-white">Ver
 												mas</a>
 										</div>
 									</div>
@@ -603,51 +646,6 @@
 
 					</div>
 
-
-
-
-					<div class="col-xl-12 col-sm-12 col-lg-12 col-md-12 ">
-						<div class="card">
-							<div class="card-header">
-								<div class="card-title-wrap bar-danger">
-									<h4 class="card-title">Calendario Personal</h4>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="col-12 timeline-right d-flex justify-content-center" id="activity">
-
-									<ul class="list-unstyled base-timeline activity-timeline  ">
-										<!-- BEGIN notificaciones -->
-										<li class="timeline-item">
-											<div class="timeline-icon">
-												<img id="" src="{peravatar}" alt="avatar"
-													title="{pernombre} {perapelli}">
-											</div>
-											<div style="color: #362a72;" class="act-time">{reufecha}</div>
-											<div class="base-timeline-info">
-												<a style="color: #fd8105;" href="#"
-													class="text-uppercase  font-small-1 ">{percompan}</a>
-
-
-											</div>
-											<small class="text-muted">
-												{reuhora}
-											</small>
-										</li>
-										<!-- END notificaciones -->
-
-									</ul>
-								</div>
-
-								<div class="col-lg-12">
-									<a href="calendario/bsq" class="btn  btn-md btn-block text-center"
-										style="background-color: #362a72; color: white;">Ver
-										mas</a>
-								</div>
-							</div>
-
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -656,154 +654,6 @@
 	</div>
 
 
-	<!-- ////////////////////////////////////////////////////////////////////////////-->
-
-	<!-- Inicio CONFIGURACION 
-		<aside id="notification-sidebar" class="notification-sidebar d-none d-sm-none d-md-block">
-			<a class="notification-sidebar-close">
-			<i class="ft-x font-medium-3"></i>
-		</a>
-		<div class="side-nav notification-sidebar-content">
-			<div class="row">
-				<div class="col-12 mt-1">
-					<ul class="nav nav-tabs">
-						<li class="nav-item">
-							<a id="base-tab1" data-toggle="tab" aria-controls="base-tab1" href="#activity-tab" aria-expanded="true" class="nav-link active">
-								<strong>Activity</strong>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a id="base-tab2" data-toggle="tab" aria-controls="base-tab2" href="#settings-tab" aria-expanded="false" class="nav-link">
-								<strong>Settings</strong>
-							</a>
-						</li>
-					</ul>
-					
-					<div class="tab-content">
-						<div id="activity-tab" role="tabpanel" aria-expanded="true" aria-labelledby="base-tab1" class="tab-pane active">
-							<div id="activity-timeline" class="col-12 timeline-left">
-								<h6 class="mt-1 mb-3 text-bold-400">RECENT ACTIVITY</h6>
-								<div class="timeline">
-									<ul class="list-unstyled base-timeline activity-timeline ml-0">
-										<li>
-											<div class="timeline-icon bg-danger"><i class="ft-shopping-cart"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-danger">Update</a>
-												<span class="d-block">Jim Doe Purchased new equipments for zonal office.</span>
-											</div>
-											<small class="text-muted">just now</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-primary">
-												<i class="fa fa-plane"></i>
-											</div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-primary">Added</a>
-												<span class="d-block">Your Next flight for USA will be on 15th August 2015.</span>
-											</div>
-											<small class="text-muted">25 hours ago</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-dark"><i class="ft-mic"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-dark">Assined</a>
-												<span class="d-block">Natalya Parker Send you a voice mail for next conference.</span>
-											</div>
-											<small class="text-muted">15 days ago</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-warning"><i class="ft-map-pin"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-warning">New</a>
-												<span class="d-block">Jessy Jay open a new store at S.G Road.</span>
-											</div>
-											<small class="text-muted">20 days ago</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-primary"><i class="ft-inbox"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-primary">Added</a>
-												<span class="d-block">voice mail for conference.</span>
-											</div>
-											<small class="text-muted">2 Week Ago</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-danger"><i class="ft-mic"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-danger">Update</a>
-												<span class="d-block">Natalya Parker Jessy Jay open a new store at S.G Road.</span>
-											</div>
-											<small class="text-muted">1 Month Ago</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-dark"><i class="ft-inbox"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-dark">Assined</a>
-												<span class="d-block">Natalya Parker Send you a voice mail for Updated conference.</span>
-											</div>
-											<small class="text-muted">1 Month ago</small>
-										</li>
-										<li>
-											<div class="timeline-icon bg-warning"><i class="ft-map-pin"></i></div>
-											<div class="base-timeline-info">
-												<a href="#" class="text-uppercase text-warning">New</a>
-												<span class="d-block">Started New project with Jessie Lee.</span>
-											</div>
-											<small class="text-muted">2 Month ago</small>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-						<div id="settings-tab" aria-labelledby="base-tab2" class="tab-pane">
-							<div id="settings" class="col-12">
-								<h6 class="mt-1 mb-3 text-bold-400">GENERAL SETTINGS</h6>
-								<ul class="list-unstyled">
-									<li>
-										<div class="togglebutton">
-											<div class="switch">
-												<span class="text-bold-500">Notifications</span>
-												<div class="float-right">
-													<div class="form-group">
-														<div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-															<input id="notifications1" checked="checked" type="checkbox" class="custom-control-input">
-															<label for="notifications1" class="custom-control-label"></label>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<p>Use checkboxes when looking for yes or no answers.</p>
-									</li>
-									<li>
-										<div class="togglebutton">
-											<div class="switch">
-												<span class="text-bold-500">Show recent activity</span>
-												<div class="float-right">
-													<div class="form-group">
-														<div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-															<input id="recent-activity1" checked="checked" type="checkbox" class="custom-control-input">
-															<label for="recent-activity1" class="custom-control-label"></label>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	
-    </aside>-->
-	<!-- Modal -->
 	<div class="modal fade text-left" id="DataMaestroViewPerfil" tabindex="-1" role="dialog" aria-hidden="true"
 		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-lg" role="document" id="DataViewPerfil">

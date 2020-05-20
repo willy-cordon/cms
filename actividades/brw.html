@@ -1,57 +1,202 @@
-﻿<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="card-block">
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<div class="container">
+﻿<style>
+	.tab-container a {
+		color: #5d4b94;
+		border-radius: 5px;
+		text-decoration: none;
+		padding: 10px;
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		font-weight: 600;
+	}
 
-									<div class="row">
-										<div class="col-xs-12 ">
-											<nav>
-
-												<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-
-
-													<!-- BEGIN tabs -->
-													<a class="nav-item nav-link {active} " id="nav-home-tab"
-														data-toggle="tab" href="#dia{id}" role="tab"
-														aria-controls="nav-home" aria-selected="true">{dia}</a>
-													<!-- END tabs -->
+	.tab-container .active {
+		background-color: #5d4b94;
+		color: white;
+	}
 
 
 
+	.actividad {
+		border-radius: 5px;
+		text-decoration: none;
+		padding: 10px;
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+	}
+
+	.act-container::after {
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		content: "";
+		background-color: white;
+
+		border: 1px solid #c9c9c9;
+		border-radius: 15px;
+		position: absolute;
+		width: 8px;
+		height: 100%;
+		top: 10px;
+		left: 0px;
+		display: block;
+	}
+
+	.actividad h5 {
+		font-weight: 600;
+		color: #4bc2ed;
+	}
+
+	.actividad::after {
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		content: "";
+		background-color: #4bc2ed;
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius: 100%;
+		top: 35px;
+		left: -42px;
+		display: block;
+		z-index: 100;
+	}
+
+	.boton-vivo {
+		color: white;
+		background-color: #c9c9c9;
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+	}
+
+	.boton-video {
+		color: #c9c9c9;
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+
+	}
+
+	.boton-agendar {
+		color: #c9c9c9;
+		-webkit-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		-moz-box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+		box-shadow: 0px 0px 20px 0px rgba(222, 222, 222, 1);
+	}
+</style>
+
+<div class="card-body">
+	<div class="card-block">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-12 mt-3 ">
+							<div class="nav nav-tabs nav-fill col-12 tab-container" id="nav-tab" role="tablist">
+								<!-- BEGIN tabs -->
+								<a class="  nav-item  {active}  mr-4 mb-4" id="nav-home-tab" data-toggle="tab"
+									href="#dia{id}" role="tab" aria-controls="nav-home" aria-selected="true">{dia}</a>
+								<!-- END tabs -->
+							</div>
+
+							<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+								<!-- BEGIN dias -->
+
+								<div class="tab-pane fade show {active}" id="dia{numeroDia}" role="tabpanel"
+									aria-labelledby="nav-home-tab">
+
+									<div class="col-12 pl-4 act-container d-flex align-items-end flex-column mr-5">
+										<!-- BEGIN actividades -->
+										<div class="col-12 actividad  mt-3">
+											{msg}
+
+											<div class="col 12 d-flex">
+												<div class="col-6">
+
+													<h5 class="mt-3 text-left">{agetitulo}</h5>
 												</div>
-											</nav>
-											<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-												<!-- BEGIN actividades -->
-												<div class="tab-pane fade show {active}" id="dia{diact}" role="tabpanel"
-													aria-labelledby="nav-home-tab">
-													{agereg} - {agetitulo} <br>
+
+												<div class="{display} mt-3 mb-4 col-6 d-{display} justify-content-end ">
+													<a href="{}" class=" boton-vivo mr-2 btn  ">Ver
+														en vivo</a>
+													<a onclick="agendarEvento({agereg});"
+														class="btn boton-agendar mr-2"><i style="color: gray;"
+															class="fa fa-fw  fa fa-star"></i></a>
+													<a href="{}" class="btn boton-video"><i
+															class="fa fa-video-camera"></i> Video</a>
 												</div>
 
-												<!-- END actividades -->
 											</div>
+											<p class="text-muted">{agelugar} - {hora}</p>
+											<p>{agedescri}</p>
 
 										</div>
+										<!-- END actividades -->
 									</div>
+
 								</div>
+								<!-- END dias -->
 
 							</div>
+
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
-</div>
 
 
 
 
-<script>
+	<script>
 
 
-</script>
+
+		function agendarEvento(reg) {
+			swal({
+				title: "Agregar evento",
+				text: "¿Desea agregar evento a su agenda?",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#0CC27E',
+				cancelButtonColor: '#FF586B',
+				confirmButtonText: 'Confirmar',
+				cancelButtonText: 'Cancelar',
+				confirmButtonClass: 'btn btn-success btn-raised mr-5',
+				cancelButtonClass: 'btn btn-danger btn-raised',
+				buttonsStyling: false
+			}).then(function () {
+				var data = { "agereg": reg };
+
+				$.ajax({
+					type: "POST",
+					url: 'agendar.php',
+					data: data
+				}).done(function (rsp) {
+					data = $.parseJSON(rsp);
+
+					if (data.errcod == 0) {
+						toastr.success(data.errmsg, 'AGENAR EVENTO');
+					} else {
+						toastr.error(data.errmsg, 'AGENAR EVENTO');
+					}
+					showBrowser();
+				});
+
+
+			}, function (dismiss) {
+				// dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+				if (dismiss === 'cancel') {
+				}
+			}).done();
+		}
+
+
+	</script>

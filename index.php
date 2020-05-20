@@ -1,7 +1,7 @@
 <?
 if (!isset($_SESSION))  session_start();
-//include($_SERVER["DOCUMENT_ROOT"] . '/webcoordinador/func/zglobals.php'); //DEV
-include($_SERVER["DOCUMENT_ROOT"] . '/func/zglobals.php'); //PRD
+include($_SERVER["DOCUMENT_ROOT"] . '/webcoordinador/func/zglobals.php'); //DEV
+//include($_SERVER["DOCUMENT_ROOT"].'/func/zglobals.php'); //PRD
 //--------------------------------------------------------------------------------------------------------------
 require_once GLBRutaFUNC . '/sigma.php';
 require_once GLBRutaFUNC . '/zdatabase.php';
@@ -438,9 +438,6 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 
 /* ----------------------- SECTION MOSTRAR ACTIVIADES ----------------------- */
 //--------------------------------------------------------------------------------------------------------------
-//-----Seleccionamos los datos de la base de datos
-
-
 //Busco los parametros de configuracion
 $query = "	SELECT ZPARAM,ZVALUE FROM ZZZ_CONF WHERE ZPARAM CONTAINING 'SisEvento' ";
 $Table = sql_query($query, $conn);
@@ -465,7 +462,7 @@ $diaInicio = substr($inicio, 8, 9);
 $hoy = date('d');
 
 //Modifico hoy para ver las actividaes
-$hoy = 16;
+$hoy = 07;
 
 
 
@@ -475,9 +472,11 @@ $where 	= '';
 
 $query = "SELECT AGEREG, AGEFCH, AGETITULO, AGEDESCRI, AGEHORINI, AGEHORFIN, AGELUGAR , SPKREG
 			FROM AGE_MAEST
-			WHERE ESTCODIGO<>3";
+			WHERE ESTCODIGO<>3
+			ORDER BY AGEHORINI";
 
 $Table = sql_query($query, $conn);
+
 for ($i = 0; $i < $Table->Rows_Count; $i++) {
 	$row = $Table->Rows[$i];
 	$agereg 	= trim($row['AGEREG']);
@@ -498,19 +497,18 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 
 
 
-
 	//Chequeo que hoy sea un dia del evento
-	if ($hoy == substr($agefch, 8, 9)) {
+	if ($hoy ==  substr($agefch, 8, 9)) {
 
 
-		for ($i = 0; $i < $spkreglen; $i++) {
+		for ($u = 0; $u < $spkreglen; $u++) {
 
 
-			if ($spkreg[$i] != ',' && $spkreg[$i] != '0') {
+			if ($spkreg[$u] != ',' && $spkreg[$u] != '0') {
 
 				$queryspk = "	SELECT SPKREG, SPKNOMBRE, SPKDESCRI, SPKIMG, SPKPOS, ESTCODIGO,SPKEMPRES,SPKCARGO
 					FROM SPK_MAEST
-					WHERE SPKREG=$spkreg[$i]";
+					WHERE SPKREG=$spkreg[$u]";
 
 				$Tablespk = sql_query($queryspk, $conn);
 				if ($Tablespk->Rows_Count > 0) {
@@ -530,7 +528,7 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 
 		$tmpl->setCurrentBlock('actividades');
 		$tmpl->setVariable('agereg', $agereg);
-		$tmpl->setVariable('agetitulo', $agetitulo);
+		$tmpl->setVariable('titulocharla', $agetitulo);
 		$tmpl->setVariable('agedescri', $agedescri);
 		$tmpl->setvariable('agelugar', $agelugar);
 		$tmpl->setVariable('agehorini', $agehorini);
@@ -540,6 +538,7 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 		$tmpl->parse('actividades');
 	}
 }
+
 
 $query = "SELECT EXPBANIMG2, EXPREG,EXPFOLLETO, EXPNOMBRE,EXPANUNCIOBANNER, EXPANUNCIOCUADR
 FROM EXP_MAEST
@@ -586,6 +585,64 @@ for ($i = 0; $i < $Table->Rows_Count; $i++) {
 }
 
 
+//current day
+$hoy = date('d');
+$hoy = 07;
+$percodigo 			= (isset($_SESSION[GLBAPPPORT . 'PERCODIGO'])) ? trim($_SESSION[GLBAPPPORT . 'PERCODIGO']) : '';
+
+$imgAvatarNull = 'app-assets/img/avatar.png';
+
+
+$query = "SELECT R.REUREG,R.REUHORA,R.PERCODSOL,R.PERCODDST,P.PERCODIGO,P.PERNOMBRE,P.PERAVATAR, P.PERAPELLI, A.AGETITULO
+FROM REU_CABE R
+INNER JOIN PER_MAEST P  ON P.PERCODIGO = R.PERCODDST    
+INNER JOIN AGE_MAEST A ON A.AGEREG =  R.AGEREG
+WHERE EXTRACT (DAY FROM R.REUFECHA) =  $hoy AND R.PERCODSOL = $percodigo
+ORDER BY R.REUHORA";
+
+
+$Table = sql_query($query, $conn);
+
+if ($Table->Rows_Count != -1) {
+
+
+	for ($i = 0; $i < $Table->Rows_Count; $i++) {
+
+		$row = $Table->Rows[$i];
+		$codper =  $row['PERCODIGO'];
+		$percodsol =  $row['PERCODSOL'];
+		$percoddst =  $row['PERCODDST'];
+		$nombre =  $row['PERNOMBRE'];
+		$apellido =  $row['PERAPELLI'];
+		$reuhora =  $row['REUHORA'];
+		$percodigo =  $row['PERCODIGO'];
+		$avatar =  $row['PERAVATAR'];
+		$agetitulo =  $row['AGETITULO'];
+		$tmpl->setCurrentBlock('personal-calendar');
+
+
+		$tmpl->setVariable('horareunion', substr($reuhora, 0, 5));
+
+
+		if ($percodsol === $percoddst) {
+			$tmpl->setVariable('avatar', 'imagenes-evento/logo.png');
+			$tmpl->setVariable('nombre', $agetitulo);
+		} else {
+			if ($avatar != '') {
+
+				$tmpl->setVariable('avatar', 'perimg/' . $codper . '/' . $avatar);
+			} else {
+				$tmpl->setVariable('avatar', $imgAvatarNull);
+			}
+
+			$tmpl->setVariable('nombre', $nombre);
+			$tmpl->setVariable('apellido', $apellido);
+		}
+
+
+		$tmpl->parse('personal-calendar');
+	}
+}
 
 
 $tmpl->show();

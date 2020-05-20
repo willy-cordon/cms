@@ -22,8 +22,8 @@
 	}
 	
      //Variables Globales
-	 //include($_SERVER["DOCUMENT_ROOT"].$foldercentral.'/func/zglobals.php'); //DEV
-	include($_SERVER["DOCUMENT_ROOT"].'/func/zglobals.php'); //PRD
+	 include($_SERVER["DOCUMENT_ROOT"].$foldercentral.'/func/zglobals.php'); //DEV
+	// include($_SERVER["DOCUMENT_ROOT"].'/func/zglobals.php'); //PRD
 	 
              
      //----------------------------------------------------------------------------------------------

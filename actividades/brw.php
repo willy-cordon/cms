@@ -95,15 +95,16 @@ if (json_decode($_SESSION['PARAMETROS']['MenuNoticias']) == false) {
 $active = 'active';
 
 $diaInicial =  substr($diasini, 0, 2) + 1 - 1;
-$duracionEvento =  $diasdur +  substr($diasini, 0, 2);
+$finalEvento =  $diasdur +  $diaInicial;
+$contadorDias = 1;
 
-for ($i = $diaInicial; $i < $duracionEvento; $i++) {
+for ($i = $diaInicial; $i < $finalEvento; $i++) {
 
 	//
 	$tmpl->setCurrentBlock('tabs');
 	$tmpl->setVariable('active', $active);
 
-	$tmpl->setVariable('dia', 'Dia ' . $i);
+	$tmpl->setVariable('dia', 'Dia ' . $contadorDias);
 	$tmpl->setVariable('id', $i);
 	$tmpl->parse('tabs');
 
@@ -111,51 +112,70 @@ for ($i = $diaInicial; $i < $duracionEvento; $i++) {
 
 	$query = 'SELECT AGEREG, AGEFCH, AGETITULO, AGEDESCRI, AGEHORINI, AGEHORFIN, AGELUGAR 
 				FROM AGE_MAEST
-				WHERE ESTCODIGO <> 3';
+				WHERE  EXTRACT (DAY FROM AGEFCH) = ' . $i;
 
 
 	$Table = sql_query($query, $conn);
 
-	$prueba = [];
 
-	for ($u = 0; $u < $Table->Rows_Count; $u++) {
+	$tmpl->setCurrentBlock('dias');
+	$tmpl->setVariable('active', $active);
+	$tmpl->setVariable('numeroDia', $i + 1 - 1);
+	if ($Table->Rows_Count != -1) {
+		for ($u = 0; $u < $Table->Rows_Count; $u++) {
 
-		$row = $Table->Rows[$u];
-		$agereg 	= trim($row['AGEREG']);
-		$agetitulo 	= trim($row['AGETITULO']);
-		$agedescri 	= trim($row['AGEDESCRI']);
-		$agelugar   = trim($row['AGELUGAR']);
-		$agefch     = BDConvFch($row['AGEFCH']);
-		$agehorini  = substr(trim($row['AGEHORINI']), 0, 5);
-		$agehorfin  = substr(trim($row['AGEHORFIN']), 0, 5);
+			$row = $Table->Rows[$u];
+			$agereg 	= trim($row['AGEREG']);
+			$agetitulo 	= trim($row['AGETITULO']);
+			$agedescri 	= trim($row['AGEDESCRI']);
+			$agelugar   = trim($row['AGELUGAR']);
+			$agefch     = BDConvFch($row['AGEFCH']);
+			$agehorini  = substr(trim($row['AGEHORINI']), 0, 5);
+			$agehorfin  = substr(trim($row['AGEHORFIN']), 0, 5);
 
-		$agefch	= substr($agefch, 6, 4) . '-' . substr($agefch, 3, 2) . '-' . substr($agefch, 0, 2); //Formato calendario (yyyy-mm-dd)
-		$agehorini = ($agehorini != '') ? 'T' . $agehorini : '';
-		$agehorfin = ($agehorfin != '') ? 'T' . $agehorfin : '';
+			$agefch	= substr($agefch, 6, 4) . '-' . substr($agefch, 3, 2) . '-' . substr($agefch, 0, 2); //Formato calendario (yyyy-mm-dd)
+			$agehorini = ($agehorini != '') ? 'T' . $agehorini : '';
+			$agehorfin = ($agehorfin != '') ? 'T' . $agehorfin : '';
 
 
 
-		if (substr($agefch, 8, 9) + 1 - 1  === $i) {
-			array_push($prueba, $row);
+
+			if (substr($agefch, 8, 9) + 1 - 1  === $i) {
+				$tmpl->setCurrentBlock('actividades');
+				$tmpl->setVariable('display', 'flex');
+
+				$tmpl->setVariable('agereg', $agereg);
+				$tmpl->setVariable('active', $active);
+				$tmpl->setVariable('agetitulo', $agetitulo);
+				$tmpl->setVariable('agedescri', $agedescri);
+				$tmpl->setvariable('agelugar', $agelugar);
+				$tmpl->setVariable('agehorini', $agefch . $agehorini);
+				$tmpl->setVariable('hora', substr(trim($row['AGEHORINI']), 0, 5));
+				$tmpl->setVariable('agehorfin', $agefch . $agehorfin);
+
+				$tmpl->setVariable('color', $coloReunion);
+				$tmpl->parse('actividades');
+			}
 		}
+	} else {
+		$tmpl->setCurrentBlock('actividades');
+		$tmpl->setVariable('msg', 'No se encontraron eventos para este dia');
+		$tmpl->setVariable('display', 'none');
 
-
-		foreach ($prueba as $p) {
-			$tmpl->setCurrentBlock('actividades');
-			$tmpl->setVariable('agereg', $p['AGEREG']);
-			$tmpl->setVariable('active', $active);
-			$tmpl->setVariable('diact', substr($agefch, 8, 9) + 1 - 1);
-			$tmpl->setVariable('agetitulo', $agetitulo);
-			$tmpl->setVariable('agedescri', $agedescri);
-			$tmpl->setvariable('agelugar', $agelugar);
-			$tmpl->setVariable('agehorini', $agefch . $agehorini);
-			$tmpl->setVariable('agehorfin', $agefch . $agehorfin);
-			$tmpl->setVariable('color', $coloReunion);
-			$tmpl->parse('actividades');
-			$active = '';
-		}
+		$tmpl->parse('actividades');
 	}
+	$tmpl->parse('dias');
+	$active = '';
+	$contadorDias++;
 }
+
+
+
+
+
+
+
+
 
 
 sql_close($conn);

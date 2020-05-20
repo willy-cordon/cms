@@ -57,270 +57,300 @@
 <body data-col="2-columns" class=" 2-columns ">
 
 	<!-- Menu -->
-	<div data-active-color="white" data-background-color="black" data-image="../app-assets/img/sidebar-bg/01.jpg"
-		class="app-sidebar">
-		<div class="sidebar-header">
-			<div class="logo clearfix"><a href="../index" class="logo-text float-left">
-					<div class="logo-img"><img src="../app-assets/img/logo-light.png" alt="Convex Logo" /></div>
-					<span class="text align-middle">{SisNombreEvento}</span>
-				</a>
-				<!--<a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="ft-disc toggle-icon"></i></a>
-						<a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-circle"></i></a>-->
-			</div>
-		</div>
-		<div class="sidebar-content">
-			<div class="nav-container">
-				<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
-					style="display:{viewadmin}">
-					<li class="has-sub nav-item">
-						<a href="#">
-							<i class="icon-home"></i>
-							<span data-i18n="" class="menu-title">{Idioma_Configuracion}</span>
-						</a>
-						<ul class="menu-content">
-							<li><a href="../perfiles/bsq" class="menu-item">{Idioma_Perfiles}</a></li>
-							<li class="has-sub">
-								<a href="#">{Idioma_Productos}</a>
-								<ul class="menu-content">
-									<li><a href="../sectores/bsq" class="menu-item"
-											style="{btnsectores}">{Idioma_Sectores}</a></li>
-									<li><a href="../subsectores/bsq" class="menu-item"
-											style="{btnsubsectores}">{Idioma_Subsectores}</a></li>
-									<li><a href="../categorias/bsq" class="menu-item"
-											style="{btncategorias}">{Idioma_Categorias}</a></li>
-									<!--li><a href="../subcategorias/bsq" class="menu-item" style="{btnsubcategorias}">{Idioma_SubC}</a></li!-->
-								</ul>
-							</li>
-							<li style="{ParamMenuNoticias}"><a href="../avisos/bsq"
-									class="menu-item">{Idioma_Noticias}</a></li>
-							<li style="{ParamMenuAgenda}"><a href="../agenda/bsq" class="menu-item">{Idioma_Agenda}</a>
-							</li>
-							<li><a href="../traduccion/bsq">{Idioma_Tradiccion}</a></li>
-							<li style="{ParamMenuMensajes}"><a href="../mensajeria/bsq"
-									class="menu-item">{Idioma_Mensajeria}</a></li>
-							<li><a href="../expositores/bsq" class="menu-item">{Idioma_ExpositoresApp}</li>
-							<li style="{ParamMenuExportar}" class="has-sub">
-								<a href="#">Exportar</a>
-								<ul class="menu-content">
-									<li><a href="../exportar/exportarPerfiles.php" class="menu-item"
-											style="#">Perfiles</a></li>
-									<li><a href="../exportar/exportarReuniones.php" class="menu-item"
-											style="#">Reuniones</a></li>
-								</ul>
-							</li>
-							<li style="{ParamMenuEncuesta}"><a href="../encuestamst/bsq"
-									class="menu-item">{Idioma_Encuesta}</a></li>
+	<div class="wrapper nav-collapsed menu-collapsed">
 
-							<li><a href="../Speakers/bsq" class="menu-item">{Idioma_Speakers1}</a></li>
-						</ul>
-					</li>
-				</ul>
-				<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-					<li class="has-sub nav-item">
-						<a href="#">
-							<i class="icon-home"></i>
-							<span data-i18n="" class="menu-title">{Idioma_Directorio}</span>
-						</a>
-						<ul class="menu-content">
-							<li><a href="../directorio/bsq" class="menu-item">{Idioma_Buscar}</a></li>
-							<li><a href="../directorio/bsq?R" class="menu-item">{Idioma_Recomendados}</a></li>
-							<li class="has-sub">
-								<a href="#">Reuniones</a>
-								<ul class="menu-content">
-									<input type="hidden" id="fltbuscar" name="fltbuscar" value="{fltbuscar}">
-									<li {fltbuscaractive_1}><a href="../reuniones/bsq?T=1"
-											class="menu-item">{Idioma_ReunionesEnviadas}<span id="cantenv"
-												class="tag badge badge-pill badge-primary mt-1">{cantEnviados}</span></a>
-									</li>
-									<li {fltbuscaractive_2}><a href="../reuniones/bsq?T=2"
-											class="menu-item">{Idioma_ReunionesRecibidas}<span id="cantrec"
-												class="tag badge badge-pill badge-primary mt-1">{cantRecibidos}</span></a>
-									</li>
-									<li {fltbuscaractive_3}><a href="../reuniones/bsq?T=3"
-											class="menu-item">{Idioma_ReunionesConfirmadas}<span id="cantcon"
-												class="tag badge badge-pill badge-primary mt-1">{cantConfirmados}</span></a>
-									</li>
-									<li {fltbuscaractive_4}><a href="../reuniones/bsq?T=4"
-											class="menu-item">{Idioma_ReunionesCanceladas}<span id="cantcan"
-												class="tag badge badge-pill badge-primary mt-1">{cantCanceladas}</span></a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-					<li class="nav-item active">
-						<a href="../calendario/bsq">
-							<i class="icon-calendar"></i>
-							<span data-i18n="" class="menu-title">Calendario</span>
-						</a>
-					</li>
-				</ul>
-				<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
-					style="{ParamMenuActividades}">
-					<li class="nav-item ">
-						<a href="../actividades/bsq">
-							<i class="icon-calendar"></i>
-							<span data-i18n="" class="menu-title">Actividades</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="sidebar-background"></div>
-	</div>
-	<!-- End menu -->
+		<!-- Menu  -->
+		<div data-active-color="white" data-background-color="black" data-image="../imagenes-evento/menu.jpg"
+			class="app-sidebar">
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-faded">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-left">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<span class="d-lg-none navbar-right navbar-collapse-toggle">
-					<a class="open-navbar-container"><i class="ft-more-vertical"></i></a>
-				</span>
-				<!---->
-			</div>
 
-			<div class="navbar-container">
-				<div id="navbarSupportedContent" class="collapse navbar-collapse">
-					<ul class="navbar-nav">
 
-						<li class="nav-item mt-1 navbar-search text-left dropdown"><a id="search" href="#"
-								data-toggle="dropdown" class="nav-link dropdown-toggle"><i
-									class="ft-search blue-grey darken-4"></i></a>
-							<div aria-labelledby="search" class="search dropdown-menu dropdown-menu-right">
-								<div class="arrow_box_right">
-									<form role="search" class="navbar-form navbar-right">
-										<div class="position-relative has-icon-right mb-0">
-											<input id="navbar-search" type="text" placeholder="Search"
-												class="form-control" />
-											<div class="form-control-position navbar-search-close"><i class="ft-x"></i>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
+			<div class="sidebar-content ">
+				<div class="nav-container">
+					<div class="sidebar-header">
+						<div class="logo clearfix">
+							<a href="../index" class="logo-text d-flex justify-content-center">
+
+								<img class=" p-1" src="../imagenes-evento/logo.jpg" alt="logo" width="50%" />
+							</a>
+						</div>
+					</div>
+					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
+						style="display:{viewadmin}">
+						<li class="has-sub nav-item">
+							<a>
+								<i class="icon-settings"></i>
+								<span data-i18n="" class="menu-title">{Idioma_Configuracion}</span>
+							</a>
+							<ul class="menu-content">
+								<li><a href="../perfiles/bsq" class="menu-item">{Idioma_Perfiles}</a></li>
+								<li class="has-sub">
+									<a href="">{Idioma_Productos}</a>
+									<ul class="menu-content">
+										<li><a href="../sectores/bsq" class="menu-item"
+												style="{btnsectores}">{Idioma_Sectores}</a></li>
+										<li><a href="../subsectores/bsq" class="menu-item"
+												style="{btnsubsectores}">{Idioma_Subsectores}</a></li>
+										<li><a href="../categorias/bsq" class="menu-item"
+												style="{btncategorias}">{Idioma_Categorias}</a></li>
+										<li><a href="../subcategorias/bsq" class="menu-item"
+												style="{btnsubcategorias}">{Idioma_SubC}</a></li>
+									</ul>
+								</li>
+								<li style="{ParamMenuNoticias}"><a href="../avisos/bsq"
+										class="menu-item">{Idioma_Noticias}</a>
+								</li>
+								<li style="{ParamMenuAgenda}"><a href="../agenda/bsq"
+										class="menu-item">{Idioma_Agenda}</a>
+								</li>
+								<li style="{ParamMenuMensajes}"><a href="../mensajeria/bsq"
+										class="menu-item">{Idioma_Mensajeria}</a></li>
+								<li style="{ParamMenuAgenda}"><a href="../agenda/bsq"
+										class="menu-item">{Idioma_Agenda}</a>
+								</li>
+								<li style="{ParamMenuMensajes}"><a href="../tipos/bsq" class="menu-item">Tipos De
+										Perfil</a></li>
+								<li style="{ParamMenuMensajes}"><a href="../clases/bsq" class="menu-item">Clase</a></li>
+								<li style="{ParamMenuMensajes}"><a href="../cupones/bsq" class="menu-item">Cupones</a>
+								</li>
+								<li style="{ParamMenuMensajes}"><a href="../idioma/bsq" class="menu-item">Idioma</a>
+								</li>
+								<li style="{ParamMenuMensajes}"><a href="../pitcher/bsq" class="menu-item">Pitcher</a>
+								</li>
+								<li><a href="../expositores/bsq" class="menu-item">{Idioma_ExpositoresApp}</li>
+								<li><a href="../traduccion/bsq">{Idioma_Tradiccion}</a></li>
+
+								<li style="{ParamMenuExportar}" class="has-sub">
+									<a>Exportar</a>
+									<ul class="menu-content">
+										<li><a href="../exportar/exportarPerfiles.php" class="menu-item"
+												style="#">Perfiles</a>
+										</li>
+										<li><a href="../exportar/exportarReuniones.php" class="menu-item"
+												style="#">Reuniones</a></li>
+										<li><a href="../exportar/exportarChats.php" class="menu-item"
+												style="#">Conversaciones</a></li>
+										<li><a href="../exportar/exportarQR.php" class="menu-item" style="#">QR
+												Escaneados</a></li>
+									</ul>
+								</li>
+								<li style=""><a href="../importar/bsq" class="menu-item" style="">Importar</a></li>
+								<li style="{ParamMenuEncuesta}"><a href="../encuestamst/bsq"
+										class="menu-item">{Idioma_Encuesta}</a></li>
+
+								<li><a href="../speakers/bsq" class="menu-item">{Idioma_Speakers1}</a></li>
+								<li><a href="../parametros/bsq" class="menu-item">{Idioma_Parametros}</a></li>
+							</ul>
 						</li>
-
-						<li class="dropdown nav-item mt-1">
-							<a id="dropdownBasic" href="#" data-toggle="dropdown"
-								class="nav-link position-relative dropdown-toggle">
-								<i class="ft-flag blue-grey darken-4"></i>
-								<span class="selected-language d-none"></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right">
-								<div class="arrow_box_right">
-									<a href="bsq.php?language=ing" class="dropdown-item py-1">
-										<img src="../app-assets/img/flags/us.png" alt="English Flag" class="langimg" />
-										<span> English</span>
-									</a>
-									<a href="bsq.php?language=esp" class="dropdown-item py-1">
-										<img src="../app-assets/img/flags/es.png" alt="Spanish Flag" class="langimg" />
-										<span> Spanish</span>
-									</a>
-
-								</div>
-							</div>
-						</li>
-
-						<li class="dropdown nav-item mt-1 " id="notigroup">
-							<a id="dropdownBasic2" href="#" onclick="notificationupd()" data-toggle="dropdown"
-								class="nav-link position-relative dropdown-toggle">
-								<i class="ft-bell blue-grey darken-4"></i>
-
-								<span class="notification badge badge-pill badge-danger" id="notinum"> </span>
-
-								<p class="d-none">Notificaciones</p>
-							</a>
-							<div class="notification-dropdown dropdown-menu dropdown-menu-right " id="notiopen">
-								<div class="arrow_box_right">
-									<div class="noti-list" id="notification">
-										<!--Recibe las notificaciones-->
-									</div>
-
-									<!--   a  class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read All Notifications</a -->
-								</div>
-							</div>
-						</li>
-
-						<li class="dropdown nav-item mr-0">
-							<a id="dropdownBasic3" href="#" data-toggle="dropdown"
-								class="nav-link position-relative dropdown-user-link dropdown-toggle">
-								<span class="avatar avatar-online">
-									<img id="navbar-avatar" src="{peravatar}" alt="avatar"
-										title="{pernombre} {perapelli}" />
-								</span>
-								<p class="d-none">Usuario</p>
-							</a>
-							<div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
-								<div class="arrow_box_right">
-									<a href="../perfiles/miperfil" class="dropdown-item py-1">
-										<i class="ft-edit mr-2"></i>
-										<span>{Idioma_miPerfil}</span>
-									</a>
-									<!--
-							<a href="javascript:;" class="dropdown-item py-1">
-								<i class="ft-message-circle mr-2"></i>
-								<span>Mi Chat</span>
-							</a>
-							<a href="javascript:;" class="dropdown-item py-1">
-								<i class="ft-settings mr-2"></i>
-								<span>Configuración</span>
-							</a>
-							-->
-									<div class="dropdown-divider"></div>
-									<a href="../login" class="dropdown-item">
-										<i class="ft-power mr-2"></i>
-										<span>{Idioma_Salir}</span>
-									</a>
-								</div>
-							</div>
-						</li>
-
 					</ul>
+					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+						<li class="has-sub nav-item">
+							<a>
+								<i class="icon-list"></i>
+								<span data-i18n="" class="menu-title">Asistentes</span>
+							</a>
+							<ul class="menu-content">
+								<li><a href="../directorio/bsq" class="menu-item">{Idioma_Buscar}</a></li>
+								<li><a href="../directorio/bsq?R" class="menu-item">{Idioma_Recomendados}</a></li>
+								<li class="has-sub">
+									<a>{Idioma_Reuniones}</a>
+									<ul class="menu-content">
+										<input type="hidden" id="fltbuscar" name="fltbuscar" value="{fltbuscar}">
+										<li {fltbuscaractive_1}><a href="../.reuniones/bsq?T=1"
+												class="menu-item">{Idioma_ReunionesEnviadas}<span id="cantenv"
+													class="tag badge badge-pill badge-primary mt-1">{cantEnviados}</span></a>
+										</li>
+										<li {fltbuscaractive_2}><a href="../reuniones/bsq?T=2"
+												class="menu-item">{Idioma_ReunionesRecibidas}<span id="cantrec"
+													class="tag badge badge-pill badge-primary mt-1">{cantRecibidos}</span></a>
+										</li>
+										<li {fltbuscaractive_3}><a href="../reuniones/bsq?T=3"
+												class="menu-item">{Idioma_ReunionesConfirmadas}<span id="cantcon"
+													class="tag badge badge-pill badge-primary mt-1">{cantConfirmados}</span></a>
+										</li>
+										<li {fltbuscaractive_4}><a href="../reuniones/bsq?T=4"
+												class="menu-item">{Idioma_ReunionesCanceladas}<span id="cantcan"
+													class="tag badge badge-pill badge-primary mt-1">{cantCanceladas}</span></a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"
+						style="{ParamMenuActividades}">
+						<li class="nav-item ">
+							<a href="../stand/bsq">
+								<i class="icon-badge"></i>
+								<span data-i18n="" class="menu-title">Sponsor</span>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a>
+								<i class="icon-speech"></i>
+								<span data-i18n="" class="menu-title">Mensajes</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="../actividades/bsq">
+								<i class=" fa fa-tasks"></i>
+								<span data-i18n="" class="menu-title">Programa</span>
+							</a>
+						</li>
+
+						<li class="nav-item ">
+							<a>
+								<i class="icon-user"></i>
+								<span data-i18n="" class="menu-title">Speakers</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="../calendario/bsq">
+								<i class="icon-calendar"></i>
+								<span data-i18n="" class="menu-title">Reuniones</span>
+							</a>
+						</li>
+
+
+						<li class="nav-item ">
+							<a>
+								<i class="icon-bubbles"></i>
+								<span data-i18n="" class="menu-title">Noticias</span>
+							</a>
+						</li>
+
+
+						<li class="nav-item ">
+							<a>
+								<i class="icon-bubbles"></i>
+								<span data-i18n="" class="menu-title">Credihub</span>
+							</a>
+						</li>
+					</ul>
+					<!-- Configuracion -->
+					<!-- <div id="conf">
+						
+						<button type="button" class="btn btn-outline-warning" >
+	
+								<i class="fa fa-cogs"> <a  href="../../configuracion/bsq.php" >Configuración</a> </i>
+	
+						</button>
+					</div>  -->
+					<!-- End configuracion -->
 				</div>
 			</div>
+			<div class="sidebar-background"></div>
 		</div>
-	</nav>
 
-	<div class="main-panel">
-		<div class="main-content">
-			<div class="content-wrapper">
-				<div class="container-fluid">
 
-					<section id="shopping-cart">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="card">
-									<div class="card-header">
-										<div class="card-title-wrap bar-warning">
-											<h4 class="card-title">
-												{Idioma_CalendarioAc}
-											</h4>
-											<!--
+		<!-- Menu End -->
+
+		<!-- Barra de navegacion Top -->
+
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-faded">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-left">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<span class="d-lg-none navbar-right navbar-collapse-toggle">
+						<a class="open-navbar-container"><i class="ft-more-vertical"></i></a>
+					</span>
+				</div>
+
+				<div class="navbar-container ">
+					<div id="navbarSupportedContent" class="collapse navbar-collapse">
+						<ul class="navbar-nav">
+
+							<li class="dropdown nav-item mt-1 " id="notigroup">
+								<a id="dropdownBasic2" <<onclick="notificationupd()" data-toggle="dropdown"
+									class="nav-link position-relative dropdown-toggle">
+									<i class="ft-bell blue-grey darken-4"></i>
+
+									<span class="notification badge badge-pill badge-danger" id="notinum"> </span>
+
+									<p class="d-none">Notifications</p>
+
+								</a>
+
+								<div class="notification-dropdown dropdown-menu dropdown-menu-right " id="notiopen">
+									<div class="arrow_box_right">
+										<div class="noti-list" id="notification">
+										</div>
+									</div>
+								</div>
+							</li>
+
+
+
+							<li class="dropdown nav-item mr-0">
+								<a id="dropdownBasic3" data-toggle="dropdown"
+									class="nav-link position-relative dropdown-user-link dropdown-toggle">
+									<span class="avatar avatar-online">
+										<img id="navbar-avatar" src="{peravatar}" alt="avatar"
+											title="{pernombre} {perapelli}" />
+									</span>
+									<p class="d-none">Usuario</p>
+								</a>
+								<div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
+									<div class="arrow_box_right">
+										<a href="../../perfiles/miperfil" class="dropdown-item py-1">
+											<i class="ft-edit mr-2"></i>
+											<span>{Idioma_miPerfil}</span>
+										</a>
+										<div class="dropdown-divider"></div>
+										<a href="../../login" class="dropdown-item">
+											<i class="ft-power mr-2"></i>
+											<span>{Idioma_Salir}</span>
+										</a>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="main-panel">
+			<div class="main-content">
+				<div class="content-wrapper">
+					<div class="container-fluid">
+
+						<section id="shopping-cart">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-title-wrap bar-warning">
+												<div class="col-12 mt-4 text-center banner-head">
+													<img class="img-fluid" src="../imagenes-evento/reuniones.jpg"
+														alt="banner">
+												</div>
+												<!--
 										<button id="btndisponib" type="button" class="btn btn-info mr-1" onclick="viewDisponibilidad({percodigo});" style="position:absolute; top:20px; right:20px; {btnviewdisp}">
 											<i class="fa fa-flickr"></i> {Idioma_Disponibilidad}
 										</button>
 										-->
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="row taskboard" id="DataBrowser"></div>
-					</section>
+							<div class="row taskboard" id="DataBrowser"></div>
+						</section>
 
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div> <!-- FIN- <div class="wrapper"> -->
 
 	<!-- Modal -->
